@@ -10,134 +10,78 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180823044028) do
+ActiveRecord::Schema.define(version: 20180824072527) do
 
   create_table "annoucements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_annoucements_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_annoucements_on_reset_password_token", unique: true
   end
 
   create_table "carts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
     t.float "total_money", limit: 24
     t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_carts_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_carts_on_reset_password_token", unique: true
   end
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_comments_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_comments_on_reset_password_token", unique: true
   end
 
   create_table "food_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_food_categories_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_food_categories_on_reset_password_token", unique: true
   end
 
   create_table "foods", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
     t.string "name"
     t.string "img_url"
     t.float "price", limit: 24
-    t.string "description"
     t.float "rating_avg", limit: 24
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_foods_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_foods_on_reset_password_token", unique: true
   end
 
   create_table "order_details", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer "quantity"
     t.float "total_money", limit: 24
+    t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_order_details_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_order_details_on_reset_password_token", unique: true
   end
 
   create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
     t.string "address"
     t.float "total_money", limit: 24
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_orders_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_orders_on_reset_password_token", unique: true
   end
 
   create_table "pictures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_pictures_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_pictures_on_reset_password_token", unique: true
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
     t.string "name"
-    t.integer "user_type", default: 4
+    t.integer "user_type", default: 3
     t.string "username"
     t.string "password_digest"
     t.string "address"
     t.string "phone_number"
     t.string "remember_digest"
     t.string "avatar_url"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -145,16 +89,9 @@ ActiveRecord::Schema.define(version: 20180823044028) do
   end
 
   create_table "votes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
     t.float "rating", limit: 24
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_votes_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_votes_on_reset_password_token", unique: true
   end
 
 end
