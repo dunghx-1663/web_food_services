@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Library</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    'application', media: 'all'%>
+  <%= javascript_include_tag 'application' %>
+ <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+	
+</head>
+
+<body>
+<%= render "layouts/admin_header" %>
+  
+
+<div class="container-fluid main-container">
+  	<div class="col-md-2 sidebar">
+	  	<div class="row">
+		<!-- uncomment code for absolute positioning tweek see top comment in css -->
+			<div class="absolute-wrapper"> </div>
+			<!-- Menu -->
+			<div class="side-menu">
+				<nav class="navbar navbar-default" role="navigation">
+					<!-- Main Menu -->
+					<div class="side-menu-container">
+						<ul class="nav navbar-nav">
+							<li class="active"><a href="#"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
+							<li><a href="#"><span class="glyphicon glyphicon-plane"></span> Active Link</a></li>
+							<li><a href="#"><span class="glyphicon glyphicon-cloud"></span> Link</a></li>
+
+							<!-- Dropdown-->
+							<li class="panel panel-default" id="dropdown">
+								<a data-toggle="collapse" href="#dropdown-lvl1">
+									<span class="glyphicon glyphicon-user"></span> Sub Level <span class="caret"></span>
+								</a>
+
+								<!-- Dropdown level 1 -->
+								<div id="dropdown-lvl1" class="panel-collapse collapse">
+									<div class="panel-body">
+										<ul class="nav navbar-nav">
+											<li><a href="#">Link</a></li>
+											<li><a href="#">Link</a></li>
+											<li><a href="#">Link</a></li>
+
+											<!-- Dropdown level 2 -->
+											<li class="panel panel-default" id="dropdown">
+												<a data-toggle="collapse" href="#dropdown-lvl2">
+													<span class="glyphicon glyphicon-off"></span> Sub Level <span class="caret"></span>
+												</a>
+												<div id="dropdown-lvl2" class="panel-collapse collapse">
+													<div class="panel-body">
+														<ul class="nav navbar-nav">
+															<li><a href="#">Link</a></li>
+															<li><a href="#">Link</a></li>
+															<li><a href="#">Link</a></li>
+														</ul>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</li>
+
+							<li><a href="#"><span class="glyphicon glyphicon-signal"></span> Link</a></li>
+
+						</ul>
+					</div><!-- /.navbar-collapse -->
+				</nav>
+			</div>
+	    </div>  		
+    </div>
+  		<div class="col-md-10 content">
+	        <div>
+	        <div class="panel panel-primary">
+	        <div class="panel-heading">
+	            <span class="glyphicon glyphicon-list"></span>Sortable Lists
+	            <div class="pull-right action-buttons">
+	                <div class="btn-group pull-right">
+	                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+	                        <span class="glyphicon glyphicon-cog" style="margin-right: 0px;"></span>
+	                    </button>
+	                    <ul class="dropdown-menu slidedown">
+	                        <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-pencil"></span>Edit</a></li>
+	                        <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-trash"></span>Delete</a></li>
+	                        <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-flag"></span>Flag</a></li>
+	                    </ul>
+	                </div>
+	            </div>
+	        </div>
+                <div class="panel-body">
+                	<!-- table content -->
+                    <%= yield %>
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>
+                                Total Count <span class="label label-info">25</span></h6>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="pagination pagination-sm pull-right">
+                                <li class="disabled"><a href="javascript:void(0)">«</a></li>
+                                <li class="active"><a href="javascript:void(0)">1 <span class="sr-only">(current)</span></a></li>
+                                <li><a href="http://www.jquery2dotnet.com">2</a></li>
+                                <li><a href="http://www.jquery2dotnet.com">3</a></li>
+                                <li><a href="http://www.jquery2dotnet.com">4</a></li>
+                                <li><a href="http://www.jquery2dotnet.com">5</a></li>
+                                <li><a href="javascript:void(0)">»</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+	
+        </div>
+  		</div>
+     <!-- footer -->
+     <%= render "layouts/admin_footer" %>
+
+  	</div>
+</body>
+</html>
