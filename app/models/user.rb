@@ -11,16 +11,16 @@ class User < ApplicationRecord
 
   class << self
     # return the hash digest of the given string
-	def digest(string)
-	  cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
-	                                                BCrypt::Engine.cost
-	  BCrypt::Password.create(string, cost: cost)
-	end 
+  	def digest(string)
+  	  cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+  	                                                BCrypt::Engine.cost
+  	  BCrypt::Password.create(string, cost: cost)
+  	end 
 
-	  #return a ramdom token
-	def new_token
-	  SecureRamdom.urlsafe_base64
-	end
+  	  #return a ramdom token
+  	def new_token
+  	  SecureRandom.urlsafe_base64
+  	end
   end
   
   # remember a user in the database for user in persistent sessions
