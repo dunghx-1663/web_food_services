@@ -21,10 +21,10 @@
 		    <!-- Collect the nav links, forms, and other content for toggling -->
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <ul class="nav navbar-nav navbar-right">
-		          <li class="active"><a href="#">Home</a></li>
-		        <li><a href="#">About Us</a></li>
+		        <li class="active"><a href="#"><%= t "header.home" %></a></li>
+		        <li><a href="#"><%= t "header.menu" %></a></li>
 		        <li class="dropdown">
-		          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Services <b class="caret"></b></a>
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t "header.categories" %><b class="caret"></b></a>
 		          <ul class="dropdown-menu">
 		            <li><a href="#">Action</a></li>
 		            <li><a href="#">Another action</a></li>
@@ -35,8 +35,19 @@
 		            <li><a href="#">One more separated link</a></li>
 		          </ul>
 		        </li>
-		        <li><a href="#">Portfolio</a></li>
-		        <li><a href="#">Contact Us</a></li>
+		        <li><a href="#"><%= t "header.promotion" %></a></li>
+		        <li><a href="#"><%= t "header.contact_us" %></a></li>
+		        <li class="dropdown">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		          	Name Acc<b class="caret"></b></a>
+		          <ul class="dropdown-menu">
+		            <li><a href="#">Profile</a></li>
+		            <li class="divider"></li>
+		            <li><a href="#">Login</a></li>
+		            <li><a href="#">Logout</a></li>
+		          </ul>
+		        </li>
+		        <li><button class="btn btn-link btn-lg" ><span class="glyphicon glyphicon-shopping-cart"></span></button></li>
 		      </ul>
 		    </div><!-- /.navbar-collapse -->
 		      </div><!-- /.container-collapse -->
@@ -58,86 +69,7 @@
 		            </div>
 		        </div>
 		    </div>    
-
 		</div>
-		<div class="blog-section paddingTB60 bg-grey ">
-		    <div class="container">
-			    <div class="row text-center">
-			    <div class="col-md-12">   
-				    <div class="site-heading ">
-						<h3>Popular Food This Month In New Delhi</h3>
-						<p>The easiest way to your favourite food.</p>
-						<div class="border text-center "></div>
-					</div>
-				</div> 
-			</div>
-			    <div class="row ">
-			        <div class="col-sm-6 col-md-4">
-						<div class="blog-box">
-							<div class="blog-box-image">
-								<img src="https://images.pexels.com/photos/128817/pexels-photo-128817.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" class="img-responsive" alt="">
-							</div>
-							<div class="blog-box-content paddingTLR35">
-								<h4>quis porta tellus dictum</h4>
-								<p>Phasellus lorem enim, luctus ut velit eget, convallis egestas eros. </p>
-							</div>
-						</div>
-					</div> <!-- End Col -->					
-				    <div class="col-sm-6 col-md-4">
-						<div class="blog-box">
-							<div class="blog-box-image">
-								<img src="https://images.pexels.com/photos/160846/french-bulldog-summer-smile-joy-160846.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" class="img-responsive" alt="">
-							</div>
-							<div class="blog-box-content paddingTLR35">
-								<h4>quis porta tellus dictum</h4>
-								<p>Phasellus lorem enim, luctus ut velit eget, convallis egestas eros. </p>
-
-								
-							</div>
-						</div>
-					</div> <!-- End Col -->	
-					<div class="col-sm-6 col-md-4">
-						<div class="blog-box">
-							<div class="blog-box-image">
-								<img src="https://images.pexels.com/photos/128817/pexels-photo-128817.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" class="img-responsive" alt="">
-							</div>
-							<div class="blog-box-content paddingTLR35">
-								<h4>quis porta tellus dictum</h4>
-								<p>Phasellus lorem enim, luctus ut velit eget, convallis egestas eros. </p>
-							</div>
-						</div>
-					</div> <!-- End Col -->
-		        </div>
-		    </div>
-		</div>
-		<div class="Features-section paddingTB60 bg-dgrey ">
-		<div class="container">
-			<div class="row text-center ">
-				<div class="col-sm-6 col-md-4">
-					<div class="feature-box">
-						<span class="glyphicon glyphicon-cog icon"></span>
-						<h4>Pixal Perfect</h4>
-						<p>We have over 15 years of experience </p>
-					</div>
-				</div> <!-- End Col -->	
-				<div class="col-sm-6 col-md-4">
-					<div class="feature-box">
-						<span class="glyphicon glyphicon-cog icon"></span>
-						<h4>Pixal Perfect</h4>
-						<p>We have over 15 years of experience </p>
-					</div>
-				</div> <!-- End Col -->
-				<div class="col-sm-6 col-md-4">
-					<div class="feature-box">
-						<span class="glyphicon glyphicon-cog icon"></span>
-						<h4>Pixal Perfect</h4>
-						<p>We have over 15 years of experience </p>
-					</div>
-				</div> <!-- End Col -->
-			</div>
-		</div>
-		</div>
-		 
     </nav>
   </div>
 </div>

@@ -31,3 +31,10 @@
 
 en:
   hello: "Hello world"
+  header:
+    menu : "Thực Đơn"
+    categories: "Danh Mục Đồ Ăn"
+    home: "Trang Chủ"
+    promotion: "Khuyến Mại"
+    contact_us: "Liên Hệ"
+
