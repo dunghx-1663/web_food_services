@@ -11,8 +11,8 @@ class UsersController < ApplicationController
   end
 
   def new
-	@user = User.new
-	render "shared/_form_signup"
+  	@user = User.new
+  	render "shared/_form_signup"
   end
   
   def create
@@ -28,6 +28,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find_by id: params[:id]
+    # redirect_to root_url unless correct_user
   end
 
   def update
@@ -43,13 +44,13 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation)
+      params.require(:user).permit :name, :email, :username,
+                                   :password, :password_confirmation,
+                                   :address, :phone_number, :avatar_url
     end
 
     def logged_in_user
       unless logged_in?
-        store_location
         flash[:danger] = "Please log in."
         redirect_to login_url
       end

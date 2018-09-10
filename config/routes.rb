@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   post   '/login',  to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
+  get    '/foods',  to: 'foods#index'
+  get    '/carts',  to: 'carts#index'
+  get    '/payment',  to: 'carts#payment'
+
   get    'signup',  to: 'users#new'
 
   namespace :admin do
