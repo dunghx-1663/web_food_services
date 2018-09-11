@@ -1,12 +1,17 @@
 class User < ApplicationRecord
   attr_accessor :remember_token
-  validates :name,  presence: true, length: { maximum: 50 }
+
+  has_many :picture, dependent: :destroy, foreign_key: :user_id
+  
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :name,  presence: true, length: { maximum: 50 }
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { maximum: 8 }, allow_nil: true
+
+  # mount_uploader :avatar_url, AvatarUploader
   
 
   class << self
