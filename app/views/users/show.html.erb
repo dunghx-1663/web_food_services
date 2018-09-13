@@ -1,5 +1,71 @@
 <% provide(:title, @user.name) %>
-<h1>
- 
-  <%= @user.name %>
-</h1>
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= image_tag (current_user.avatar_url.url), class: 'user-avatar' %>
+    </div>
+    <div class="col-md-9">
+      <table class="table table-hover table-striped">
+        <tbody>
+          
+          <tr>
+            <td class="col-md-4">
+              <strong>
+                <i class="fa fa-user-o"></i>
+                <%= t "users.form.name" %>
+              </strong>
+            </td>
+            <td title=""><%= @user.name %></td>
+          </tr>
+          <tr>
+            <td class="col-md-4">
+              <strong>
+                <i class="fa fa-envelope-o"></i>
+                <%= t "users.form.email" %>
+              </strong>
+            </td>
+            <td title="<%= @user.email %>"><%= @user.email %></td>
+          </tr>
+          <tr>
+            <td class="col-md-4">
+              <strong>
+                <i class="fa fa-address-card-o"></i>
+                <%= t "users.form.user_name" %>
+              </strong>
+            </td>
+            <td title=""><%= @user.username %></td>
+          </tr>
+          <tr>
+            <td class="col-md-4">
+              <strong>
+                <i class="fa fa-map-marker "></i>
+                <%= t "users.form.address" %>
+              </strong>
+            </td>
+            <td>
+              <%= @user.address if @user.address %>
+            </td>
+          </tr>
+          <tr>
+            <td class="col-md-4">
+              <strong>
+                <i class="fa fa-phone"></i>
+                <%= t "users.form.phone_number" %>
+              </strong>
+            </td>
+            <td>
+              <%= @user.phone_number if @user.phone_number %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row col-md-1 pull-right">
+     <%= link_to t(".edit"), edit_user_path, class: "btn btn-block btn-primary" %>
+  </div>
+</div>
