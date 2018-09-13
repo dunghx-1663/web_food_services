@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root "dashboard#index", page: "index"
     # get "home", to: "dashboard#index"
+    resources :users
   end
 
   devise_for :users
