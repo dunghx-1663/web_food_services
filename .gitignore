@@ -17,3 +17,10 @@
 /yarn-error.log
 
 .byebug_history
+
+#Ignore file 
+/config/database.yml
+/config/secrets.yml
+/config/config.yml
+# Ignore uploaded test images.
+/public/uploads

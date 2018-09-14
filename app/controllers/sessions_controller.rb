@@ -4,13 +4,20 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: params[:session][:email].downcase)
+    user = User.find_by email: params[:session][:email]
     if user && user.authenticate(params[:session][:password])
       log_in user
-      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-      redirect_to user
+      params[:session][:remember_me] == "1" ? remember(user) : forget(user)
+      if user.Admin?
+        flash[:success] = "Welcome admin"
+        redirect_to admin_root_url
+      else
+        flash[:success] = "Welcome"
+        # redirect_back_or root_url
+        redirect_to user
+      end
     else
-      flash[:danger] = 'Invalid email/password combination'
+      flash[:danger] = "Invalid account"
       render 'shared/_form_login'
     end
   end

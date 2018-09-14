@@ -1,17 +1,17 @@
 <% provide(:title, @user.name) %>
 
-
-
-
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      <%= image_tag (current_user.avatar_url.url), class: 'user-avatar' %>
+      <% if @user.avatar_url.blank? %>
+       <img src="..." class="img-fluid" alt="Avatar Image">
+      <% else %>
+       <%= image_tag (current_user.avatar_url.url), class: 'user-avatar' %>
+      <% end %>
     </div>
     <div class="col-md-9">
       <table class="table table-hover table-striped">
         <tbody>
-          
           <tr>
             <td class="col-md-4">
               <strong>

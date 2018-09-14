@@ -37,16 +37,28 @@
 		        </li>
 		        <li><a href="#"><%= t "header.promotion" %></a></li>
 		        <li><a href="#"><%= t "header.contact_us" %></a></li>
-		        <li class="dropdown">
-		          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-		          	Name Acc<b class="caret"></b></a>
-		          <ul class="dropdown-menu">
-		            <li><a href="#">Profile</a></li>
-		            <li class="divider"></li>
-		            <li><a href="#">Login</a></li>
-		            <li><a href="#">Logout</a></li>
-		          </ul>
-		        </li>
+
+		        <% if logged_in? %>
+		            <li class="dropdown">
+			          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= @user.name %><b class="caret"></b></a>
+			          <ul class="dropdown-menu">
+			          	
+			            <li><%= link_to "Edit Profile", edit_user_url %></li>
+			          </ul>
+			        </li>
+		            <li>
+		              <%= link_to logout_path, method: :delete do %>
+		               <%= t "views.layouts.logout" %>
+		              <% end %>
+		            </li>
+		        <% else %>
+		            <li>
+		              <%= link_to login_path do %>
+		               <%= t "views.layouts.login" %>
+		              <% end %>
+		            </li>
+		         <% end %>
+                
 		        <li><button class="btn btn-link btn-lg" ><span class="glyphicon glyphicon-shopping-cart"></span></button></li>
 		      </ul>
 		    </div><!-- /.navbar-collapse -->

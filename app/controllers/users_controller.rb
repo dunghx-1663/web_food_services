@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def index
   	# render "static_pages/home"
-    @users = User.all
+    @users = User.paginate(page: params[:page])
   end
 
   def show
@@ -34,6 +34,9 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find_by id: params[:id]
+    # if user_params[:password].blank?
+    #   flash[:danger] = "fuck"
+    # end
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
       redirect_to @user
