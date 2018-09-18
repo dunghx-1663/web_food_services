@@ -1,0 +1,4 @@
+en:
+  users:
+    index:
+      have_record: " %{number_vendors} record(s)"

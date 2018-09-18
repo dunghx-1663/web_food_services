@@ -1,0 +1,84 @@
+<table class="table table-hover table-striped">
+  <tbody>
+    <tr>
+      <div class="col-md-12 text-center">
+        <% if @user.avatar_url.blank? %>
+         <img src="..." class="img-fluid" alt="Avatar Image">
+        <% else %>
+         <%= image_tag (@user.avatar_url.url), class: 'user-avatar' %>
+        <% end %>
+      </div>
+    </tr>
+    <tr>
+      <td class="col-md-4">
+        <strong>
+          <i class="fa fa-user-o"></i>
+          <%= t "users.form.name" %>
+        </strong>
+      </td>
+      <td title=""><%= @user.name %></td>
+    </tr>
+    <tr>
+      <td class="col-md-4">
+        <strong>
+          <i class="fa fa-envelope-o"></i>
+          <%= t "users.form.email" %>
+        </strong>
+      </td>
+      <td title="<%= @user.email %>"><%= @user.email %></td>
+    </tr>
+    <tr>
+      <td class="col-md-4">
+        <strong>
+          <i class="fa fa-address-card-o"></i>
+          <%= t "users.form.user_name" %>
+        </strong>
+      </td>
+      <td title=""><%= @user.username %></td>
+    </tr>
+    <tr>
+      <td class="col-md-4">
+        <strong>
+          <i class="fa fa-map-marker "></i>
+          <%= t "users.form.address" %>
+        </strong>
+      </td>
+      <td>
+        <%= @user.address if @user.address %>
+      </td>
+    </tr>
+    <tr>
+      <td class="col-md-4">
+        <strong>
+          <i class="fa fa-phone"></i>
+          <%= t "users.form.phone_number" %>
+        </strong>
+      </td>
+      <td>
+        <%= @user.phone_number if @user.phone_number %>
+      </td>
+    </tr>
+    <tr>
+      <td class="col-md-4">
+        <strong>
+          <i class="fa fa-users"></i>
+          <%= t "users.form.role" %>
+        </strong>
+      </td>
+      <td>
+        <%= @user.role if @user.role %>
+      </td>
+    </tr>
+    <tr>
+      <td class="col-md-4">
+        <strong>
+          <i class="fa fa-clock-o"></i>
+          <%= t "users.form.created_at" %>
+        </strong>
+      </td>
+      <td>
+        <%= @user.created_at if @user.created_at %>
+      </td>
+    </tr>
+  </tbody>
+</table>

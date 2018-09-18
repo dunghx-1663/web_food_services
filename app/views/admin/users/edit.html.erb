@@ -1,0 +1,27 @@
+<h4>Edit User</h4>
+
+<%= form_for [:admin,@user], html: {id: "new_user", class: 'col-md-5'} do |f| %>
+      <%= render 'shared/error_messages', object: @user %>
+      
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control"%>
+
+    
+      <%= f.label :email %>
+      <%= f.email_field :email, class: "form-control"%>
+
+      <%= f.label :address %>
+      <%= f.text_field :address, class: 'form-control' %>
+
+      <%= f.label :phone_number %>
+      <%= f.text_field :phone_number, class: 'form-control' %>
+
+      <%= f.label :avatar %>
+      <%= f.file_field :avatar_url, accept: "image/jpeg,image/jpg,image/png" , class: 'form-control'%>
+   
+   
+      <%= f.label :role %>
+      <%= f.select :role, User.roles.map { |key, value| [key.humanize, key] }, {}, {class: "form-control"} %>
+      <br>
+    <%= f.submit "Edit", class: "btn btn-primary" %>
+<% end %>

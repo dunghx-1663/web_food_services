@@ -15,17 +15,20 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="" target="_blank"><i class="fa fa-bell-o">
 						<span class="label label-info">25</span></i></a></li>
-					<li><a href="http://www.pingpong-labs.com" target="_blank">Visit Site</a></li>
-					
+					<li><%= link_to root_path do %><%= t "visit_site" %><% end %></li>
 					<li class="dropdown ">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
 						Account
 						<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li class="dropdown-header">Name ACC</li>
-							<li class=""><a href="#">Profile</a></li>
-							<li class="divider"></li>
-							<li><a href="#">Logout</a></li>
+							<% if logged_in? %>
+								<li class="dropdown-header"><%= current_user.name %></li>
+								<li><%= link_to "Profile", user_path(current_user) %></li>
+								<li class="divider"></li>
+								<li><%= link_to logout_path, method: :delete do %>
+					               <%= t "views.layouts.logout" %><% end %>
+					            </li>
+							<% end %>
 						</ul>
 					</li>
 				</ul>

@@ -12,4 +12,11 @@ $(document).ready(function(){
   		$('.search-input').focus();
   	});
   });
+
+
+  $(function(){
+    $("#show-limit").on("change", function(){
+      $(this).closest("form").trigger("submit");
+    });
+  })
 });
