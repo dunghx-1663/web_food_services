@@ -5,11 +5,13 @@
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag    'application', media: 'all'%>
   <%= javascript_include_tag 'application' %>
- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
 <!------ Include the above in your HEAD tag ---------->
-	
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet"/>
+
 </head>
 
 <body>
@@ -65,6 +67,9 @@
     </div>
   		<div class="col-md-10 content">
 	        <div>
+        	<% flash.each do |message_type, message| %>
+		        <div class="alert alert-<%= message_type %>"><%= message %></div>
+		      <% end %>
 	        <div class="panel panel-light">
 	        <div class="panel-heading">
 	            <span class="glyphicon glyphicon-list"></span>Name Tab
@@ -73,25 +78,7 @@
                 	<!-- table content -->
                     <%= yield %>
                 </div>
-                <div class="panel-footer">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h6>
-                                Total Count <span class="label label-info">25</span></h6>
-                        </div>
-                        <div class="col-md-6">
-                            <ul class="pagination pagination-sm pull-right">
-                                <li class="disabled"><a href="javascript:void(0)">«</a></li>
-                                <li class="active"><a href="javascript:void(0)">1 <span class="sr-only">(current)</span></a></li>
-                                <li><a href="http://www.jquery2dotnet.com">2</a></li>
-                                <li><a href="http://www.jquery2dotnet.com">3</a></li>
-                                <li><a href="http://www.jquery2dotnet.com">4</a></li>
-                                <li><a href="http://www.jquery2dotnet.com">5</a></li>
-                                <li><a href="javascript:void(0)">»</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
             </div>
 	
@@ -101,5 +88,6 @@
      <%= render "layouts/admin_footer" %>
 
   	</div>
+    <%= render "layouts/modal" %>
 </body>
 </html>

@@ -10,7 +10,7 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { maximum: 8 }, allow_nil: true
   enum role: {User: 0, Employee: 1, Admin: 2}
 
-  has_many :picture, dependent: :destroy, foreign_key: :user_id
+  # has_many :picture, dependent: :destroy, foreign_key: :user_id
   mount_uploader :avatar_url, AvatarUploader
   
 

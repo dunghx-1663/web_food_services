@@ -15,7 +15,7 @@ gem "devise"
 gem "faker", "1.7.3"
 gem "figaro"
 gem "jbuilder", "2.7.0"
-gem "jquery-rails", "4.3.1"
+gem "jquery-rails"
 gem "kaminari"
 gem "kaminari"
 gem "mysql2", '~> 0.3.18'
@@ -32,6 +32,8 @@ gem "sidekiq"
 gem "turbolinks", "5.0.1"
 gem "uglifier", "3.2.0"
 gem "social-share-button", github: "huacnlee/social-share-button"
+gem 'will_paginate',           '3.1.6'
+gem 'bootstrap-will_paginate', '1.0.0'
 
 group :development, :test do
   gem "byebug", "9.0.6", platform: :mri

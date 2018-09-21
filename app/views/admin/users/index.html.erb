@@ -1,0 +1,66 @@
+<h3>admin page</h3>
+
+<div class="row">
+    <div class="col-md-10">
+        <%= search_form_for [:admin,@search], html: {class: 'form-inline'} do |f| %>
+          <%= f.label :name_or_email_or_phone_number_cont, 'Criteria',  class: 'col-md-2 text-center' %>
+          <%= f.search_field :name_or_email_or_phone_number_cont, class: 'col-md-8 form-control', placeholder: 'name, email or phone' %>
+          <%= f.submit 'search', :class => 'col-md-1 btn btn-primary' %>
+        <% end %>
+    </div>
+    <div class="col-md-2 text-right">
+       <%= link_to "create new", new_admin_user_path, class: "btn btn-primary btn-sm btn-create" %>
+    </div>
+</div>
+<!-- <div>
+  <p>lam muti select loc theo role</p>
+</div> -->
+<hr>
+
+<div class="x-panel tile overflow-hidden">
+  <div class="x-content">
+    
+    <table class="table table-hover table-striped">
+      <thead>
+        <tr>
+          <th class="text-center col-md-2"><%= sort_link @search, :name, t(".name") %></th>
+          <th class="text-center col-md-2"><%= sort_link @search, :email, t(".emai") %></th>
+          <th class="text-center col-md-2"><%= sort_link @search, :username, t(".user_name") %></th>
+          <th class="text-center col-md-2"><%= sort_link @search, :address, t(".address") %></th>
+          <th class="text-center col-md-2"><%= sort_link @search, :phone_number, t(".phone") %></th>
+          <th class="text-center col-md-2 col-sm-2 col-xs-2" ><%= t ".action" %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td class="text-center">
+              <%= link_to user.name, admin_user_path(user), remote: true,
+                  title: user.name %>
+            </td>
+            <td class="text-center"><%= user.email %></td>
+            <td class="text-center"><%= user.username %></td>
+            <td class="text-center"><%= user.address %></td>
+            <td class="text-center"><%= user.phone_number %></td>
+            <td class="text-center">
+              <%= link_to edit_admin_user_url(user.id), class: "btn btn-warning btn-xs", 
+                title: t("edit") do %><i class="fa fa-pencil"></i><% end %>
+              <%= link_to admin_user_url(user.id), method: :delete, class: "btn btn-danger btn-xs",title: t("delete"), data: {confirm: t("are_you_sure")} do %>
+                <i class="fa fa-trash"></i><% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="pull-right">
+     <%= paginate @users %>
+    </div>
+    <div class="pull-left">
+      <span>
+        <strong class="text-capitalize"><%= t ".filter" %></strong>
+        <%= t ".have_record", number_vendors: @search.result.size %>
+      </span>
+    </div>
+  </div>
+  
+</div>
