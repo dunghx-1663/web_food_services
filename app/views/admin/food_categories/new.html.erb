@@ -1,0 +1,11 @@
+<h4>Create Category</h4>
+<%= form_for [:admin, @foodcategory], :html => {class: 'col-md-5'} do |f| %>
+      <%= render 'shared/error_messages', object: @foodcategory %>
+      
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control"%>
+
+      <br>
+    <%= f.submit "Create", class: "btn btn-primary" %>
+<% end %>
+

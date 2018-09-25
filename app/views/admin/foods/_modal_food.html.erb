@@ -1,0 +1,49 @@
+<table class="table table-hover table-striped">
+  <tbody>
+    <div class="container">
+      <div class="wrapper row">
+        <div class="preview col-md-4">
+          <div class="preview-pic tab-content">
+            <% if @food.img_url.blank? %>
+             <img src="..." class="img-fluid" alt="Avatar Image">
+            <% else %>
+             <%= image_tag (@food.img_url.url), class: 'img_product' %>
+            <% end %>
+          </div>
+        </div>
+        <div class="details col-md-5">
+          <h3 class="product-title"><%= @food.name %></h3>
+          
+          <h6 class="price">current price: <span>$180</span></h6>
+          <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
+          <p><b><%= t'created_at' %>:</b>
+            <span><%= @food.created_at %></span>
+          </p>
+          <div class="rating">
+            <div class="stars">
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+            </div>
+            <span class="review-no">41 reviews</span>
+          </div>
+        </div>
+      </div>
+      <hr class="col-md-8">
+      <!-- review food -->
+      <br>
+      
+      <div class="row ">
+       <div class="col-md-12"> 
+         <h4 class="section-titlepara">PRODUCT DETAILS</h4>
+       </div>
+       <div class="border col-md-2"></div>
+
+      <div class="container wrapper row col-md-9">
+        <p class="modal-width"><%= raw @food.description %></p>
+      </div>
+    </div>
+  </tbody>
+</table>

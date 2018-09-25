@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   get    '/login',  to: 'sessions#new'
   post   '/login',  to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
@@ -13,6 +14,8 @@ Rails.application.routes.draw do
     root "dashboard#index", page: "index"
     # get "home", to: "dashboard#index"
     resources :users
+    resources :food_categories
+    resources :foods
   end
 
   devise_for :users

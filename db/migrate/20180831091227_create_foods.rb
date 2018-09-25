@@ -3,7 +3,7 @@ class CreateFoods < ActiveRecord::Migration[5.1]
     create_table :foods do |t|
       t.string :name
       t.string :img_url
-      t.string :description
+      t.text :description
       t.float :price
       t.float :rating_avg
 
