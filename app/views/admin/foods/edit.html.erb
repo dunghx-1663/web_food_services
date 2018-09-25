@@ -1,0 +1,22 @@
+<h4>Create Food</h4>
+<%= form_for [:admin, @food], :html => {class: 'col-md-10'} do |f| %>
+      <%= render 'shared/error_messages', object: @food %>
+      
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control"%>
+
+      <%= f.label :price %>
+      <%= f.text_field :price, class: 'form-control' %>
+      
+      <%= f.label :img_url %>
+      <%= f.file_field :img_url, accept: "image/jpeg,image/jpg,image/png" , class: 'form-control'%>
+
+      <%= f.label :description %>
+      <%= f.cktext_area :description, rows: 15 %>  
+
+   
+      <!-- chon danh muc nua -->
+      <br>
+      <%= f.submit "Edit", class: "btn btn-primary pull-right col-md-2" %>
+<% end %>
+

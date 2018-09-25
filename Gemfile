@@ -7,15 +7,16 @@ end
 
 
 gem "bcrypt"
-gem 'bootstrap-sass', '3.2.0.2'
 gem "carrierwave", "1.2.2"
 gem "coffee-rails", "4.2.2"
 gem "config"
 gem "devise"
 gem "faker", "1.7.3"
 gem "figaro"
+gem "font-awesome-rails"
 gem "jbuilder", "2.7.0"
 gem "jquery-rails"
+gem "jquery-ui-rails"
 gem "kaminari"
 gem "kaminari"
 gem "mysql2", '~> 0.3.18'
@@ -26,14 +27,16 @@ gem "rails", "5.1.4"
 gem "ransack"
 gem "ratyrate"
 gem "sass-rails", "5.0.6"
-gem "jquery-ui-rails"
-gem "font-awesome-rails"
 gem "sidekiq"
+gem "social-share-button", github: "huacnlee/social-share-button"
 gem "turbolinks", "5.0.1"
 gem "uglifier", "3.2.0"
-gem "social-share-button", github: "huacnlee/social-share-button"
-gem 'will_paginate',           '3.1.6'
+gem 'bootstrap-sass', '3.2.0.2'
 gem 'bootstrap-will_paginate', '1.0.0'
+gem 'ckeditor'
+gem 'mini_magick'
+gem 'will_paginate',           '3.1.6'
+
 
 group :development, :test do
   gem "byebug", "9.0.6", platform: :mri

@@ -24,70 +24,73 @@
 		<!-- uncomment code for absolute positioning tweek see top comment in css -->
 			<div class="absolute-wrapper"> </div>
 			<!-- Menu -->
-			<div class="side-menu">
-				<nav class="navbar navbar-default" role="navigation">
-					<!-- Main Menu -->
-					<div class="side-menu-container">
-						<ul class="nav navbar-nav">
-							<!-- admin  -->
-							<li class="active"><a href="#"><span class="glyphicon glyphicon-signal"></span> Dashboard</a></li>
-							<li><a href="#"><span class="glyphicon glyphicon-tasks"></span>Danh Mục Món Ăn</a></li>
-							<li><a href="#"><span class="glyphicon glyphicon-cutlery"></span>Món Ăn</a></li>
-                            <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span>Đơn Hàng</a></li>
-							<!-- Dropdown-->
-							<li class="panel panel-default" id="dropdown">
-								<a data-toggle="collapse" href="#dropdown-lvl1">
-									<span class="fa fa-users fa-2x icon-admin-user"></span>Người Dùng<span class="caret"></span>
-								</a>
+			<% if logged_in? %>
+				<div class="side-menu">
+					<nav class="navbar navbar-default" role="navigation">
+						<!-- Main Menu -->
+						<div class="side-menu-container">
+							<ul class="nav navbar-nav">
+								<!-- admin  -->
+								 <% if @current_user.Admin? %>
+	                                <li class="active"><a href="#"><span class="glyphicon glyphicon-signal"></span> Dashboard</a></li>
+									<li><%= link_to admin_food_categories_path do %><i class="glyphicon glyphicon-tasks"></i><%= t ".food_categories" %><% end %></li>
+									<li><%= link_to admin_foods_path do %><i class="glyphicon glyphicon-cutlery"></i><%= t ".foods" %><% end %></li>
+		                            <li><%= link_to admin_foods_path do %><i class="glyphicon glyphicon-list-alt"></i><%= t ".list_orders" %><% end %></li>
+									<li><%= link_to admin_users_path do %><i class="glyphicon glyphicon-user"></i><%= t ".Users" %><% end %></li>
+									<li><a href="#"><span class="glyphicon glyphicon-user"></span>Cá Nhân</a></li>
+								<% end %>
+								<!-- nguoi giao hang -->
+								 <% if @current_user.Employee? %>
+									<li class="active"><a href="#"><span class="glyphicon glyphicon-signal"></span> Dashboard</a></li>
+	                                <li><a href="#"><span class="glyphicon glyphicon-send"></span>Đơn Hàng Mới</a></li>
+									<li><a href="#"><span class="glyphicon glyphicon-list-alt"></span>Đơn Hàng Của Tôi</a></li>
+									<!-- don hang cua toi bao gom don hang chua giao va da giao -->
+		                            <li><a href="#"><span class="glyphicon glyphicon-user"></span>Cá Nhân</a></li>
+								 <% end %>
 
-								<!-- Dropdown level 1 -->
-								<div id="dropdown-lvl1" class="panel-collapse collapse">
-									<div class="panel-body">
-										<ul class="nav navbar-nav">
-											<li><a href="#">Người Mua Hàng</a></li>
-											<li><a href="#">Người Giao Hàng</a></li>
-										</ul>
+								<!-- Dropdown-->
+								<!-- <li class="panel panel-default" id="dropdown">
+									<a data-toggle="collapse" href="#dropdown-lvl1">
+										<span class="fa fa-users fa-2x icon-admin-user"></span>Người Dùng<span class="caret"></span>
+									</a>
+									<div id="dropdown-lvl1" class="panel-collapse collapse">
+										<div class="panel-body">
+											<ul class="nav navbar-nav">
+												<li><a href="#"></a></li>
+												<li><a href="#"></a></li>
+											</ul>
+										</div>
 									</div>
-								</div>
-							</li>
-
-							<li><a href="#"><span class="glyphicon glyphicon-user"></span>Cá Nhân</a></li>
-
-							<!-- nguoi giao hang -->
-							<li><a href="#"><span class="glyphicon glyphicon-send"></span>Đơn Hàng Mới</a></li>
-							<li><a href="#"><span class="glyphicon glyphicon-list-alt"></span>Đơn Hàng Của Tôi</a></li>
-							<!-- don hang cua toi bao gom don hang chua giao va da giao -->
-                            <li><a href="#"><span class="glyphicon glyphicon-user"></span>Cá Nhân</a></li>
-
-						</ul>
-					</div><!-- /.navbar-collapse -->
-				</nav>
-			</div>
+								</li> -->
+							</ul>
+						</div>
+					</nav>
+				</div>
+			<% end %>
 	    </div>  		
     </div>
-  		<div class="col-md-10 content">
-	        <div>
-        	<% flash.each do |message_type, message| %>
-		        <div class="alert alert-<%= message_type %>"><%= message %></div>
-		      <% end %>
-	        <div class="panel panel-light">
-	        <div class="panel-heading">
-	            <span class="glyphicon glyphicon-list"></span>Name Tab
-	        </div>
-                <div class="panel-body">
-                	<!-- table content -->
-                    <%= yield %>
-                </div>
-                
-            </div>
-            </div>
-	
-        </div>
-  		</div>
-     <!-- footer -->
-     <%= render "layouts/admin_footer" %>
 
-  	</div>
-    <%= render "layouts/modal" %>
+	<div class="col-md-10 content">
+	    <div>
+	    	<% flash.each do |message_type, message| %>
+		      <div class="alert alert-<%= message_type %>"><%= message %></div>
+		    <% end %>
+	        <div class="panel panel-light">
+		        <div class="panel-heading">
+		            <span class="glyphicon glyphicon-list"></span>Name Tab
+		        </div>
+	            <div class="panel-body">
+	            	<!-- table content -->
+	                <%= yield %>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</div>
+     <!-- footer -->
+<%= render "layouts/admin_footer" %>
+
+</div>
+<%= render "layouts/modal" %>
 </body>
 </html>
