@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180924110628) do
+ActiveRecord::Schema.define(version: 20180926041809) do
 
   create_table "annoucements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
@@ -57,6 +57,8 @@ ActiveRecord::Schema.define(version: 20180924110628) do
     t.float "rating_avg", limit: 24
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "food_category_id"
+    t.index ["food_category_id"], name: "index_foods_on_food_category_id"
   end
 
   create_table "order_details", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -101,4 +103,5 @@ ActiveRecord::Schema.define(version: 20180924110628) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "foods", "food_categories"
 end

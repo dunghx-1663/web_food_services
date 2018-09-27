@@ -8,6 +8,7 @@ class Admin::FoodsController < Admin::BaseController
 
   def new
     @food = Food.new
+    @foodcategories = FoodCategory.all
   end
 
   def create
@@ -23,6 +24,7 @@ class Admin::FoodsController < Admin::BaseController
 
   def edit
     @food = Food.find_by id: params[:id]
+    @foodcategories = FoodCategory.all
   end
 
   def update
@@ -65,6 +67,6 @@ class Admin::FoodsController < Admin::BaseController
 
   def food_params
       params.require(:food).permit :name, :img_url, :price,
-                                   :rating_avg, :description
+                                   :rating_avg, :description, :food_category_id
   end
 end
