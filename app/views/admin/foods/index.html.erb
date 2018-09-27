@@ -41,7 +41,7 @@
             </td>
             <td class="text-center"><%= food.price %></td>
             <td class="text-center"><%= food.rating_avg %></td>
-            <td class="text-center"><%= food.created_at %></td>
+            <td class="text-center"><%= food.created_at.strftime Settings.format_time_with_hour %></td>
             
             <td class="text-center">
               <%= link_to edit_admin_food_url(food.id), class: "btn btn-warning btn-xs", 
@@ -59,7 +59,7 @@
     <div class="pull-left">
       <span>
         <strong class="text-capitalize"><%= t ".filter" %></strong>
-        <%= t ".have_record", number_vendors: @search.result.size %>
+          <%= @search.result.size %> <%= t ".have_record" %>
       </span>
     </div>
   </div>

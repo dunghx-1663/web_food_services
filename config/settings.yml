@@ -5,4 +5,5 @@ show_limit:
   show_20: 20
   show_30: 30
   show_50: 50
-  
+format_time: "%d-%m-%Y"
+format_time_with_hour: "%d-%m-%Y, %H:%M:%S"

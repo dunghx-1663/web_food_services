@@ -17,7 +17,10 @@
           <h6 class="price">current price: <span>$180</span></h6>
           <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
           <p><b><%= t'created_at' %>:</b>
-            <span><%= @food.created_at %></span>
+            <span><%= @food.created_at.strftime Settings.format_time_with_hour %></span>
+          </p>
+          <p><b><%= t'food_category' %>:</b>
+            <span><%= @food.food_category.name  %></span>
           </p>
           <div class="rating">
             <div class="stars">

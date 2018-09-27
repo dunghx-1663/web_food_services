@@ -38,12 +38,16 @@ class Admin::FoodCategoriesController < Admin::BaseController
 
   def destroy
     @foodcategory = FoodCategory.find_by id: params[:id]
-    if @foodcategory.destroy
-      flash[:success] = t("Success")
-      redirect_to admin_food_categories_url
+    if @foodcategory.foods.any?
+      flash[:danger] = t ".delete.cannot_delete"
     else
-      flash[:danger] = t("Fail")
+      if @foodcategory.destroy
+        flash[:success] = t("Success")
+      else
+        flash[:danger] = t("Fail")
+      end
     end
+    redirect_to admin_food_categories_url
   end
 
   private

@@ -35,7 +35,7 @@
         <% @foodcategories.each do |foodcategory| %>
           <tr>
             <td class="text-center"><%= foodcategory.name %></td>
-            <td class="text-center"><%= foodcategory.created_at %></td>
+            <td class="text-center"><%= foodcategory.created_at.strftime Settings.format_time_with_hour %></td>
            
             <td class="text-center">
               <%= link_to edit_admin_food_category_url(foodcategory.id), class: "btn btn-warning btn-xs", 
@@ -53,7 +53,7 @@
     <div class="pull-left">
       <span>
         <strong class="text-capitalize"><%= t ".filter" %></strong>
-        <%= t ".have_record", number_vendors: @search.result.size %>
+        <%= @search.result.size %> <%= t ".have_record" %>
       </span>
     </div>
   </div>

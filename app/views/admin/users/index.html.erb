@@ -60,7 +60,7 @@
     <div class="pull-left">
       <span>
         <strong class="text-capitalize"><%= t ".filter" %></strong>
-        <%= t ".have_record", number_vendors: @search.result.size %>
+        <%= @search.result.size %> <%= t ".have_record" %>
       </span>
     </div>
   </div>
