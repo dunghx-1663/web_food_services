@@ -1,0 +1,47 @@
+<!-- food list hot -->
+<div class="blog-section paddingTB60 bg-grey ">
+    <div class="container">
+	    <div class="row text-center">
+		    <div class="col-md-12">   
+			    <div class="site-heading ">
+					<h3>Popular Food This Month In New Delhi</h3>
+					<p>The easiest way to your favourite food.</p>
+					<div class="border text-center "></div>
+				</div>
+			</div> 
+		</div>
+	    <div class="row ">
+	    	<!-- BEGIN PRODUCTS -->
+	    	<% @foods.each do |food| %>
+		  		<div class="col-md-3 col-sm-6">
+		    		<span class="thumbnail">
+		      			<%= link_to food do %>
+			                <%= image_tag food.img_url, alt: food.name, :class => "style_img_view" %>
+			              <% end %>
+		      			<h4><%= link_to food.name, food, class: "text-center" %></h4>
+		      			<div class="ratings">
+		                    <span class="glyphicon glyphicon-star"></span>
+		                    <span class="glyphicon glyphicon-star"></span>
+		                    <span class="glyphicon glyphicon-star"></span>
+		                    <span class="glyphicon glyphicon-star"></span>
+		                    <span class="glyphicon glyphicon-star-empty"></span>
+		                </div>
+		      			<p><%= raw(truncate food.description || t(".no_description"), length: Settings.sort_descriptions) %></p>
+		      			<hr class="line">
+		      			<div class="row">
+		      				<div class="col-md-6 col-sm-6">
+		      					<p class="price"><%= food.price %></p>
+		      				</div>
+		      				<div class="col-md-6 col-sm-6">
+		      					<button class="btn btn-success right" ><span class="glyphicon glyphicon-shopping-cart"></span></button>
+		      				</div>
+		      				
+		      			</div>
+		    		</span>
+		  		</div>
+	  		<% end %>
+	  		
+	  		<!-- END PRODUCTS -->
+        </div>
+    </div>
+</div>

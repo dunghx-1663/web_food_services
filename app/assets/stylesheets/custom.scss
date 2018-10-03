@@ -165,6 +165,7 @@ input.form-control {
   padding: 55px 0 55px;
   border-top: 1px solid #696969;
   border-bottom: 1px solid #696969;
+  width: 100% !important;
 }
 
 /* Footer */
@@ -584,4 +585,14 @@ img {
 
 .conf-height {
   height: 20px;
+}
+
+.style_img_view {
+  height: 170px !important;
+  width: 300px !important;
+}
+
+.show_food {
+  height: 300px !important;
+  width: 500px !important;
 }
