@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   post   '/login',  to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  get    '/foods',  to: 'foods#index'
+  
   get    '/carts',  to: 'carts#index'
   get    '/payment',  to: 'carts#payment'
 
@@ -19,8 +19,10 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
-  root "static_pages#show", page: "home"
+  root "foods#index"
   resources :users
+  resources :foods
+  resources :carts
   # get "/static_pages/:page", to: "static_pages#show"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

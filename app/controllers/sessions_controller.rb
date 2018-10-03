@@ -8,8 +8,11 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       log_in user
       params[:session][:remember_me] == "1" ? remember(user) : forget(user)
-      if user.Admin? || user.Employee?
-        flash[:success] = "Welcome admin || Employee"
+      if user.Admin? 
+        flash[:success] = "Welcome admin"
+        redirect_to admin_root_url
+      elsif user.Employee?
+        flash[:success] = "Welcome Employee"
         redirect_to admin_root_url
       else
         flash[:success] = "Welcome"

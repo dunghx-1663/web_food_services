@@ -1,0 +1,69 @@
+<!-- food details -->
+<div class="container">
+	<div class="card">
+		<div class="container-fliud">
+			<div class="wrapper row">
+				<div class="preview col-md-6">
+					<div class="preview-pic tab-content">
+					  <div class="tab-pane active" id="pic-1">
+					  	<%= image_tag @food.img_url, :class => "show_food" if @food.img_url?  %>
+					  </div>
+					</div>
+				</div>
+				<div class="details col-md-6">
+					<h4 class="price"><%= @food.name %></h4>
+					<div class="rating">
+						<div class="stars">
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+						</div>
+						<span class="review-no">41 reviews</span>
+					</div>
+					<p class="product-description"><%= raw(truncate @food.description || t(".no_description"), length: Settings.sort_descriptions) %></p>
+					<h4><b>current price:</b> <span><%= @food.price %></span></h4>
+					<h6><b>Food Category:</b> <span><%= @food.food_category.name %></span></h6>
+					<p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
+					<div class="row">
+						<div class="col-md-8">
+						   <%= label_tag 'quantity :', nil, class: 'pull-left' %>
+					       <%= number_field_tag 'quantity', nil, min: 1, max: 10, class: 'col-md-3' %>
+						</div>
+						<div class="col-md-4 action">
+						   <button class="add-to-cart btn btn-default" type="button">add to cart</button>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- review food -->
+	<br>
+	<div class="row ">
+	     <div class="col-md-12"> 
+	       <h4 class="section-titlepara">PRODUCT DETAILS</h4>
+	     </div>
+	     <div class="border col-md-2"></div>
+
+	    <div class="container wrapper row col-md-9">
+	      <p class="modal-width"><%= raw @food.description %></p>
+	    </div>
+	</div>
+	<hr>
+	<!-- comment -->
+	
+	<div class="row ">
+         <div class="col-md-12"> 
+           <h4 class="section-titlepara">COMMENTS</h4>
+         </div>
+         <div class="border col-md-2"></div>
+
+        <div class="container wrapper row col-md-9">
+          <p class="modal-width"></p>
+        </div>
+      </div>
+	<hr>
+</div>

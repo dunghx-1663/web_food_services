@@ -7,3 +7,5 @@ show_limit:
   show_50: 50
 format_time: "%d-%m-%Y"
 format_time_with_hour: "%d-%m-%Y, %H:%M:%S"
+sort_descriptions: 75
+
