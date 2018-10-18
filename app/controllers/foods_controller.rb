@@ -9,6 +9,7 @@ class FoodsController < ApplicationController
   end
 
   def index
+    @categories = FoodCategory.all
     @foods = Food.all
   end
 
@@ -21,6 +22,7 @@ class FoodsController < ApplicationController
   end
 
   def load_foods
+    @categories = FoodCategory.all
     @food = Food.find_by(id: params[:id]) || not_found
   end
 

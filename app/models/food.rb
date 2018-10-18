@@ -7,4 +7,5 @@ class Food < ApplicationRecord
     has_many :comments, dependent: :destroy
 
     mount_uploader :img_url, AvatarUploader
+    scope :filter_food_category, -> food_category_id { where(food_category_id: food_category_id )}
 end
