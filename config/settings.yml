@@ -8,4 +8,20 @@ show_limit:
 format_time: "%d-%m-%Y"
 format_time_with_hour: "%d-%m-%Y, %H:%M:%S"
 sort_descriptions: 75
+foods:
+  previous_week: 1
+  precision_min: 0
+unit_price: "vnđ"
+percentage: 100
+textarea:
+  number_rows: 4
+comments:
+  limit: 3
+  per_page: 3
+day_only: "%d"
+month_only: "%m"
+year_only: "%Y"
+user_avatar:
+  medium: "300x300>"
+  thumb: "100x100#"
 

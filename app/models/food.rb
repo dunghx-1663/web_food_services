@@ -4,6 +4,7 @@ class Food < ApplicationRecord
 	validates :description, presence: true
 	# validates :rating_avg, presence: true
     belongs_to :food_category, optional: true
+    has_many :comments, dependent: :destroy
 
     mount_uploader :img_url, AvatarUploader
 end

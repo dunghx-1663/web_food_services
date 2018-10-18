@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180926041809) do
+ActiveRecord::Schema.define(version: 20181017154858) do
 
   create_table "annoucements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
@@ -23,6 +23,10 @@ ActiveRecord::Schema.define(version: 20180926041809) do
     t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "food_id"
+    t.bigint "user_id"
+    t.index ["food_id"], name: "index_carts_on_food_id"
+    t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
   create_table "ckeditor_assets", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -41,6 +45,11 @@ ActiveRecord::Schema.define(version: 20180926041809) do
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "parent_id"
+    t.bigint "user_id"
+    t.bigint "food_id"
+    t.index ["food_id"], name: "index_comments_on_food_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "food_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -58,6 +67,8 @@ ActiveRecord::Schema.define(version: 20180926041809) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "food_category_id"
+    t.integer "discount"
+    t.integer "view", default: 0
     t.index ["food_category_id"], name: "index_foods_on_food_category_id"
   end
 
@@ -66,6 +77,10 @@ ActiveRecord::Schema.define(version: 20180926041809) do
     t.float "total_money", limit: 24
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "food_id"
+    t.bigint "order_id"
+    t.index ["food_id"], name: "index_order_details_on_food_id"
+    t.index ["order_id"], name: "index_order_details_on_order_id"
   end
 
   create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -74,6 +89,8 @@ ActiveRecord::Schema.define(version: 20180926041809) do
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "pictures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -103,5 +120,12 @@ ActiveRecord::Schema.define(version: 20180926041809) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "carts", "foods"
+  add_foreign_key "carts", "users"
+  add_foreign_key "comments", "foods"
+  add_foreign_key "comments", "users"
   add_foreign_key "foods", "food_categories"
+  add_foreign_key "order_details", "foods"
+  add_foreign_key "order_details", "orders"
+  add_foreign_key "orders", "users"
 end

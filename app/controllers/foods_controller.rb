@@ -1,8 +1,11 @@
 class FoodsController < ApplicationController
-  
+  before_action :load_foods, only: :show
+  before_action :load_meta_data_for_current_food, only: :show
   
   def show
-    @food = Food.find_by id: params[:id]
+    view = @food.view.nil? ? 0 : @food.view
+    @food.view = view + 1
+    @food.save
   end
 
   def index
@@ -11,6 +14,15 @@ class FoodsController < ApplicationController
 
 
   private
+  
+  def load_meta_data_for_current_food
+    @comments = Comment.load_comment(@food).except_reply.select_fields
+      .order_by_created_at
+  end
+
+  def load_foods
+    @food = Food.find_by(id: params[:id]) || not_found
+  end
 
   def food_params
       params.require(:food).permit :name, :img_url, :price,

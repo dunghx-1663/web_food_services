@@ -66,7 +66,7 @@ class Admin::FoodsController < Admin::BaseController
   end
 
   def food_params
-      params.require(:food).permit :name, :img_url, :price,
+      params.require(:food).permit :name, :img_url, :price, :discount,
                                    :rating_avg, :description, :food_category_id
   end
 end

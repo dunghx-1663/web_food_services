@@ -14,7 +14,17 @@
         <div class="details col-md-5">
           <h3 class="product-title"><%= @food.name %></h3>
           
-          <h6 class="price">current price: <span>$180</span></h6>
+          <div class="row">
+            <p class="price col-md-2">Price</p>
+            <div class="col-md-10">
+              <% if @food.discount.present? %>
+                <label>discount: <%= @food.discount %> %</label>
+                <del class="small_price col-md-4"><%= format_price @food.price %></del>
+              <% end %>
+              <h4 class="price col-md-8"><%= get_promotion_price @food.price, @food.discount %></h4>
+            </div>
+          </div>
+          
           <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
           <p><b><%= t'created_at' %>:</b>
             <span><%= @food.created_at.strftime Settings.format_time_with_hour %></span>
@@ -30,7 +40,7 @@
               <span class="fa fa-star"></span>
               <span class="fa fa-star"></span>
             </div>
-            <span class="review-no">41 reviews</span>
+            <span class="review-no fa fa-eye"> <%= @food.view %> Reviewer</span>
           </div>
         </div>
       </div>
