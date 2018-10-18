@@ -16,9 +16,10 @@
 		  		<div class="col-md-3 col-sm-6">
 		    		<span class="thumbnail">
 		      			<%= link_to food do %>
-			                <%= image_tag food.img_url, alt: food.name, :class => "style_img_view" %>
+			               <%= image_tag food.img_url, alt: food.name, :class => "style_img_view"%>
 			              <% end %>
 		      			<h4><%= link_to food.name, food, class: "text-center" %></h4>
+		      			<i class="fa fa-eye" aria-hidden="true"> <%= count_view food%></i>
 		      			<div class="ratings">
 		                    <span class="glyphicon glyphicon-star"></span>
 		                    <span class="glyphicon glyphicon-star"></span>
@@ -29,13 +30,16 @@
 		      			<p><%= raw(truncate food.description || t(".no_description"), length: Settings.sort_descriptions) %></p>
 		      			<hr class="line">
 		      			<div class="row">
-		      				<div class="col-md-6 col-sm-6">
-		      					<p class="price"><%= food.price %></p>
+		      				<div class="col-md-8 col-sm-8">
+		      					<% if food.discount.present? %>
+						          <del class="small_price col-md-4"><%= format_price food.price %></del>
+						        <% end %>
+						        <h4 class="price col-md-8"><%= get_promotion_price food.price, food.discount %></h4>
+		      					<!-- <p class="price"><%= format_price food.price %></p> -->
 		      				</div>
-		      				<div class="col-md-6 col-sm-6">
-		      					<button class="btn btn-success right" ><span class="glyphicon glyphicon-shopping-cart"></span></button>
+		      				<div class="col-md-4 col-sm-4">
+		      					<button value="<%= food.id %>" class="show-add btn btn-success pull-right" data-toggle="modal" data-target="#addFood"><i class="fa fa-cart-plus " aria-hidden="true"></i></button>
 		      				</div>
-		      				
 		      			</div>
 		    		</span>
 		  		</div>
@@ -45,3 +49,4 @@
         </div>
     </div>
 </div>
+<%= render partial: "modal_add_cart", locals: {objects: @foods } %>

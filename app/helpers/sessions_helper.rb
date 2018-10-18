@@ -43,4 +43,15 @@ module SessionsHelper
   	cookies.delete(:remember_token)
   end
 
+  def cart_amount
+    if logged_in?
+      cart_amount = current_user.carts.size
+    else
+      cart_amount = Cart.cart_amount_session(request.session_options[:id]).size
+    end
+  end
+  
+  def correct_user user
+    user == current_user && logged_in?
+  end
 end

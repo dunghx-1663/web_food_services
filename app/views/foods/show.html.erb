@@ -20,10 +20,21 @@
 							<span class="fa fa-star"></span>
 							<span class="fa fa-star"></span>
 						</div>
-						<span class="review-no">41 reviews</span>
+						<span class="review-no"><i class="fa fa-eye" aria-hidden="true"> <%= count_view @food%></i> <%= t 'review'%></span>
 					</div>
 					<p class="product-description"><%= raw(truncate @food.description || t(".no_description"), length: Settings.sort_descriptions) %></p>
-					<h4><b>current price:</b> <span><%= @food.price %></span></h4>
+
+					<div class="row">
+			            <label class="col-md-2">Price</label>
+			            <div class="col-md-10">
+			              <% if @food.discount.present? %>
+			                <label>Discount: <%= @food.discount %> %</label>
+			                <del class="small_price col-md-4"><%= format_price @food.price %></del>
+			              <% end %>
+			              <h4 class="price col-md-8"><%= get_promotion_price @food.price, @food.discount %></h4>
+			            </div>
+			          </div>
+					
 					<h6><b>Food Category:</b> <span><%= @food.food_category.name %></span></h6>
 					<p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
 					<div class="row">
@@ -42,27 +53,60 @@
 	</div>
 	<!-- review food -->
 	<br>
-	<div class="row ">
+	<div class=" row col-md-12">
 	     <div class="col-md-12"> 
 	       <h4 class="section-titlepara">PRODUCT DETAILS</h4>
 	     </div>
 	     <div class="border col-md-2"></div>
 
-	    <div class="container wrapper row col-md-9">
+	    <div class=" row col-md-10">
 	      <p class="modal-width"><%= raw @food.description %></p>
 	    </div>
 	</div>
 	<hr>
 	<!-- comment -->
 	
-	<div class="row ">
+	<div class="row col-md-12">
          <div class="col-md-12"> 
            <h4 class="section-titlepara">COMMENTS</h4>
          </div>
          <div class="border col-md-2"></div>
 
-        <div class="container wrapper row col-md-9">
-          <p class="modal-width"></p>
+         <div class=" row col-md-12">
+          <div class="modal-width">
+          	<div class="comment-tabs">
+			    <ul class="media-list" id="comments">
+			      <%= render partial: "comments", collection: @comments, as: :comment %>
+			    </ul>
+			</div>
+          </div>
+          <% if logged_in? %>
+			  <div id="comment-form">
+			    <h4 class="text-uppercase"><%= t "leave_comments" %></h4>
+			      <%= form_for Comment.new, remote: true do |f| %>
+			        <div class="row">
+			          <div class="col-md-12">
+			            <div class="form-group">
+			              <%= f.hidden_field :food_id, value: @food.id %>
+			              <%= f.hidden_field :user_id, value: current_user.id %>
+			              <%= f.text_area :content, class: "form-control comment_field",
+			                rows: Settings.textarea.number_rows %>
+			            </div>
+			          </div>
+			        </div>
+			        <div class="row">
+			          <div class="col-md-12 text-right">
+			            <%= f.button :submit, class: "btn btn-primary" do %>
+			              <i class="fa fa-comment-o"></i>
+			              <%= t "post_comment" %>
+			            <% end %>
+			          </div>
+			        </div>
+			      <% end %>
+			  </div>
+		   <% else %>
+			  <%= link_to t("sign_in_to_comment"), login_path %>
+		   <% end %>
         </div>
       </div>
 	<hr>

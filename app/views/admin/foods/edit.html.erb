@@ -1,4 +1,4 @@
-<h4>Create Food</h4>
+<h4>Edit Food</h4>
 <%= form_for [:admin, @food], :html => {class: 'col-md-10'} do |f| %>
       <%= render 'shared/error_messages', object: @food %>
       
@@ -7,6 +7,9 @@
 
       <%= f.label :price %>
       <%= f.text_field :price, class: 'form-control' %>
+
+      <%= f.label :discount %>
+      <%= f.text_field :discount, class: 'form-control' %>
       
       <%= f.label :img_url %>
       <%= f.file_field :img_url, accept: "image/jpeg,image/jpg,image/png" , class: 'form-control'%>
