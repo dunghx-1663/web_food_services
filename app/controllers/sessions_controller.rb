@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def new
+    @categories = FoodCategory.all
     render "shared/_form_login"
   end
 

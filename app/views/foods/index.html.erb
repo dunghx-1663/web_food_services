@@ -1,15 +1,71 @@
 <!-- food list hot -->
 <div class="blog-section paddingTB60 bg-grey ">
     <div class="container">
-	    <div class="row text-center">
+    	<!-- all product && filter cate -->
+    	<div class="row text-center">
 		    <div class="col-md-12">   
 			    <div class="site-heading ">
-					<h3>Popular Food This Month In New Delhi</h3>
+					<h3>All Food In New Delhi</h3>
 					<p>The easiest way to your favourite food.</p>
 					<div class="border text-center "></div>
 				</div>
 			</div> 
 		</div>
+
+		<div class="row col-md-12" id="foods">
+			<%= render partial: 'food_detail', collection: @foods, as: :food %>
+		</div>
+
+
+        <!-- tab new product -->
+	    <div class="row text-center">
+		    <div class="col-md-12">
+			    <div class="site-heading ">
+					<h3>New Food In New Delhi</h3>
+					<p>The easiest way to your favourite food.</p>
+					<div class="border text-center "></div>
+				</div>
+			</div>
+		</div>
+
+		<%= render partial: "thumbnail", locals: {objects: @new_foods} %>
+        
+        <!-- tab hot product -->
+	    <div class="row text-center">
+		    <div class="col-md-12">   
+			    <div class="site-heading ">
+					<h3>Hot Food In New Delhi</h3>
+					<p>The easiest way to your favourite food.</p>
+					<div class="border text-center "></div>
+				</div>
+			</div> 
+		</div>
+
+		<%= render partial: "thumbnail", locals: {objects: @hot_foods} %>
+
+		<!-- hot sale product -->
+	    <div class="row text-center" id="hot_sale">
+		    <div class="col-md-12" >   
+			    <div class="site-heading ">
+					<h3>Hot Sale Food In New Delhi</h3>
+					<p>The easiest way to your favourite food.</p>
+					<div class="border text-center "></div>
+				</div>
+			</div> 
+		</div>
+		<%= render partial: "thumbnail", locals: {objects: @hot_sale} %>
+      
+        <!-- tab top product -->
+	    <div class="row text-center">
+		    <div class="col-md-12">   
+			    <div class="site-heading ">
+					<h3>Popular Food In New Delhi</h3>
+					<p>The easiest way to your favourite food.</p>
+					<div class="border text-center "></div>
+				</div>
+			</div> 
+		</div>
+
 	    <div class="row ">
 	    	<!-- BEGIN PRODUCTS -->
 	    	<% @foods.each do |food| %>
