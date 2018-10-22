@@ -34,11 +34,8 @@
           </p>
           <div class="rating">
             <div class="stars">
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
+              <span id="vote-avg"><%= "#{@food.rating_avg} / #{@food.votes.count} " %></span>
+              <span> <%= t "views.foods.show.header.rate" %></span><br><br>
             </div>
             <span class="review-no fa fa-eye"> <%= @food.view %> Reviewer</span>
           </div>

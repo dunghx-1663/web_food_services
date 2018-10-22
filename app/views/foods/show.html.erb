@@ -13,12 +13,10 @@
 				<div class="details col-md-6">
 					<h4 class="price"><%= @food.name %></h4>
 					<div class="rating">
-						<div class="stars">
-							<span class="fa fa-star checked"></span>
-							<span class="fa fa-star checked"></span>
-							<span class="fa fa-star checked"></span>
-							<span class="fa fa-star"></span>
-							<span class="fa fa-star"></span>
+						<div class="stars1">
+							<%= render "star_rating" %>
+                            <span id="vote-avg"><%= "#{@food.rating_avg} / #{@food.votes.count} " %></span>
+                            <span> <%= t "views.foods.show.header.rate" %></span><br><br>
 						</div>
 						<span class="review-no"><i class="fa fa-eye" aria-hidden="true"> <%= count_view @food%></i> <%= t 'review'%></span>
 					</div>

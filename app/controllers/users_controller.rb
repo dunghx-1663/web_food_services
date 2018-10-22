@@ -8,10 +8,12 @@ class UsersController < ApplicationController
   end
 
   def show
+    @categories = FoodCategory.all
 	  @user = User.find_by id: params[:id]
   end
 
   def new
+    @categories = FoodCategory.all
   	@user = User.new
   	render "shared/_form_signup"
   end
@@ -28,6 +30,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @categories = FoodCategory.all
     @user = User.find_by id: params[:id]
     # redirect_to root_url unless correct_user
   end

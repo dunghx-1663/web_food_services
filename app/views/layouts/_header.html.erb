@@ -23,11 +23,13 @@
 		      <ul class="nav navbar-nav navbar-right">
 		        
 		        <li class="active"><%= link_to root_path do %><%= t "header.home" %><% end %></li>
-		        <li><a href="#"><%= t "header.menu" %></a></li>
-		        
+		        <!-- thuc don <li><a href="#">header.menu</a></li> -->
+		        <li><a href="#hot_sale"><%= t "header.promotion" %></a></li>
+
 		        <li class="dropdown">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t "header.categories" %><b class="caret"></b></a>
 		          <ul class="dropdown-menu">
+		          	<li><%= link_to root_path do %><%= t "header.all" %><% end %></li>
 		            <li>
 			          <% @categories.each do |t| %>
 			             <%= link_to t.name, root_url(food_category: t.id), class: "hot-topic", remote: true %>
@@ -36,7 +38,7 @@
 		          </ul>
 		        </li>
 
-		        <li><a href="#"><%= t "header.promotion" %></a></li>
+		        
 		        <li><a href="#"><%= t "header.contact_us" %></a></li>
 
 		        <% if logged_in? %>
@@ -77,10 +79,10 @@
 		                <P>Find restaurants, specials, and coupons for free</P>
 		                <form class="navbar-form" role="search">
 					        <div class="input-group">
-					            <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text">
+					            <input class="form-control search-form" placeholder="Search" id="search_text">
 					             <div class="input-group-btn">
-							        <button class="btn btn-primary site-btn" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-							      </div>
+							        <button class="btn btn-primary site-btn" type="submit"><i class="glyphicon glyphicon-search" id="submit-search"></i></button>
+							     </div>
 					        </div>
 					    </form>
 		            </div>

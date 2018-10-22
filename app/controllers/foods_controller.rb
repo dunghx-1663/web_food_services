@@ -9,8 +9,23 @@ class FoodsController < ApplicationController
   end
 
   def index
+    @new_foods = Food.newfood
+    @hot_foods = Food.hotfood
+    @hot_sale  = Food.hotsale
     @categories = FoodCategory.all
     @foods = Food.all
+    if params[:search_text]
+      @foods = Food.food_search(params[:search_text])
+    elsif params[:food_category]
+      @foods = Food.filter_food_category(params[:food_category])
+    else
+      @foods = Food.all
+    end
+    
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
 

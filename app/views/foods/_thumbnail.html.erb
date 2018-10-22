@@ -1,0 +1,40 @@
+<ul class="thumbnails">
+    <% objects.each do |obj| %>
+          <div class="col-md-3 col-sm-6">
+            <span class="thumbnail">
+                <%= link_to obj do %>
+                     <%= image_tag obj.img_url, alt: obj.name, :class => "style_img_view"%>
+                    <% end %>
+                <div class="row">
+                 <h4 class="col-md-8"><%= link_to obj.name, obj, class: "text-center" %></h4>
+                 <% if obj.discount.present? %>
+                    <h5 class="col-md-4 text-center">
+                      <label>-<%= obj.discount %>%</label>
+                    </h5>
+                  <% end %>
+                </div>
+                <div class="rating row">
+                  <span class="review-no col-md-6"><i class="fa fa-eye" aria-hidden="true"> <%= count_view obj%></i></span>
+                  <div class="stars1 col-md-6">
+                      <span id="vote-avg"><%= "#{obj.rating_avg} / #{obj.votes.count} " %></span>
+                      <span> <%= t "views.foods.show.header.rate" %></span><br><br>
+                  </div>
+                </div>
+                <p><%= raw(truncate obj.description || t(".no_description"), length: Settings.sort_descriptions) %></p>
+                <hr class="line">
+                <div class="row">
+                  <div class="col-md-8 col-sm-8">
+                    <% if obj.discount.present? %>
+                      <del class="small_price col-md-4"><%= format_price obj.price %></del>
+                    <% end %>
+                    <h4 class="price col-md-8"><%= get_promotion_price obj.price, obj.discount %></h4>
+                   
+                  </div>
+                  <div class="col-md-4 col-sm-4">
+                    <button value="<%= obj.id %>" class="show-add btn btn-success pull-right" data-toggle="modal" data-target="#addFood"><i class="fa fa-cart-plus " aria-hidden="true"></i></button>
+                  </div>
+                </div>
+            </span>
+          </div>
+    <% end %>
+</ul>
