@@ -1,9 +1,16 @@
-function bindModal() {
+// function bindModal() {
+//   $('#addFood').on('show.bs.modal', function(e) {
+//     var food_id = $(e.relatedTarget).val();
+//     $(e.currentTarget).find('input[name="food_id"]').val(food_id);
+//   });
+// }
+
+$('body').on('click', function(){
   $('#addFood').on('show.bs.modal', function(e) {
     var food_id = $(e.relatedTarget).val();
     $(e.currentTarget).find('input[name="food_id"]').val(food_id);
   });
-}
+});
 
 function addFood() {
   var food_id = $('.modal-body input[name="food_id"]').val();
