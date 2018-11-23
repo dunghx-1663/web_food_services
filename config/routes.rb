@@ -4,12 +4,10 @@ Rails.application.routes.draw do
   post   '/login',  to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  post "/create_cart", to: "carts#create"
-  get    '/carts',  to: 'carts#index'
+  
   get    '/payment',  to: 'carts#payment'
 
   get    'signup',  to: 'users#new'
-  get "add_cart/:food_id", to: "carts#add_cart", as: :add_cart
 
   namespace :admin do
     root "dashboard#index", page: "index"
@@ -23,7 +21,8 @@ Rails.application.routes.draw do
   root "foods#index"
   resources :users
   resources :foods
-  resources :carts, only: [:destroy, :index]
+  patch "carts", to: "carts#update"
+  resources :carts
   resources :comments
   resources :votes, only: [:create, :update]
   # get "/static_pages/:page", to: "static_pages#show"

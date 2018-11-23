@@ -14,6 +14,7 @@
 
 		<div class="row col-md-12" id="foods">
 			<%= render partial: 'food_detail', collection: @foods, as: :food %>
+			<%#= render partial: 'food_detail', locals: {objects: @foods} %>
 		</div>
 
 
@@ -105,4 +106,4 @@
         </div>
     </div>
 </div>
-<%= render partial: "modal_add_cart", locals: {objects: @foods } %>
+<%#= render partial: "modal_add_cart", locals: {objects: @foods } %>

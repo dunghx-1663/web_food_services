@@ -1,4 +1,4 @@
-        <!-- BEGIN PRODUCTS -->
+      <!-- BEGIN PRODUCTS -->
 <div class="col-md-3">
   <span class="thumbnail">
       <%= link_to food do %>
@@ -26,12 +26,11 @@
           <!-- <p class="price"><%= format_price food.price %></p> -->
         </div>
         <div class="col-md-4 col-sm-4">
-          <button value="<%= food.id %>" class="show-add btn btn-success pull-right" data-toggle="modal" data-target="#addFood"><i class="fa fa-cart-plus " aria-hidden="true"></i></button>
+          <button value="<%= food.id %>" class="show-add btn btn-success pull-right" data-toggle="modal" data-target="#addFood-<%= food.id %>"><i class="fa fa-cart-plus " aria-hidden="true"></i></button>
         </div>
       </div>
   </span>
 </div>
-        
-        <!-- END PRODUCTS -->
-      
 
+<%= render partial: "modal_add_cart", locals: {food: food} %>
+    

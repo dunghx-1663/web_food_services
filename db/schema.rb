@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181018163247) do
+ActiveRecord::Schema.define(version: 20181122073216) do
 
   create_table "annoucements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
@@ -89,8 +89,11 @@ ActiveRecord::Schema.define(version: 20181018163247) do
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.index ["user_id"], name: "index_orders_on_user_id"
+    t.integer "customer_id"
+    t.integer "employee_id"
+    t.index ["customer_id", "employee_id"], name: "index_orders_on_customer_id_and_employee_id"
+    t.index ["customer_id"], name: "index_orders_on_customer_id"
+    t.index ["employee_id"], name: "index_orders_on_employee_id"
   end
 
   create_table "pictures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -124,14 +127,9 @@ ActiveRecord::Schema.define(version: 20181018163247) do
     t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
-  add_foreign_key "carts", "foods"
-  add_foreign_key "carts", "users"
-  add_foreign_key "comments", "foods"
-  add_foreign_key "comments", "users"
   add_foreign_key "foods", "food_categories"
   add_foreign_key "order_details", "foods"
   add_foreign_key "order_details", "orders"
-  add_foreign_key "orders", "users"
   add_foreign_key "votes", "foods"
   add_foreign_key "votes", "users"
 end

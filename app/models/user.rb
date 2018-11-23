@@ -2,6 +2,15 @@ class User < ApplicationRecord
   attr_accessor :remember_token
   has_many :comments, dependent: :destroy
   has_many :votes
+  has_many :carts
+  has_many :orders
+  has_many :foods
+
+  has_many :customer, through: :active_relationships, source: :customer
+  has_many :shippers, through: :active_relationships, source: :employee
+
+  has_many :active_relationships, class_name: "Order",foreign_key: "customer_id"
+  has_many :passive_relationships, class_name: "Order",foreign_key: "employee_id"
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :name,  presence: true, length: { maximum: 50 }

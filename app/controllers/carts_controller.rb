@@ -5,7 +5,6 @@ class CartsController < ApplicationController
     else
       @cart = Cart.find_or_create_by(session_id: request.session_options[:id], food_id: params[:food_id])
     end
-
     if @cart.quantity
       quantity = @cart.quantity + params[:quantity].to_i
       @cart.update_attributes(quantity: quantity)
@@ -19,6 +18,7 @@ class CartsController < ApplicationController
   end
 
   def index
+    @categories = FoodCategory.all
     if current_user.present?
       @carts = current_user.carts
     else

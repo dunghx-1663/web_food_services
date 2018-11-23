@@ -1,4 +1,5 @@
 class Food < ApplicationRecord
+    
 	validates :name,  presence: true, length: { maximum: 50 }
 	validates :price, presence: true, length: { maximum: 8 }
 	validates :description, presence: true
@@ -6,6 +7,8 @@ class Food < ApplicationRecord
     belongs_to :food_category, optional: true
     has_many :comments, dependent: :destroy
     has_many :votes
+    has_many :order_details, dependent: :destroy
+    has_many :carts, dependent: :destroy
 
     mount_uploader :img_url, AvatarUploader
     
