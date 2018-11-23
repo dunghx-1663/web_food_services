@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   post   '/login',  to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  post "/create_cart", to: "carts#create"
+  
   get    '/payment',  to: 'carts#payment'
 
   get    'signup',  to: 'users#new'
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   resources :users
   resources :foods
   patch "carts", to: "carts#update"
-  resources :carts, only: [:destroy, :index]
+  resources :carts
   resources :comments
   resources :votes, only: [:create, :update]
   # get "/static_pages/:page", to: "static_pages#show"

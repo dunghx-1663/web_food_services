@@ -18,6 +18,7 @@ class CartsController < ApplicationController
   end
 
   def index
+    @categories = FoodCategory.all
     if current_user.present?
       @carts = current_user.carts
     else

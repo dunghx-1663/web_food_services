@@ -11,20 +11,22 @@ $('body').on('click', function(){
     $(e.currentTarget).find('input[name="food_id"]').val(food_id);
   });
 });
-
-function addFood() {
-  var food_id = $('.modal-body input[name="food_id"]').val();
-  var quantity = $('.modal-body input[name="amount"]').val();
-  $.ajax({
-    url: '/create_cart',
-    type: 'POST',
-    data: {'food_id': food_id, 'quantity': quantity},
-    dataType: 'script',
-    success: function(){
-      alert('<%= I18n.t "cart.success" %>');
-    },
-    error: function(argument) {
-      alert('<%= I18n.t "cart.error" %>');
-    }
+$(document).on('turbolinks:load', function(){ 
+  $('body').on('click', '#add_food', function(){
+    var food_id = $(this).data('food-id');   
+    var quantity = $('.modal-body input[name="amount"]').val();
+    $.ajax({
+      url: '/carts',
+      type: 'POST',
+      data: {'food_id': food_id, 'quantity': quantity},
+      dataType: 'script',
+      success: function(){
+        alert('<%= I18n.t "cart.success" %>');
+      },
+      error: function(argument) {
+        alert('<%= I18n.t "cart.error" %>');
+      }
+    });
   });
-}
+
+});

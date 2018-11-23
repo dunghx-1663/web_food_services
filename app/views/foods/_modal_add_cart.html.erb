@@ -1,29 +1,30 @@
-<div class="modal fade" id="addFood" role="dialog">
-    <div class="modal-dialog modal-lg-1">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><%= t "views.static_pages.home.cart.add_to_cart" %></h4>
-        </div>
-        <div class="modal-body">
-          <label for="amount"><%= t "views.static_pages.home.cart.amount" %></label>
-          <input type="hidden" name="food_id">
-         
-          <div class="row">
-            <div class="col-md-10">
-              <input type="number" min="1" step="1" value="1" name="amount" class="form-control input-number">
-            </div>
-            <div class="col-md-1 pull-left">
-              <button class="add-food show-add btn btn-success" onclick="addFood();"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
-            </div>
+<div class="modal fade" id="addFood-<%= food.id %>" role="dialog">
+  <div class="modal-dialog modal-lg-1">
+  
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><%= t "views.static_pages.home.cart.add_to_cart" %></h4>
+      </div>
+      <div class="modal-body">
+        <b><h4><%= food.name %></h4></b>
+        <label for="amount"><%= t "views.static_pages.home.cart.amount" %></label>
+        <input type="hidden" name="food_id" id="food_id"  >
+       
+        <div class="row">
+          <div class="col-md-10">
+            <input type="number" min="1" step="1" value="1" name="amount" class="form-control input-number">
+          </div>
+          <div class="col-md-1 pull-left">
+            <button class="add-food show-add btn btn-success" id="add_food" data-food-id="<%= food.id %>"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
       </div>
-      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
     </div>
+    
   </div>
+</div>
