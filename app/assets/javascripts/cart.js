@@ -10,14 +10,14 @@ function charged(){
     for (var i = 0; i < price.length; i++){
         totalPrice += parseFloat(getPrice.exec(price[i].textContent)[0]) * parseFloat(quantity[i].value)
     }
-    $("#total").html(totalPrice + " $")
+    $("#total").html(totalPrice +".000" +" VND")
 }
 function update_cart(){
-    id = $(".col-sm-6 ul li");
+    id = $(".cart-table ul li");
     price = $(".price");
     quantity = $(".quantity");
-    array = []
-    for(var i =0; i < id.length;i++){
+    array = [];
+    for(var i =0; i < id.length; i++){
         object = {id: id[i].id, quantity: quantity[i].value}
         array.push(object)
     }
@@ -27,9 +27,9 @@ function update_cart(){
 $("#update-cart").on("click",function () {
     var items = update_cart();
     $.ajax({
-        url: "/carts",
-        type: "patch",
-        dataType: "script",
-        data: {cart:{items: items}}
+      url: "/carts",
+      type: "patch",
+      dataType: "script",
+      data: {cart:{items: items}}
     })
 })

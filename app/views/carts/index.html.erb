@@ -1,25 +1,32 @@
 <h1></h1>
 <div class="row">
-  <div class="col-sm-6" style="backgound: #123">
-    <ul>
+  <div class="row cart-table" style="backgound: #123">
+    <h2 style="text-align: center;">
+                          Review Your Shopping Cart
+                      </h2>
+                      <hr/>
+    <ul style="list-style-type: none;">
       <%= render @carts %>
     </ul>
   </div>
-  <div class="col-sm-1">
+  <div class="row">
 
   </div>
-  <div class="col-sm-3">
+  <div class="row col-md-12">
     <hr>
-    <h3><%= t "views.carts.index.info" %></h3>
-    <hr>
-    <h3><%= t "views.carts.index.total"  %> :  </h3>
-    <h3 id="total"></h3>
-        <% if logged_in? %>
-           <% if current_user.carts.any? %>
-            <button id="update-cart", class="btn btn-success"><%= t("views.carts.index.pay") %></button>
-           <% else %>
-           <% end %>
-        <% end %>
+    <div class="pull-right col-md-3">
+      <h3><b><%= t "views.carts.index.total"  %> :</b>  </h3>
+      <h3 id="total"></h3>
+      <button type="button" class="btn btn-default">
+          <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+      </button>
+      <% if logged_in? %>
+         <% if current_user.carts.any? %>
+          <button id="update-cart", class="btn btn-success pull-right"><i class="fa fa-credit-card" aria-hidden="true"><%= t("views.carts.index.pay") %></i></button>
+         <% else %>
+         <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
 <%= javascript_include_tag "cart", "data-turbolinks-track": "reload" %>

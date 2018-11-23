@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   def index
+    @categories = FoodCategory.all
     if logged_in?
       if current_user.shipper?
         if params[:orders].present?
@@ -35,6 +36,7 @@ class OrdersController < ApplicationController
   end
 
   def new
+    @categories = FoodCategory.all
     @order = Order.new
     @orders = current_user.carts
   end

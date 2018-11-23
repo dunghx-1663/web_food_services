@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   root "foods#index"
   resources :users
   resources :foods
+  resources :orders
   patch "carts", to: "carts#update"
   resources :carts
   resources :comments

@@ -1,0 +1,53 @@
+<div class="row">
+  <br><hr>
+  <h3><b><%= t "views.orders.new_order" %></b></h3>
+  <div class="col-sm-1"></div>
+  <div class="col-sm-6">
+    <div id="order-head"><b><%= t "views.orders.new.select_address" %></b></div>
+    <div id="order-body">
+        <div id="order-customer">
+          <i class="fa fa-check" style="color: #9CA643"></i>
+        <b><%= current_user.name %></b><br>
+        <span><%= t "views.orders.new.address" %> : <%= current_user.address %></span><br>
+        <span><%= t "views.orders.new.phone" %> : </span> <%= current_user.phone_number %>
+        </div>
+        <div id="order-address">
+          <i class="fa fa-map-marker"></i> <span><b><%= t "views.orders.new.shipping_address" %></b></span>
+          <%= form_for @order do |f| %>
+            <%= f.text_area :address, size: "70x4", id:"order-customer", placeholder: t("views.orders.new.example") %><br>
+            <%= f.submit t("views.orders.order"), class:"btn btn-success js-push-button" %>
+          <% end %>
+        </div>
+
+      </div>
+  </div>
+  <div class="col-sm-3">
+    <div id="order-head">
+      <b><%= t "views.orders.new.info_order" %> ( <%=current_user.carts.count%> <%= t "views.orders.new.dish" %> )</b>
+    </div>
+    <div id="order-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th><%= t "views.orders.new.dish" %></th>
+            <th><%= t "views.orders.new.quantity" %></th>
+            <th><%= t "views.orders.new.price" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |o| %>
+           <tr>
+            <td><%= o.food.name %></td>
+            <td><%= o.quantity %></td>
+            <td><%= o.total_money %> $</td>
+           </tr>
+          <% end %>
+          <tr>
+            <td><b><%= t "views.orders.new.total" %> :</b></td>
+            <td><%= Cart.total current_user.id %> $</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
