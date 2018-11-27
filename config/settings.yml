@@ -30,7 +30,6 @@ status:
   in_progress: 2
   done: 3
 user_type:
-   admin: 1
-   shipper: 2
-   chef: 3
-   customer: 4
+   admin: 2
+   shipper: 1
+   customer: 0

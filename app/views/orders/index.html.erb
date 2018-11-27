@@ -1,52 +1,9 @@
-<% @orders.each do |order| %>
-  <hr class="<%= order.id %>">
-  <div class="thumb-layout <%= order.id %>">
-    <div class="row" style="display:flex; flex-wrap:wrap;">
-      <span><%= t "views.static_pages.show_orders.destination" %>: <%= order.address %></span>
-      <% order.order_details.each do |order_detail| %>
-        <div class="col-md-2 col-sm-4">
-          <div class="thumbnail">
-            <%= link_to order_detail.food do %>
-              <%= image_tag order_detail.food.img_url, alt: order_detail.food.name %>
-            <% end %>
-            <div class="caption">
-              <h4><%= link_to order_detail.food.name, order_detail.food, class: "text-center" %></h4>
-              <div class="row">
-                <div class="col-md-12"><span><%= t("views.static_pages.home.show_orders.quantity") + " #{order_detail.quantity}" %></span></div>
-                <div class="col-md-12">
-                  <span><%= t("views.orders.created_at") + " #{order_detail.created_at.strftime(t("date_format"))}" %></span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      <% end %>
-      <span id="delete-order">
-        <%= link_to order, method: :delete, remote: true do %>
-          <i class="fa fa-times" aria-hidden="true"></i>
-        <% end %>
-      </span>
-
-      <span id="update-order">
-        <button data-id="<%= order.id %>" type="button" class="btn btn-primary" name="order_id">
-          <i class="fa fa-check" aria-hidden="true"></i>
-        </button>     
-      </span>
-    </div>
-  </div>
-<% end %>
-
-<script>
-  $(document).ready(function () {
-    $('#update-order button').click(function () {
-      if (confirm('<%= I18n.t "views.orders.checked.confirm" %>')) {
-        $.ajax({
-          url: '/orders/' + $(this).attr("data-id"),
-          type: 'PATCH',
-          data: {'order_id': $(this).attr("data-id")},
-          datatype: 'script'
-        });
-      }
-    });
-  });
-</script>
+<div class="container">
+  <% if current_user.shipper? %>
+    <%= render "employee_index" %>
+  <% elsif current_user.customer? %>
+    <%= render "customer_index" %>
+  <% elsif current_user.admin? %>
+    <%= render "statistic_month" %>
+  <% end %>
+</div>

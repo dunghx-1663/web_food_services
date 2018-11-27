@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get    '/login',  to: 'sessions#new'
   post   '/login',  to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
-
+  
   
   get    '/payment',  to: 'carts#payment'
 
@@ -15,6 +15,13 @@ Rails.application.routes.draw do
     resources :users
     resources :food_categories
     resources :foods
+    resources :orders
+  end
+
+  namespace :employee do
+    root "dashboard#index", page: "employee"
+    resources :users
+    resources :orders
   end
 
   devise_for :users
