@@ -1,4 +1,4 @@
-class OrdersController < ApplicationController
+class Admin::OrdersController < Admin::BaseController
   def index
     @categories = FoodCategory.all
     if logged_in?

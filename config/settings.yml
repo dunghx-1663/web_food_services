@@ -25,3 +25,11 @@ user_avatar:
   medium: "300x300>"
   thumb: "100x100#"
 
+status:
+  new_order: 1
+  in_progress: 2
+  done: 3
+user_type:
+   admin: 2
+   shipper: 1
+   customer: 0

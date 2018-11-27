@@ -1,0 +1,9 @@
+<div class="container">
+  <% if current_user.shipper? %>
+    <%= render "employee_index" %>
+  <% elsif current_user.customer? %>
+    <%= render "customer_index" %>
+  <% elsif current_user.admin? %>
+    <%= render "statistic_month" %>
+  <% end %>
+</div>

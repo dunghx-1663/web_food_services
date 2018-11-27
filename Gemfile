@@ -5,7 +5,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
+gem 'rubyzip', '1.0.0'
+gem 'axlsx', '2.0.1'
+gem 'axlsx_rails'
 gem "bcrypt"
 gem "carrierwave", "1.2.2"
 gem "coffee-rails", "4.2.2"
@@ -17,7 +19,6 @@ gem "font-awesome-rails"
 gem "jbuilder", "2.7.0"
 gem "jquery-rails"
 gem "jquery-ui-rails"
-gem "kaminari"
 gem "kaminari"
 gem "mysql2", '~> 0.3.18'
 gem "omniauth"

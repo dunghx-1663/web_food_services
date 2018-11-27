@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  CUSTOMER_OR_SHIPPER = [2, 4]
+
   attr_accessor :remember_token
   has_many :comments, dependent: :destroy
   has_many :votes
@@ -24,6 +26,9 @@ class User < ApplicationRecord
   # has_many :picture, dependent: :destroy, foreign_key: :user_id
   mount_uploader :avatar_url, AvatarUploader
   
+  scope :shipper, -> {
+    where(user_type: Settings.user_type.shipper)
+  }
 
   class << self
     # return the hash digest of the given string
@@ -52,5 +57,17 @@ class User < ApplicationRecord
 
   def forget
   	update_attribute(:remember_digest, nil)
+  end
+
+  def shipper?
+    self.user_type == Settings.user_type.shipper
+  end
+
+  def admin?
+    self.user_type == Settings.user_type.admin
+  end
+
+  def customer?
+    self.user_type == Settings.user_type.customer
   end
 end

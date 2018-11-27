@@ -1,0 +1,34 @@
+<div class="container">
+  <table id="delivery_month" class="table table-striped table-bordered" cellspacing="0" width="100%">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th><%=t "views.orders.index.customer" %></th>
+      <th><%=t "views.orders.index.employee" %></th>
+      <th><%=t "views.orders.index.address" %></th>
+      <th><%=t "views.orders.index.total_money" %></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @orders.each_with_index {|item,index | %>
+      <tr>
+        <th><%= index + 1 %></th>
+        <th><%= item.customer.name %></th>
+        <th><%= item.employee.name if item.employee %></th>
+        <th><%= item.address %></th>
+        <th><%= item.total_money %></th>
+      </tr>
+    <% } %>
+    </tbody>
+  </table>
+</div>
+<div class="container">
+  <button class="btn btn-default btn-secondary"><i class="fa fa-file-excel-o"></i><%= link_to t("views.orders.index.download"), admin_orders_url(format: "xls") %></button>
+</div>
+<script>
+    $(document).ready(function() {
+        $('#delivery_month').DataTable();
+        $('#delivery_month_length').hide();
+        $('#delivery_month_info').hide();
+    } );
+</script>

@@ -46,6 +46,13 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (8.0.0)
+    axlsx (2.0.1)
+      htmlentities (~> 4.3.1)
+      nokogiri (>= 1.4.1)
+      rubyzip (~> 1.0.0)
+    axlsx_rails (0.5.2)
+      actionpack (>= 3.1)
+      axlsx (>= 2.0.1)
     bcrypt (3.1.12)
     bindex (0.5.0)
     bootstrap-sass (3.2.0.2)
@@ -127,6 +134,7 @@ GEM
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     hashie (3.5.7)
+    htmlentities (4.3.4)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
     jbuilder (2.7.0)
@@ -254,6 +262,7 @@ GEM
       rspec-support (~> 3.8.0)
     rspec-support (3.8.0)
     ruby_dep (1.5.0)
+    rubyzip (1.0.0)
     sass (3.5.7)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -309,6 +318,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  axlsx (= 2.0.1)
+  axlsx_rails
   bcrypt
   bootstrap-sass (= 3.2.0.2)
   bootstrap-will_paginate (= 1.0.0)
@@ -336,6 +347,7 @@ DEPENDENCIES
   ransack
   ratyrate
   rspec-rails
+  rubyzip (= 1.0.0)
   sass-rails (= 5.0.6)
   sidekiq
   social-share-button!

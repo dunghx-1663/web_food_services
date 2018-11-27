@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:o="urn:schemas-microsoft-com:office:office"
+          xmlns:x="urn:schemas-microsoft-com:office:excel"
+          xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="statistic-month">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">ID</Data></Cell>
+        <Cell><Data ss:Type="String"><%=t "views.orders.index.customer" %></Data></Cell>
+        <Cell><Data ss:Type="String"><%=t "views.orders.index.employee" %></Data></Cell>
+        <Cell><Data ss:Type="String"><%=t "views.orders.index.address" %></Data></Cell>
+        <Cell><Data ss:Type="String"><%=t "views.orders.index.total_money" %></Data></Cell>
+      </Row>
+      <% @orders.each_with_index {|item,index | %>
+          <Row>
+            <Cell><Data ss:Type="String"><%= index + 1 %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= item.customer.name %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= item.employee.name if item.employee %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= item.address %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= item.total_money %></Data></Cell>
+          </Row>
+      <% } %>
+    </Table>
+  </Worksheet>
+</Workbook>

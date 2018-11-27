@@ -1,0 +1,18 @@
+
+$(document).on('turbolinks:load', function(){ 
+  $('body').on('click', '.pick_order', function(e) {
+   var order_id = $(this).data('order-id');
+      $.ajax({
+        url: '/employee/orders',
+        type: 'POST',
+        data: {'order_id': order_id},
+        datatype: 'script',
+        success: function(){
+          alert('<%= I18n.t "views.order_details.success" %>');
+        },
+        error: function(){
+          alert('<%= I18n.t "views.order_details.error" %>');
+        }
+      });
+   });
+});

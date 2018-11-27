@@ -601,6 +601,11 @@ img {
   margin-left: -300px !important;
 }
 
+.modal-lg-2 {
+  margin-left: -300px !important;
+  width: 600px !important;
+}
+
 .user_avatar {
   height: 70px;
   width: 70px;
@@ -608,4 +613,28 @@ img {
 
 .search-form {
   width: 350px !important;
+}
+
+#order-head {
+  border: .5px solid #DDE2E4;
+  margin-top: 30px;
+  padding: 4px;
+}
+
+#order-customer {
+  border: .5px solid #9CA643;
+  margin: 10px;
+  padding: 10px;
+}
+
+#order-address {
+  border: .5px;
+  margin: 10px;
+  padding: 10px;
+}
+
+#order-body {
+  border: .5px solid #DDE2E4;
+  border-top: none;
+  padding: 30px;
 }
