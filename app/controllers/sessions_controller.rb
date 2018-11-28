@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
         redirect_to admin_root_url
       elsif user.Employee?
         flash[:success] = "Welcome Employee"
-        redirect_to admin_root_url
+        redirect_to employee_root_url
       else
         flash[:success] = "Welcome"
         # redirect_back_or root_url

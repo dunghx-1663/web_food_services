@@ -28,6 +28,7 @@
           <th class="text-center col-md-2"><%= sort_link @search, :name, t(".name") %></th>
           <th class="text-center col-md-2"><%= sort_link @search, :email, t(".emai") %></th>
           <th class="text-center col-md-2"><%= sort_link @search, :username, t(".user_name") %></th>
+          <th class="text-center col-md-1" ><%= t ".user_type" %></th>
           <th class="text-center col-md-2"><%= sort_link @search, :address, t(".address") %></th>
           <th class="text-center col-md-2"><%= sort_link @search, :phone_number, t(".phone") %></th>
           <th class="text-center col-md-2 col-sm-2 col-xs-2" ><%= t ".action" %></th>
@@ -42,6 +43,7 @@
             </td>
             <td class="text-center"><%= user.email %></td>
             <td class="text-center"><%= user.username %></td>
+            <td class="text-center"><%= user.role %></td>
             <td class="text-center"><%= user.address %></td>
             <td class="text-center"><%= user.phone_number %></td>
             <td class="text-center">

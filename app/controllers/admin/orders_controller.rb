@@ -15,7 +15,7 @@ class Admin::OrdersController < Admin::BaseController
           @orders = Order.all
         end
       elsif current_user.admin?
-        @orders = Order.deliveried_in_month
+        @orders = Order.all
         respond_to do |format|
           format.html
           format.xls

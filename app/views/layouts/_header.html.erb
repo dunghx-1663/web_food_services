@@ -50,6 +50,9 @@
 			            <% if current_user.Admin? %>
 			              <li><%= link_to "Visit Dashboard", admin_root_path(current_user) %></li>
 			            <% end %>
+			            <% if current_user.Employee? %>
+			              <li><%= link_to "Visit Dashboard", employee_root_path(current_user) %></li>
+			            <% end %>
 			          </ul>
 			        </li>
 
