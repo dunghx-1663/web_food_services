@@ -1,3 +1,4 @@
+<h4><label><%= t "all_orders" %></label></h4>
 <div class="container">
   <table id="delivery_month" class="table table-striped table-bordered" cellspacing="0" width="100%">
     <thead>
@@ -7,16 +8,20 @@
       <th><%=t "views.orders.index.employee" %></th>
       <th><%=t "views.orders.index.address" %></th>
       <th><%=t "views.orders.index.total_money" %></th>
+      <th><%=t "views.orders.index.status" %></th>
+      <th><%=t "views.orders.index.created_at" %></th>
     </tr>
     </thead>
     <tbody>
     <% @orders.each_with_index {|item,index | %>
       <tr>
-        <th><%= index + 1 %></th>
-        <th><%= item.customer.name %></th>
-        <th><%= item.employee.name if item.employee %></th>
-        <th><%= item.address %></th>
-        <th><%= item.total_money %></th>
+        <td><%= index + 1 %></td>
+        <td><%= item.customer.name %></td>
+        <td><%= item.employee.name if item.employee %></td>
+        <td><%= item.address %></td>
+        <td><%= item.total_money %></td>
+        <td><%= item.status == 1 ? 'new' : item.status == 2 ? 'inprogress' : 'done' %></td>
+        <td><%= item.created_at.strftime Settings.format_time_with_hour %></td>
       </tr>
     <% } %>
     </tbody>
