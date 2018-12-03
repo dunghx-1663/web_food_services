@@ -4,6 +4,6 @@
   <% elsif current_user.customer? %>
     <%= render "customer_index" %>
   <% elsif current_user.admin? %>
-    <%= render "statistic_month" %>
+    <%= render "customer_index" %>
   <% end %>
 </div>
