@@ -5,9 +5,11 @@
 	    <div class="container-fluid">
 	    	<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">
-					Administrator
-				</a>
+			  <% if current_user.Admin? %>
+				 <label><span class="navbar-brand"><%= link_to t(".Administrator"), admin_root_path %></span></label>
+			  <% else %>
+				 <label><span class="navbar-brand"><%= link_to t(".Administrator"), employee_root_path %></span></label>
+				<% end %>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->

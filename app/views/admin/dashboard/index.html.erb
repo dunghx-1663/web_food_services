@@ -1,9 +1,66 @@
-<h3>admin page</h3>
+<h4>admin page</h4>
+
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+  <div class="col-md-6">
+    <div id="device_cycle">
+      <div class="x-panel tile overflow-hidden">
+        <div class="x-title">
+          <h5>
+            <label><span><%= t ".user_over_view" %></span></label>
+            <br>
+            <%= link_to t("admin.go_to_manage_users"), admin_users_path %>
+          </h5>
+          <ul class="nav navbar-right panel-toolbox">
+            <li>
+              <%= link_to "", class: "collapse-link" do %>
+                <i class="fa fa-chevron-up"></i>
+              <% end %>
+            </li>
+          </ul>
+          <div class="clearfix"></div>
+          <hr>
+        </div>
+        <div class="x-content">
+          <%= pie_chart @users.group(:role).count,colors: ["#4286f4", "#66BB6A", "#ffa726"], messages: {empty: "No data"}  %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div id="device_cycle">
+      <div class="x-panel tile overflow-hidden">
+        <div class="x-title">
+          <h5>
+            <label><span><%= t ".user_over_view" %></span></label>
+            <br>
+            <%= link_to t("admin.go_to_manage_orders"), admin_orders_path %>
+          </h5>
+          <ul class="nav navbar-right panel-toolbox">
+            <li>
+              <%= link_to "", class: "collapse-link" do %>
+                <i class="fa fa-chevron-up"></i>
+              <% end %>
+            </li>
+          </ul>
+          <div class="clearfix"></div>
+          <hr>
+        </div>
+        <div class="x-content">
+          <%= column_chart @orders.group(:status).count,xtitle: "số lượng", ytitle: "Trạng thái", colors: ["#337ab7"], messages: {empty: "No data"}  %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="col-md-12 col-sm-12 col-xs-12">
   <div class="x-panel">
     <div class="x-title">
       <label><span><%= t "admin.top_order" %></span></label>
+      <br>
+        <%= link_to t("admin.go_to_manage_orders"), admin_orders_path %>
       <ul class="nav navbar-right panel-toolbox">
         <li>
           <%= link_to "", class: "collapse-link" do %>
@@ -13,8 +70,9 @@
       </ul>
       <div class="clearfix"></div>
     </div>
+    <hr>
     <div class="x-content">
-      <%= render 'hot_food' %>
+      <%= render 'top_order' %>
     </div>
   </div>
 </div>
@@ -23,6 +81,8 @@
 	<div class="x-panel">
 	  <div class="x-title">
 	    <label><span><%= t "admin.top_product" %></span></label>
+      <br>
+        <%= link_to t("admin.go_to_manage_foods"), admin_foods_path %>
 	    <ul class="nav navbar-right panel-toolbox">
 	      <li>
 	        <%= link_to "", class: "collapse-link" do %>
@@ -32,8 +92,9 @@
 	    </ul>
 	    <div class="clearfix"></div>
 	  </div>
+    <hr>
 	  <div class="x-content">
-	    <%= render 'hot_food' %>
+	    <%= render 'top_food' %>
 	  </div>
 	</div>
 </div>

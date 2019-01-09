@@ -1,0 +1,54 @@
+<table class="table table-hover table-striped">
+  <thead>
+    <tr>
+      <th class="col-md-1 "><%= t "dashboard.name" %></th>
+      <th class="col-md-3 "><%= t "dashboard.description" %></th>
+      <th class="col-md-2 "><%= t "dashboard.price" %></th>
+      
+      <th class="col-md-1 "><%= t "dashboard.rating_avg" %></th>
+      <th class="col-md-2 "><%= t "dashboard.category" %></th>
+      <th class="col-md-1"><%= t "dashboard.discount" %></th>
+      <th class="col-md-1 "><%= t "dashboard.view" %></th>
+
+      <th class="col-md-1"><%= t "dashboard.created_at" %></th>
+    
+      <th class="col-md-1"><%= t "dashboard.updated_at" %></th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <% if @top_foods.any? %>
+      <% @top_foods.each do |top_food| %>
+        <tr>
+          <td>
+            <%= top_food.name if top_food.name.present? %>
+          </td>
+          <td>
+            <%= raw(truncate top_food.description || t(".no_description"), length: Settings.sort_descriptions) if top_food.description.present? %>
+          </td>
+          <td>
+            <%= top_food.price if top_food.price.present? %>
+          </td>
+          <td>
+            <%= top_food.rating_avg if top_food.rating_avg.present? %>
+          </td>
+          <td>
+            <%= top_food.food_category_name if top_food.food_category_id.present? %>
+          </td>
+          <td>
+            <%= top_food.discount if top_food.discount.present? %>
+          </td>
+          <td>
+            <%= top_food.view if top_food.view.present? %>
+          </td>
+          <td><%= time_ago_in_words top_food.created_at %></td>
+          <td><%= time_ago_in_words top_food.updated_at %></td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr class="text-center">
+        <td colspan="5"><%= t "action_message.you_dont_have_top_food" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
