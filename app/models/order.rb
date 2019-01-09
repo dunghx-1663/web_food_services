@@ -6,6 +6,10 @@ class Order < ApplicationRecord
   accepts_nested_attributes_for :order_details, allow_destroy: true
   belongs_to :employee, class_name: "User", optional: true
   belongs_to :customer, class_name: "User", optional: true
+  
+  delegate :name, to: :customer, prefix: true, allow_nil: true
+  delegate :name, to: :employee, prefix: true, allow_nil: true
+  
   scope :new_order, ->{
     where "status LIKE ?", Settings.status.new_order
   }
@@ -22,6 +26,8 @@ class Order < ApplicationRecord
     where("status = #{Settings.status.done} AND Month(created_at) = Month(CURDATE()) AND YEAR(created_at) = YEAR(CURDATE())")
   }
 
+  scope :order_by_time, ->{order updated_at: :desc}
+  
   def new?
     self.status == Settings.status.new_order
   end

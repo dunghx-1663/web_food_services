@@ -1,4 +1,32 @@
-<h3>employee page</h3>
+<h4>employee page</h4>
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+  <div class="col-md-6">
+    <div id="device_cycle">
+      <div class="x-panel tile overflow-hidden">
+        <div class="x-title">
+          <h5>
+            <label><span><%= t ".user_over_view" %></span></label>
+            <br>
+            <%= link_to t("admin.go_to_manage_orders"), employee_orders_path %>
+          </h5>
+          <ul class="nav navbar-right panel-toolbox">
+            <li>
+              <%= link_to "", class: "collapse-link" do %>
+                <i class="fa fa-chevron-up"></i>
+              <% end %>
+            </li>
+          </ul>
+          <div class="clearfix"></div>
+          <hr>
+        </div>
+        <div class="x-content">
+          <%= column_chart @orders.group(:status).count, id: "employee_chart", xtitle: "số lượng", ytitle: "Trạng thái", messages: {empty: "No data"}  %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="col-md-12 col-sm-12 col-xs-12">
   <div class="x-panel">
