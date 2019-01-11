@@ -22,6 +22,8 @@ Rails.application.routes.draw do
     root "dashboard#index", page: "employee"
     resources :users
     resources :orders
+    get 'orderstatus', to: 'orders#filter_order_status'
+    post 'orders/done_order', to: 'orders#done_order'
   end
 
   devise_for :users
