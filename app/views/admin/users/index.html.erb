@@ -5,7 +5,7 @@
         <%= search_form_for [:admin,@search], html: {class: 'form-inline'} do |f| %>
           <%= f.label :name_or_email_or_phone_number_cont, 'Criteria',  class: 'col-md-2 text-center' %>
           <%= f.search_field :name_or_email_or_phone_number_cont, class: 'col-md-8 form-control', placeholder: 'name, email or phone' %>
-          <%= f.submit 'search', :class => 'col-md-1 btn btn-primary' %>
+          <%= f.submit 'search', :class => 'col-md-2 btn btn-primary' %>
         <% end %>
     </div>
     <div class="col-md-3 text-right">

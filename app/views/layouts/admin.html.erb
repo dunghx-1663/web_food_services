@@ -35,7 +35,7 @@
 									<li><%= link_to admin_foods_path do %><i class="glyphicon glyphicon-cutlery"></i><%= t ".foods" %><% end %></li>
 		                            <li><%= link_to admin_orders_path do %><i class="glyphicon glyphicon-list-alt"></i><%= t ".list_orders" %><% end %></li>
 									<li><%= link_to admin_users_path do %><i class="glyphicon glyphicon-user"></i><%= t ".Users" %><% end %></li>
-									<li><a href="#"><span class="glyphicon glyphicon-user"></span>Cá Nhân</a></li>
+									<%# <li><a href="#"><span class="glyphicon glyphicon-user"></span>Cá Nhân</a></li> %>
 								<% end %>
 								<!-- nguoi giao hang -->
 								 <% if @current_user.Employee? %>
@@ -44,7 +44,7 @@
 	                                <li><a href="#"><span class="glyphicon glyphicon-send"></span>Đơn Hàng Mới</a></li>
 									<li><a href="#"><span class="glyphicon glyphicon-list-alt"></span>Đơn Hàng Của Tôi</a></li>
 									<!-- don hang cua toi bao gom don hang chua giao va da giao -->
-		                            <li><a href="#"><span class="glyphicon glyphicon-user"></span>Cá Nhân</a></li>
+		                            <%# <li><a href="#"><span class="glyphicon glyphicon-user"></span>Cá Nhân</a></li> %>
 								 <% end %>
 
 								<!-- Dropdown-->
@@ -72,7 +72,9 @@
 	<div class="col-md-10 content">
 	    <div>
 	    	<% flash.each do |message_type, message| %>
-		      <div class="alert alert-<%= message_type %>"><%= message %></div>
+		      <div class="alert alert-<%= message_type %>"><%= message %>
+			    <button class="close" data-dismiss="alert">×</button>
+			  </div>
 		    <% end %>
 	        <div class="panel panel-light">
 		        <div class="panel-heading">
