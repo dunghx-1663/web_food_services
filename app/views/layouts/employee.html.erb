@@ -36,9 +36,9 @@
 								    <li><%= link_to employee_root_path do %><i class="glyphicon glyphicon-signal"></i><%= t ".dashboard" %><% end %></li>
 								    <li><%= link_to employee_orders_path do %><i class="glyphicon glyphicon-list-alt"></i><%= t ".all_orders" %><% end %></li>
 
-								    <li><a href="<%= orders_path(orders: "new")%>"><span class="glyphicon glyphicon-pushpin"></span><%= t "views.layouts.header.new_order" %></a></li>
-								    <li><a href="<%= orders_path(orders: "inprogress")%>"><span class="glyphicon glyphicon-send"></span><%= t "views.layouts.header.processing" %></a></li>
-							        <li><a href="<%= orders_path(orders: "done")%>"><span class="glyphicon glyphicon-ok-sign"></span><%= t "views.layouts.header.done" %></a></li>
+								    <li><a href="<%= employee_orderstatus_path(orders: "new")%>"><span class="glyphicon glyphicon-pushpin"></span><%= t "views.layouts.header.new_order" %></a></li>
+								    <li><a href="<%= employee_orderstatus_path(orders: "inprogress")%>"><span class="glyphicon glyphicon-send"></span><%= t "views.layouts.header.processing" %></a></li>
+							        <li><a href="<%= employee_orderstatus_path(orders: "done")%>"><span class="glyphicon glyphicon-ok-sign"></span><%= t "views.layouts.header.done" %></a></li>
 							       
 									
 									<!-- don hang cua toi bao gom don hang chua giao va da giao -->

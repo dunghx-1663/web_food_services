@@ -38,8 +38,9 @@
                 <div class="modal-body">
                    <ul style="list-style-type: none;">
                       <% order.order_details.each do |detail|%>
-                        <li><span><%= t "views.static_pages.show_orders.quantity" %></span>: <%= detail.quantity%> <%= Food.find(detail.food_id).name %></li>
-                        <li><span><%= t "views.static_pages.show_orders.price_each" %></span>: $<%= detail.total_money %></li>
+                        <li><span><%= t "views.static_pages.show_orders.name" %></span>:<%= Food.find(detail.food_id).name %></li>
+                        <li><span><%= t "views.static_pages.show_orders.quantity" %></span>:<%= detail.quantity%></li>
+                        <li><span><%= t "views.static_pages.show_orders.total_money" %></span>: $<%= detail.total_money %></li>
                         <li class="show_food">
                           <%= link_to detail.food do %>
                             <%= image_tag Food.find(detail.food_id).img_url, alt: detail.food.name %>
