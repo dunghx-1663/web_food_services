@@ -39,8 +39,8 @@ class Employee::OrdersController < Employee::BaseController
   end
   # update status when pick orders
   def create   
-  	@order = Order.find params[:order_id]
-    @order.update_attributes status: 2
+    @order = Order.find params[:order_id]
+    @order.update_columns status: 2, employee_id: current_user.id
     respond_to do |format|
       format.js
     end
