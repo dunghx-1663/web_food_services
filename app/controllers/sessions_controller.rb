@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  layout false
   def new
     @categories = FoodCategory.all
     render "shared/_form_login"
@@ -24,6 +25,12 @@ class SessionsController < ApplicationController
       flash[:danger] = "Invalid account"
       render 'shared/_form_login'
     end
+  end
+
+  def signup
+    @categories = FoodCategory.all
+  	@user = User.new
+  	render "shared/_form_signup"
   end
 
   def destroy
