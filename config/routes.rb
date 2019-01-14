@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   
   get    '/payment',  to: 'carts#payment'
 
-  get    'signup',  to: 'users#new'
+  get    'signup',  to: 'sessions#signup'
 
   namespace :admin do
     root "dashboard#index", page: "index"

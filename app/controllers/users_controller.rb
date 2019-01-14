@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    layout false
     @categories = FoodCategory.all
   	@user = User.new
   	render "shared/_form_signup"
