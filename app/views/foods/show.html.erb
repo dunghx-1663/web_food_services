@@ -15,33 +15,36 @@
 					<div class="rating">
 						<div class="stars1">
 							<%= render "star_rating" %>
-                            <span id="vote-avg"><%= "#{@food.rating_avg} / #{@food.votes.count} " %></span>
-                            <span> <%= t "views.foods.show.header.rate" %></span><br><br>
+							<span id="vote-avg"><%= "#{@food.rating_avg} / #{@food.votes.count} " %></span>
+							<span> <%= t "views.foods.show.header.rate" %></span><br><br>
 						</div>
 						<span class="review-no"><i class="fa fa-eye" aria-hidden="true"> <%= count_view @food%></i> <%= t 'review'%></span>
 					</div>
 					<p class="product-description"><%= raw(truncate @food.description || t(".no_description"), length: Settings.sort_descriptions) %></p>
 
 					<div class="row">
-			            <label class="col-md-2">Price</label>
-			            <div class="col-md-10">
-			              <% if @food.discount.present? %>
-			                <label>Discount: <%= @food.discount %> %</label>
-			                <del class="small_price col-md-4"><%= format_price @food.price %></del>
-			              <% end %>
-			              <h4 class="price col-md-8"><%= get_promotion_price @food.price, @food.discount %></h4>
-			            </div>
-			          </div>
+						<label class="col-md-2">Price</label>
+						<div class="col-md-10">
+							<% if @food.discount.present? %>
+								<label>Discount: <%= @food.discount %> %</label>
+								<del class="small_price col-md-4"><%= format_price @food.price %></del>
+							<% end %>
+							<h4 class="price col-md-8"><%= get_promotion_price @food.price, @food.discount %></h4>
+						</div>
+					</div>
 					
 					<h6><b>Food Category:</b> <span><%= @food.food_category.name %></span></h6>
-					<p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
+					<%# <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p> %>
 					<div class="row">
-						<div class="col-md-8">
+						<div class="col-md-8 quantity">
 						   <%= label_tag 'quantity :', nil, class: 'pull-left' %>
-					       <%= number_field_tag 'quantity', nil, min: 1, max: 10, class: 'col-md-3' %>
+					       <input type="number" min="1" step="1" value="1" name="quantity" class="form-control input-number col-md-3">
 						</div>
 						<div class="col-md-4 action">
-						   <button class="add-to-cart btn btn-default" type="button">add to cart</button>
+						   <br>
+						   <%# <button class="add-to-cart btn btn-default" type="button">add to cart</button> %>
+							 <button class="add-food show-add btn btn-success" id="add_food_to_cart" 
+							   data-food-id="<%= @food.id %>"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
 						</div>
 					</div>
 					
