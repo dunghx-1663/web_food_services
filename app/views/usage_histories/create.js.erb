@@ -1,0 +1,2 @@
+<% @usage_history.token_payment %>
+window.location.href = "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=<%= @usage_history.settlement_code %>";
