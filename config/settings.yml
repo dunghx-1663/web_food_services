@@ -34,3 +34,7 @@ user_type:
    shipper: 1
    customer: 0
 top_dashboard: 5
+views:
+  orders:
+    order: "Order"
+    

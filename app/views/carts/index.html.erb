@@ -2,9 +2,9 @@
 <div class="row">
   <div class="row cart-table" style="backgound: #123">
     <h2 style="text-align: center;">
-                          Review Your Shopping Cart
-                      </h2>
-                      <hr/>
+        Review Your Shopping Cart
+    </h2>
+    <hr/>
     <ul style="list-style-type: none;">
       <%= render @carts %>
     </ul>
@@ -18,7 +18,7 @@
       <h3><b><%= t "views.carts.index.total"  %> :</b>  </h3>
       <h3 id="total"></h3>
       <button type="button" class="btn btn-default">
-          <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+          <label><span class="glyphicon glyphicon-shopping-cart"><%= link_to t(".continue_shopping"), root_path %></span></label>
       </button>
       <% if logged_in? %>
          <% if current_user.carts.any? %>
