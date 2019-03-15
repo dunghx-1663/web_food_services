@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181122073216) do
+ActiveRecord::Schema.define(version: 20190315022737) do
 
   create_table "annoucements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
@@ -102,6 +102,14 @@ ActiveRecord::Schema.define(version: 20181122073216) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "usage_histories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "amount"
+    t.datetime "used_date"
+    t.integer "settlement_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "email"
@@ -115,6 +123,11 @@ ActiveRecord::Schema.define(version: 20181122073216) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "role"
+    t.boolean "email_confirmed"
+    t.string "confirm_token"
+    t.string "activation_digest"
+    t.boolean "activated", default: false
+    t.datetime "activated_at"
   end
 
   create_table "votes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

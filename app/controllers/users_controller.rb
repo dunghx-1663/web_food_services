@@ -23,8 +23,10 @@ class UsersController < ApplicationController
   def create
   	@user = User.new(user_params)
     if @user.save
-      log_in @user
-      flash[:success] = "Welcome to the my web!"
+      @user.send_activation_email
+      # log_in @user
+      # flash[:success] = "Welcome to the my web!"
+      flash[:info] = t "users.create.confirm_email"
       redirect_to @user
     else
       render 'shared/_form_signup'
