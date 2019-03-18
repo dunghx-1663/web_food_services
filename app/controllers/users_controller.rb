@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   end
   
   def create
+    @categories = FoodCategory.all
   	@user = User.new(user_params)
     if @user.save
       @user.send_activation_email
@@ -42,9 +43,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find_by id: params[:id]
-    # if user_params[:password].blank?
-    #   flash[:danger] = "fuck"
-    # end
+
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
       redirect_to @user

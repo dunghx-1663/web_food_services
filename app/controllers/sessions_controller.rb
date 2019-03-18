@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
   end
 
   def create
+    @categories = FoodCategory.all
     user = User.find_by email: params[:session][:email]
     if user && user.authenticate(params[:session][:password])
       if user.activated?
