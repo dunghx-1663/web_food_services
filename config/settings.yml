@@ -30,9 +30,9 @@ status:
   in_progress: 2
   done: 3
 user_type:
-   admin: 2
-   shipper: 1
-   customer: 0
+   admin: Admin
+   shipper: Employee
+   customer: User
 top_dashboard: 5
 views:
   orders:

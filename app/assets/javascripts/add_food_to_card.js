@@ -21,10 +21,10 @@ $(document).on('turbolinks:load', function(){
       data: {'food_id': food_id, 'quantity': quantity},
       dataType: 'script',
       success: function(){
-        alert('<%= I18n.t "cart.success" %>');
+        alert('Đặt hành thành công');
       },
       error: function(argument) {
-        alert('<%= I18n.t "cart.error" %>');
+        alert('Đặt hàng thất bại');
       }
     });
   });

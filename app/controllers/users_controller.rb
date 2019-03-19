@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @q = Food.ransack(params[:q])
     @categories = FoodCategory.all
 	  @user = User.find_by id: params[:id]
   end
@@ -31,6 +32,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @q = Food.ransack(params[:q])
     @categories = FoodCategory.all
     @user = User.find_by id: params[:id]
     # redirect_to root_url unless correct_user

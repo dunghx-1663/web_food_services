@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   def index
+    @q = Food.ransack(params[:q])
     @categories = FoodCategory.all
     if logged_in?
       if current_user.shipper?
@@ -36,6 +37,7 @@ class OrdersController < ApplicationController
   end
 
   def new
+    @q = Food.ransack(params[:q])
     @categories = FoodCategory.all
     @order = Order.new
     @orders = current_user.carts

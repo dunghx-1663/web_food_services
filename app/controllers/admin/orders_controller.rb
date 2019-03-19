@@ -62,7 +62,7 @@ class Admin::OrdersController < Admin::BaseController
       flash[:success] = t "controllers.orders.create.success"
     else
       redirect_to request.referrer || root_url
-      flash[:info] = t "controllers.orders.create.lost_info"
+      flash[:danger] = t "controllers.orders.create.lost_info"
     end
   end
 

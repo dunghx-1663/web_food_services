@@ -39,9 +39,37 @@ en:
     promotion: "Khuyến Mại"
     contact_us: "Liên Hệ"
     all: "Tất Cả"
-
+    search: Tìm Kiếm
   views:
     orders:
       order: "Order"
       new:
         example: "Tòa nhà keangnam, đường Phạm Hùng, Quận Nam Từ Liêm"
+  layouts:
+    header:
+      search: Tìm Kiếm
+  carts:
+    index:
+      continue_shopping: Tiếp tục mua hàng
+      pay: Thanh Toán
+      total: Tổng tiền
+  orders:
+    new:
+      new_order: Thông Tin Đơn Hàng
+      select_address: Địa chỉ
+      address: Địa chỉ
+      phone: Số điện thoại
+      shipping_address: Địa chỉ giao hàng
+      example: "Tòa nhà keangnam, đường Phạm Hùng, Quận Nam Từ Liêm"
+      order: Xác Nhận
+      info_order: Đơn hàng
+      dish: Tên hàng
+      quantity: Số lượng
+      price: Giá
+      total: Tổng cộng
+      orders: đơn
+  controllers:
+    orders:
+      create:
+        success: Tạo đơn hàng thành công
+        lost_info: Kiểm tra lại thông tin đơn hàng

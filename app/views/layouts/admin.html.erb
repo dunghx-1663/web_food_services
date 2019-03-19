@@ -30,19 +30,19 @@
 							<ul class="nav navbar-nav">
 								<!-- admin  -->
 								 <% if @current_user.Admin? %>
-	                                <li class="active"><a href="#"><span class="glyphicon glyphicon-signal"></span> Dashboard</a></li>
-									<li><%= link_to admin_food_categories_path do %><i class="glyphicon glyphicon-tasks"></i><%= t ".food_categories" %><% end %></li>
-									<li><%= link_to admin_foods_path do %><i class="glyphicon glyphicon-cutlery"></i><%= t ".foods" %><% end %></li>
-		                            <li><%= link_to admin_orders_path do %><i class="glyphicon glyphicon-list-alt"></i><%= t ".list_orders" %><% end %></li>
-									<li><%= link_to admin_users_path do %><i class="glyphicon glyphicon-user"></i><%= t ".Users" %><% end %></li>
+	                                <li class="link <%= 'active' if controller.controller_name == 'dashboard' %>"><a href="#"><span class="glyphicon glyphicon-signal"></span> Dashboard</a></li>
+									<li class="link <%= 'active' if controller.controller_name == 'food_categories' %>"><%= link_to admin_food_categories_path do %><i class="glyphicon glyphicon-tasks"></i><%= t ".food_categories" %><% end %></li>
+									<li class="link <%= 'active' if controller.controller_name == 'foods' %>"><%= link_to admin_foods_path do %><i class="glyphicon glyphicon-cutlery"></i><%= t ".foods" %><% end %></li>
+		                            <li class="link <%= 'active' if controller.controller_name == 'orders' %>"><%= link_to admin_orders_path do %><i class="glyphicon glyphicon-list-alt"></i><%= t ".list_orders" %><% end %></li>
+									<li class="link <%= 'active' if controller.controller_name == 'users' %>"><%= link_to admin_users_path do %><i class="glyphicon glyphicon-user"></i><%= t ".Users" %><% end %></li>
 									<%# <li><a href="#"><span class="glyphicon glyphicon-user"></span>Cá Nhân</a></li> %>
 								<% end %>
 								<!-- nguoi giao hang -->
 								 <% if @current_user.Employee? %>
-								    <li><%= link_to employee_root_path do %><i class="glyphicon glyphicon-signal"></i><%= t ".dashboard" %><% end %></li>
+								    <li class="link <%= 'active' if controller.controller_name == 'employee' %>"><%= link_to employee_root_path do %><i class="glyphicon glyphicon-signal"></i><%= t ".dashboard" %><% end %></li>
 									
-	                                <li><a href="#"><span class="glyphicon glyphicon-send"></span>Đơn Hàng Mới</a></li>
-									<li><a href="#"><span class="glyphicon glyphicon-list-alt"></span>Đơn Hàng Của Tôi</a></li>
+	                                <li class="link <%= 'active' if controller.controller_name == 'orders' %>"><a href="#"><span class="glyphicon glyphicon-send"></span>Đơn Hàng Mới</a></li>
+									<li class="link <%= 'active' if controller.controller_name == 'orders' %>"><a href="#"><span class="glyphicon glyphicon-list-alt"></span>Đơn Hàng Của Tôi</a></li>
 									<!-- don hang cua toi bao gom don hang chua giao va da giao -->
 		                            <%# <li><a href="#"><span class="glyphicon glyphicon-user"></span>Cá Nhân</a></li> %>
 								 <% end %>

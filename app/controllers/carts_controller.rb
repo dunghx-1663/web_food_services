@@ -18,6 +18,7 @@ class CartsController < ApplicationController
   end
 
   def index
+    @q = Food.ransack(params[:q])
     @categories = FoodCategory.all
     if current_user.present?
       @carts = current_user.carts
