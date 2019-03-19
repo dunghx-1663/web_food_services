@@ -14,15 +14,15 @@
   </div>
   <div class="row col-md-12">
     <hr>
-    <div class="pull-right col-md-3">
-      <h3><b><%= t "views.carts.index.total"  %> :</b>  </h3>
+    <div class="pull-right col-md-4">
+      <h3><b><%= t ".total"  %> :</b>  </h3>
       <h3 id="total"></h3>
       <button type="button" class="btn btn-default">
           <label><span class="glyphicon glyphicon-shopping-cart"><%= link_to t(".continue_shopping"), root_path %></span></label>
       </button>
       <% if logged_in? %>
          <% if current_user.carts.any? %>
-          <button id="update-cart", class="btn btn-success pull-right"><i class="fa fa-credit-card" aria-hidden="true"><%= t("views.carts.index.pay") %></i></button>
+          <button id="update-cart", class="btn btn-success pull-right"><i class="fa fa-credit-card" aria-hidden="true"><%= t(".pay") %></i></button>
          <% else %>
          <% end %>
       <% end %>

@@ -68,30 +68,30 @@
 		              <% end %>
 		            </li>
 		         <% end %>
-                
-		       
 		        <li><a href= <%= carts_url %>><i class="glyphicon glyphicon-shopping-cart" aria-hidden="true" id="cart-icon"></i><span id="badge" class="badge"></span></a></li>
 		      </ul>
 		    </div><!-- /.navbar-collapse -->
 		      </div><!-- /.container-collapse -->
 		  </nav>
 		<div class= "banner-sektion banner-overlay ">
-		    <div class="container text-center">
-		        <div class="col-md-12">
-		            <div class="banner-heading ">
-		                <h2>Enjoy Food Order and dine-out </h2>
-		                <P>Find restaurants, specials, and coupons for free</P>
-		                <form class="navbar-form" role="search">
-					        <div class="input-group">
-					            <input class="form-control search-form" placeholder="Search" id="search_text">
-					             <div class="input-group-btn">
-							        <button class="btn btn-primary site-btn" type="submit"><i class="glyphicon glyphicon-search" id="submit-search"></i></button>
-							     </div>
-					        </div>
-					    </form>
-		            </div>
-		        </div>
-		    </div>    
+			<div class="container text-center">
+				<div class="col-md-12">
+					<div class="banner-heading ">
+						<h2>Enjoy Food Order and dine-out </h2>
+						<P>Find restaurants, specials, and coupons for free</P>
+						<%= search_form_for @q do |f| %>
+							<div class="navbar-form" role="search">
+								<div class="input-group">
+									<%= f.search_field :name_or_price_cont, class: "form-control search-form pull-right", id: "search_text" %>
+									<div class="input-group-btn">
+										<%= f.submit t(".search"), class: "form-control btn btn-primary", id: "submit-search" %>
+									</div>
+								</div>
+							</div>
+						<% end %>
+					</div>
+				</div>
+			</div>    
 		</div>
     </nav>
   </div>

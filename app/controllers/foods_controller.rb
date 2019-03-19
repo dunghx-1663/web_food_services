@@ -3,19 +3,21 @@ class FoodsController < ApplicationController
   before_action :load_meta_data_for_current_food, only: :show
   
   def show
+    @q = Food.ransack(params[:q])
     view = @food.view.nil? ? 0 : @food.view
     @food.view = view + 1
     @food.save
   end
 
   def index
+    @q = Food.ransack(params[:q])
     @new_foods = Food.newfood
     @hot_foods = Food.hotfood
     @hot_sale  = Food.hotsale
     @categories = FoodCategory.all
     @foods = Food.all
-    if params[:search_text]
-      @foods = Food.food_search(params[:search_text])
+    if params[:q]
+      @foods = @q.result
     elsif params[:food_category]
       @foods = Food.filter_food_category(params[:food_category])
     else
@@ -27,7 +29,6 @@ class FoodsController < ApplicationController
       format.html
     end
   end
-
 
   private
   

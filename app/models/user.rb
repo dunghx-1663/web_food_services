@@ -60,14 +60,14 @@ class User < ApplicationRecord
   end
 
   def shipper?
-    self.user_type == Settings.user_type.shipper
+    self.role == Settings.user_type.shipper
   end
 
   def admin?
-    self.user_type == Settings.user_type.admin
+    self.role == Settings.user_type.admin
   end
 
   def customer?
-    self.user_type == Settings.user_type.customer
+    self.role == Settings.user_type.customer
   end
 end
