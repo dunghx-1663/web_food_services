@@ -1,51 +1,50 @@
 <br><hr>
-<label><%= t "orders" %></label>
+
+<div class="panel-heading">
+  <span class="glyphicon glyphicon-list"></span>Danh sách Đơn hàng
+</div>
+<br><hr>
 <div class="thumb-layout">
   <div class="row">
     <% @orders.each do |order| %>
       <div class="col-md-4 col-sm-4">
         <div class="thumbnail">
           <input type="hidden" id="order_id" value="<%= order.id %>">
-          <span><%= t "views.static_pages.show_orders.destination" %>: <%= order.address %></span>
+          <label><i class="fa fa-location-arrow" aria-hidden="true"></i> <span><%= t ".destination" %>: <%= order.address %></span></label>
           <br>
-          <span><%= t "views.static_pages.show_orders.customer" %>: <%= link_to order.customer.name , @user, :class => "text-center"%></span>
+          <i class="fa fa-user" aria-hidden="true"></i> <span><%= t ".customer" %>: <%= link_to order.customer.name , @user, :class => "text-center"%></span>
           <br>
-          <span><%= t "views.static_pages.show_orders.total_money" %>: $<%= order.total_money %></span>
+          <i class="fa fa-money" aria-hidden="true"></i> <span><%= t ".total_money" %>: $<%= order.total_money %></span>
           <br>
+          <i class="fa fa-shopping-bag" aria-hidden="true"></i> <span><%= t ".status" %>: </span>
           <% if order.new? %>
-            <span><%= t "views.static_pages.show_orders.new" %></span>
+            <span class="label label-primary"><%= t ".new" %></span>
             <br>
           <% elsif order.in_progress?  %>
-            <span><%= t "views.static_pages.show_orders.inprogress" %></span>
+            <span class="label label-warning"><%= t ".inprogress" %></span>
             <br>
           <% else %>
-            <span><%= t "views.static_pages.show_orders.done" %></span>
+            <span class="label label-success"><%= t ".done" %></span>
             <br>
           <% end %>
-          <% if order.in_progress? %>
-            <%= link_to t("views.static_pages.show_orders.details"), order %>
-          <% else %>
-            <a href="#" data-toggle="modal" data-target="#modal-<%= order.id %>"> <%= t("views.static_pages.show_orders.details") %></a>
-          <% end %>
-
+          
+         <a href="#" data-toggle="modal" data-target="#modal-<%= order.id %>"> <%= t(".details") %></a>
           
         </div>
       </div>
-      <div id="modal-<%= order.id %>" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" >
+      <div id="modal-<%= order.id %>" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" >
         <div class="modal-dialog modal-lg-2">
           <div class="modal-content">
             <div class="modal-header">
               <input type="hidden" name="order_id">
-              <h3><%= t "views.static_pages.show_orders.details" %></h3>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+              <h4 class="centered"><%= t ".detail" %></h4>
             </div>
             <div class="modal-body">
               <ul style="list-style-type: none;">
                 <% order.order_details.each do |detail|%>
-                  <li><span><%= t "views.static_pages.show_orders.quantity" %></span>: <%= detail.quantity%> <%= Food.find(detail.food_id).name %></li>
-                  <li><span><%= t "views.static_pages.show_orders.price_each" %></span>: $<%= detail.total_money %></li>
+                  <li><label><%= t ".name" %></label>: <%= Food.find(detail.food_id).name %></li>
+                  <li><label><%= t ".quantity" %></label>: <%= detail.quantity%></li>
+                  <li><label><%= t ".price_each" %></label>: $<%= detail.total_money %></li>
                   <li class="show_food">
                     <%= link_to detail.food do %>
                       <%= image_tag Food.find(detail.food_id).img_url, alt: detail.food.name %>
@@ -56,10 +55,15 @@
               </ul>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" style="float: right;" data-dismiss="modal"><%= t "views.static_pages.show_orders.close" %></button>
+              <button type="button" class="btn btn-secondary" style="float: right;" data-dismiss="modal"><%= t ".close" %></button>
 
               <% if order.new? %>
-                <button data-id="<%= order.id %>" type="button" class="btn btn-primary" name="order_id"><i class="fa fa-check" aria-hidden="true"></i></button>
+                <button data-order-id="<%= order.id %>" type="button" class="u-mgr5 btn btn-primary pick_order" name="order_id">
+                  <%= t ".delivery" %></button>
+              <% elsif order.in_progress? %>
+                <%#= link_to t("views.static_pages.show_orders.details"), order %>
+                <button data-order-id="<%= order.id %>" type="button" class="u-mgr5 btn btn-primary done_order" name="order_id">
+                  <%= t ".Done" %></button>
               <% end %>
             </div>
           </div>

@@ -1,5 +1,6 @@
-<h4>employee page</h4>
-
+<div class="panel-heading">
+  <span class="glyphicon glyphicon-list"></span>Trang Chủ
+</div>
 <div class="col-md-12 col-sm-12 col-xs-12">
   <div class="col-md-8 col-md-offset-2">
     <div id="device_cycle">
@@ -8,7 +9,7 @@
           <h5>
             <label><span><%= t ".user_over_view" %></span></label>
             <br>
-            <%= link_to t("admin.go_to_manage_orders"), employee_orders_path %>
+            <%= link_to t(".go_to_manage_orders"), employee_orders_path %>
           </h5>
           <ul class="nav navbar-right panel-toolbox">
             <li>
@@ -27,13 +28,13 @@
     </div>
   </div>
 </div>
-
+<br>
 <div class="col-md-12 col-sm-12 col-xs-12">
   <div class="x-panel">
     <div class="x-title">
-      <label><span><%= t "admin.top_order" %></span></label>
+      <label><span><%= t ".top_order" %></span></label>
       <br>
-        <%= link_to t("admin.go_to_manage_orders"), employee_orders_path %>
+        <%= link_to t(".go_to_manage_orders"), employee_orders_path %>
       <ul class="nav navbar-right panel-toolbox">
         <li>
           <%= link_to "", class: "collapse-link" do %>

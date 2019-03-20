@@ -1,0 +1,70 @@
+<div class="panel-heading">
+  <span class="glyphicon glyphicon-list"></span>Danh sách tất cả Đơn hàng
+</div>
+<div class="thumb-layout">
+  <div class="row" style="display:flex; flex-wrap:wrap;">
+    <% @all_orders.each do |order| %>
+      <div class="col-md-4 col-sm-4">
+        <div class="thumbnail">
+          <input type="hidden" id="order_id" value="<%= order.id %>">
+          <span><%= t "views.static_pages.show_orders.destination" %>: <%= order.address %></span>
+          <br>
+          <span><%= t "views.static_pages.show_orders.customer" %>: <%= link_to order.customer.name , @user, :class => "text-center"%></span>
+          <br>
+          <span><%= t "views.static_pages.show_orders.total_money" %>: $<%= order.total_money %></span>
+          <br>
+          <% if order.new? %>
+            <span><%= t "views.static_pages.show_orders.new" %></span>
+            <br>
+          <% elsif order.in_progress?  %>
+            <span><%= t "views.static_pages.show_orders.inprogress" %></span>
+            <br>
+          <% else %>
+            <span><%= t "views.static_pages.show_orders.done" %></span>
+            <br>
+          <% end %>
+          <a href="#" data-toggle="modal" data-target="#modal-<%= order.id %>"> <%= t("views.static_pages.show_orders.details") %></a>
+        </div>
+        <div id="modal-<%= order.id %>" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                 <input type="hidden" name="order_id">
+                 <h3><%= t "views.static_pages.show_orders.details" %></h3>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                   <ul style="list-style-type: none;">
+                      <% order.order_details.each do |detail|%>
+                        <li><span><%= t "views.static_pages.show_orders.name" %></span>:<%= Food.find(detail.food_id).name %></li>
+                        <li><span><%= t "views.static_pages.show_orders.quantity" %></span>:<%= detail.quantity%></li>
+                        <li><span><%= t "views.static_pages.show_orders.total_money" %></span>: $<%= detail.total_money %></li>
+                        <li class="show_food">
+                          <%= link_to detail.food do %>
+                            <%= image_tag Food.find(detail.food_id).img_url, alt: detail.food.name %>
+                          <% end %>
+                        </li>
+                        <br>
+                      <% end %>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                  <div class="col-sm-6 text-left">
+                    <% if order.new? %>
+                      <button data-order-id="<%= order.id %>" type="button" class="btn btn-primary pick_order" name="order_id"><%= t "views.static_pages.show_orders.delivery" %></button>
+                    <% end %>
+                  </div>
+                  <div class="col-sm-6 text-right">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><%= t "views.static_pages.show_orders.close" %></button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+      </div>
+    <% end %>
+  </div>
+</div>
