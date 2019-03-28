@@ -1,4 +1,6 @@
-<h4>admin page</h4>
+<div class="panel-heading">
+  <span class="glyphicon glyphicon-list"></span>Trang Chủ
+</div>
 
 <div class="col-md-12 col-sm-12 col-xs-12">
   <div class="col-md-6">
@@ -8,7 +10,7 @@
           <h5>
             <label><span><%= t ".user_over_view" %></span></label>
             <br>
-            <%= link_to t("admin.go_to_manage_users"), admin_users_path %>
+            <%= link_to t(".go_to_manage_users"), admin_users_path %>
           </h5>
           <ul class="nav navbar-right panel-toolbox">
             <li>
@@ -32,9 +34,9 @@
       <div class="x-panel tile overflow-hidden">
         <div class="x-title">
           <h5>
-            <label><span><%= t ".user_over_view" %></span></label>
+            <label><span><%= t ".order_over_view" %></span></label>
             <br>
-            <%= link_to t("admin.go_to_manage_orders"), admin_orders_path %>
+            <%= link_to t(".go_to_manage_orders"), admin_orders_path %>
           </h5>
           <ul class="nav navbar-right panel-toolbox">
             <li>
@@ -57,9 +59,9 @@
 <div class="col-md-12 col-sm-12 col-xs-12">
   <div class="x-panel">
     <div class="x-title">
-      <label><span><%= t "admin.top_order" %></span></label>
+      <label><span><%= t ".top_order" %></span></label>
       <br>
-        <%= link_to t("admin.go_to_manage_orders"), admin_orders_path %>
+        <%= link_to t(".go_to_manage_orders"), admin_orders_path %>
       <ul class="nav navbar-right panel-toolbox">
         <li>
           <%= link_to "", class: "collapse-link" do %>
@@ -79,9 +81,9 @@
 <div class="col-md-12 col-sm-12 col-xs-12">
 	<div class="x-panel">
 	  <div class="x-title">
-	    <label><span><%= t "admin.top_product" %></span></label>
+	    <label><span><%= t ".top_product" %></span></label>
       <br>
-        <%= link_to t("admin.go_to_manage_foods"), admin_foods_path %>
+        <%= link_to t(".go_to_manage_foods"), admin_foods_path %>
 	    <ul class="nav navbar-right panel-toolbox">
 	      <li>
 	        <%= link_to "", class: "collapse-link" do %>

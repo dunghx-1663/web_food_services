@@ -23,4 +23,16 @@
 //= require ckeditor/init
 //= require_tree .
 
+var flash = function slide_up_flash(){
+  setTimeout(function(){
+    $('#flash').fadeOut(4000);
+  }, 1500);
+};
+$(document).ready(flash);
 
+function show_flash(data_flash){
+  $('#flash').html(data_flash);
+  setTimeout(function(){
+    $('#flash').show().fadeOut(4000);
+  }, 200);
+}

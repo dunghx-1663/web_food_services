@@ -45,9 +45,31 @@ en:
       order: "Order"
       new:
         example: "Tòa nhà keangnam, đường Phạm Hùng, Quận Nam Từ Liêm"
+    order_details:
+      success: Xác nhận thành công
+      errors: Không thành công
+    static_pages:
+      show_orders:
+        destination: Địa điểm giao hàng
   layouts:
     header:
       search: Tìm Kiếm
+    admin_header:
+      Administrator: Trang Chủ
+      visit_site: Website
+      logout: Đăng Xuất
+    admin:
+      Administrator: Trang Chủ
+      food_categories: Quản lý Danh mục đồ ăn 
+      foods: Quản lý Món ăn
+      list_orders: Quản lý đợn hàng
+      Users: Quản lý người dùng
+    employee:
+      dashboard: Trang Chủ
+      all_orders: Tất cả đơn hàng
+      new_order: Đơn hàng mới
+      processing: Đơng hàng đang giao
+      done: Đơn hàng đã giao
   carts:
     index:
       continue_shopping: Tiếp tục mua hàng
@@ -68,8 +90,85 @@ en:
       price: Giá
       total: Tổng cộng
       orders: đơn
+    customer_index:
+      destination: Địa điểm giao hàng
+      quantity: Số lượng
+      total_money: Tổng tiền
+      created_at: Ngày mua
   controllers:
     orders:
       create:
         success: Tạo đơn hàng thành công
         lost_info: Kiểm tra lại thông tin đơn hàng
+  admin:
+    dashboard:
+      index:
+        user_over_view: Tổng Quan User
+        go_to_manage_users: Quản lý User
+        order_over_view: Tổng Quan Đơn Hàng
+        go_to_manage_orders: Quản lý đơn hàng
+        top_order: Đơn hàng mới
+        top_product: Món ăn bán chạy
+        go_to_manage_foods: Quản lý đồ ăn 
+    food_categories:
+      index:
+        name: Tên danh mục
+        created_at: Ngày Tạo
+        action: Hành động
+    foods:
+      index:
+        name: Tên đồ ăn
+        price: Giá
+        rating_avg: Đánh giá sao
+        created_at: Ngày tạo
+        action: Hành động
+    orders:
+      index:
+        customer: Khách hàng
+        employee: Người giao hàng
+        address: Địa chỉ 
+        total_money: Tổng tiền 
+        status: Trạng thái
+        created_at: Ngày tạo
+        download: Xuất excel
+    users:
+      index:
+        name: Tên đăng nhập
+        emai: Email
+        user_name: Tên người dùng
+        user_type: Loại
+        address: Địa chỉ 
+        phone: Số điện thoại
+        action: Hành động
+  employee:
+    dashboard:
+      index:
+        user_over_view: Tổng quan user
+        go_to_manage_orders: Quản lý user
+        top_order: Đơn hàng mới
+        go_to_manage_orders: Quản lý đơn hàng
+    orders:
+      index:
+        customer: Khách hàng
+        employee: Người giao hàng
+        address: Địa chỉ 
+        total_money: Tổng tiền 
+        status: Trạng thái
+        created_at: Ngày tạo
+        download: Xuất excel
+      filter_order_status:
+        destination: Địa điểm giao hàng
+        customer: Người nhận
+        total_money: Tổng tiền
+        new: mới
+        inprogress: đang giao
+        done: đã giao
+        status: Trạng thái
+        details: Chi tiết
+        detail: Thông tin đơn hàng
+        name: Tên hàng
+        quantity: Số lượng
+        price_each: Đơn giá
+        close: close
+        delivery: Giao hàng
+        Done: Hoàn thành
