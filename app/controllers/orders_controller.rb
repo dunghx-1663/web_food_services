@@ -58,6 +58,8 @@ class OrdersController < ApplicationController
         total_money: Cart.total(current_user.id),
         order_details_attributes: order_details
     )
+    # gửi thông báo email khi đặt đơn hàng thành côg
+    # UserMailer.order_mail(current_user).deliver
     if order.save
       current_user.carts.delete_all
       redirect_to root_url

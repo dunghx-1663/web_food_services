@@ -115,6 +115,7 @@ en:
         name: Tên danh mục
         created_at: Ngày Tạo
         action: Hành động
+        description: Mô tả
     foods:
       index:
         name: Tên đồ ăn
@@ -140,6 +141,9 @@ en:
         address: Địa chỉ 
         phone: Số điện thoại
         action: Hành động
+        status: Trạng thái
+        edit: Sửa
+        delete: Xóa
   employee:
     dashboard:
       index:

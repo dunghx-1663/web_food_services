@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   devise_for :users
   root "foods#index"
   resources :users
+  resources :account_activations, only: [:edit]
   resources :foods
   resources :orders
   patch "carts", to: "carts#update"

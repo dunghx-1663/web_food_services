@@ -1,7 +1,10 @@
 class User < ApplicationRecord
   CUSTOMER_OR_SHIPPER = [2, 4]
 
-  attr_accessor :remember_token
+  attr_accessor :remember_token, :activation_token
+  before_save :downcase_email
+  before_create :create_activation_digest
+
   has_many :comments, dependent: :destroy
   has_many :votes
   has_many :carts
@@ -49,10 +52,19 @@ class User < ApplicationRecord
   	self.remember_token = User.new_token
   	update_attribute(:remember_digest, User.digest(remember_token))
   end
-  # remember true if the given token matchers the digest
-  def authenticated?(remember_token)
-  	return false if remember_digest.nil?
-    BCrypt::Password.new(remember_digest).is_password?(remember_token)  	
+  
+  def authenticated?(attribute, token)
+    digest = self.send("#{attribute}_digest")
+    return false if digest.nil?
+    BCrypt::Password.new(digest).is_password?(token)
+  end
+
+  def send_activation_email
+    UserMailer.account_activation(self).deliver_now
+  end
+
+  def activate
+    update_attributes activated: true, activated_at: Time.zone.now
   end
 
   def forget
@@ -70,4 +82,17 @@ class User < ApplicationRecord
   def customer?
     self.role == Settings.user_type.customer
   end
+
+
+  private
+
+  def downcase_email
+    self.email = email.downcase
+  end
+
+  def create_activation_digest
+    self.activation_token  = User.new_token
+    self.activation_digest = User.digest(activation_token)
+  end
+
 end
