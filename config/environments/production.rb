@@ -4,6 +4,9 @@ Rails.application.configure do
   # Code is not reloaded between requests.
   config.cache_classes = true
 
+  host = "0.0.0.0:3000" # Don"t use this literally; use your local dev host instead
+  config.action_mailer.default_url_options = {host: host, protocol: "http"}
+  
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.

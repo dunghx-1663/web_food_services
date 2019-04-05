@@ -60,6 +60,6 @@ class Admin::FoodCategoriesController < Admin::BaseController
   end
 
   def food_category_params
-      params.require(:food_category).permit :name
+      params.require(:food_category).permit :name, :description
   end
 end

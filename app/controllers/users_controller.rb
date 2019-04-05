@@ -21,10 +21,13 @@ class UsersController < ApplicationController
   end
   
   def create
+    @categories = FoodCategory.all
   	@user = User.new(user_params)
     if @user.save
-      log_in @user
-      flash[:success] = "Welcome to the my web!"
+      @user.send_activation_email
+      # log_in @user
+      # flash[:success] = "Welcome to the my web!"
+      flash[:info] = t "users.create.confirm_email"
       redirect_to @user
     else
       render 'shared/_form_signup'
@@ -40,9 +43,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find_by id: params[:id]
-    # if user_params[:password].blank?
-    #   flash[:danger] = "fuck"
-    # end
+
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
       redirect_to @user
