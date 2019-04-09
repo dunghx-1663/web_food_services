@@ -41,6 +41,7 @@ gem 'will_paginate', '3.1.6'
 gem "rails-i18n"
 
 group :development, :test do
+  gem 'pg', '~> 1.0.0'
   gem "byebug", "9.0.6", platform: :mri
   gem "rspec-rails"
   gem "pry-rails"

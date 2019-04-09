@@ -5,8 +5,8 @@ class FoodsController < ApplicationController
   def show
     @q = Food.ransack(params[:q])
     view = @food.view.nil? ? 0 : @food.view
+    @food_relation = Food.filter_food_category(@food.food_category)
     @food.view = view + 1
-    @food.save
   end
 
   def index

@@ -55,16 +55,68 @@
 	<!-- review food -->
 	<br>
 	<div class=" row col-md-12">
-	     <div class="col-md-12"> 
-	       <h4 class="section-titlepara">PRODUCT DETAILS</h4>
-	     </div>
-	     <div class="border col-md-2"></div>
-
-	    <div class=" row col-md-10">
-	      <p class="modal-width"><%= raw @food.description %></p>
+	    <div class="col-md-12"> 
+	      <h4 class="section-titlepara">PRODUCT DETAILS</h4>
 	    </div>
+			<div class="row col-md-12">
+				<div class="border col-md-2"></div>
+				
+				<div class=" row col-md-8">
+					<p class="modal-width"><%= raw @food.description %></p>
+				</div>
+				<div class="col-md-2">
+				
+				</div>
+			</div>
 	</div>
 	<hr>
+
+	<%# food suggestion %>
+	<div class=" row col-md-12">
+	    <div class="col-md-12"> 
+	      <h4 class="section-titlepara">PRODUCT SUGGESTION</h4>
+	    </div>
+			<div class="row col-md-12">
+			  <div class="border col-md-3"></div>
+				<div class="row col-md-12">
+					<% @food_relation.each do |food| %>
+						<div class="col-md-3 col-sm-6">
+							<span class="thumbnail">
+									<%= link_to food do %>
+												<%= image_tag food.img_url, alt: food.name, :class => "style_img_view"%>
+											<% end %>
+									<h4><%= link_to food.name, food, class: "text-center" %></h4>
+									<i class="fa fa-eye" aria-hidden="true"> <%= count_view food%></i>
+									<div class="ratings">
+													<span class="glyphicon glyphicon-star"></span>
+													<span class="glyphicon glyphicon-star"></span>
+													<span class="glyphicon glyphicon-star"></span>
+													<span class="glyphicon glyphicon-star"></span>
+													<span class="glyphicon glyphicon-star-empty"></span>
+											</div>
+									<p><%= raw(truncate food.description || t(".no_description"), length: Settings.sort_descriptions) %></p>
+									<hr class="line">
+									<div class="row">
+										<div class="col-md-8 col-sm-8">
+											<% if food.discount.present? %>
+												<del class="small_price col-md-4"><%= format_price food.price %></del>
+											<% end %>
+											<h4 class="price col-md-8"><%= get_promotion_price food.price, food.discount %></h4>
+											<!-- <p class="price"><%= format_price food.price %></p> -->
+										</div>
+										<div class="col-md-4 col-sm-4">
+											<button value="<%= food.id %>" class="show-add btn btn-success pull-right" data-toggle="modal" data-target="#addFood"><i class="fa fa-cart-plus " aria-hidden="true"></i></button>
+										</div>
+									</div>
+							</span>
+						</div>
+					<% end %>
+				</div>
+			</div>
+	</div>
+	<hr>
+	
+				
 	<!-- comment -->
 	
 	<div class="row col-md-12">
