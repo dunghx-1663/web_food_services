@@ -141,6 +141,9 @@ en:
         address: Địa chỉ 
         phone: Số điện thoại
         action: Hành động
+        status: Trạng thái
+        edit: Sửa
+        delete: Xóa
   employee:
     dashboard:
       index:

@@ -1,7 +1,9 @@
 class UserMailer < ApplicationMailer
+  default from: 'notifications@example.com'
+
   def account_activation user
     @user = user
-    mail to: @user.email, subject: (t "mailer.user_mailer.account_activation")
+    mail(to: @user.email, subject: 'webcome to my website, account activation')
   end
 
   def order_mail user
@@ -11,7 +13,6 @@ class UserMailer < ApplicationMailer
 
   def password_reset
     @greeting = "Hi"
-
-      mail to: "to@example.org"
+    mail to: "to@example.org"
   end
 end

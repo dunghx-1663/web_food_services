@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :correct_user,   only: [:edit, :update]
 
   def index
-  	# render "static_pages/home"
+    # render "static_pages/home"
     @users = User.paginate(page: params[:page])
   end
 
@@ -21,8 +21,10 @@ class UsersController < ApplicationController
   end
   
   def create
+    @q = Food.ransack(params[:q])
     @categories = FoodCategory.all
-  	@user = User.new(user_params)
+    @user = User.new(user_params)
+    
     if @user.save
       @user.send_activation_email
       # log_in @user

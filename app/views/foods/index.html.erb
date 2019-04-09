@@ -3,21 +3,34 @@
     <div class="container">
     	<!-- all product && filter cate -->
     	<div class="row text-center">
-		    <div class="col-md-12">   
-			    <div class="site-heading ">
+			<div class="col-md-12">
+			
+				<div class="site-heading ">
 					<h3>All Food In New Delhi</h3>
 					<p>The easiest way to your favourite food.</p>
 					<div class="border text-center "></div>
 				</div>
 			</div> 
 		</div>
-
+     
 		<div class="row col-md-12" id="foods">
-			<%= render partial: 'food_detail', collection: @foods, as: :food %>
+      <div class="controls pull-right hidden-xs">
+          <a class="left fa fa-chevron-left btn btn-success" href="#carousel-example"
+              data-slide="prev"></a><a class="right fa fa-chevron-right btn btn-success" href="#carousel-example"
+                  data-slide="next"></a>
+      </div>
+      <div id="carousel-example" class="carousel slide hidden-xs" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="item active">
+            <div class="col-item">
+			        <%= render partial: 'food_detail', collection: @foods, as: :food %>
+            </div>
+          </div>
+        </div>
+      </div>
 		</div>
 
-
-        <!-- tab new product -->
+    <!-- tab new product -->
 	    <div class="row text-center">
 		    <div class="col-md-12">
 			    <div class="site-heading ">
@@ -27,10 +40,11 @@
 				</div>
 			</div>
 		</div>
+    <div class="row col-md-12">
+		  <%= render partial: "thumbnail", locals: {objects: @new_foods} %>
+    </div>
 
-		<%= render partial: "thumbnail", locals: {objects: @new_foods} %>
-        
-        <!-- tab hot product -->
+    <!-- tab hot product -->
 	    <div class="row text-center">
 		    <div class="col-md-12">   
 			    <div class="site-heading ">
@@ -40,8 +54,9 @@
 				</div>
 			</div> 
 		</div>
-
-		<%= render partial: "thumbnail", locals: {objects: @hot_foods} %>
+    <div class="row col-md-12">
+	  	<%= render partial: "thumbnail", locals: {objects: @hot_foods} %>
+    </div>
 
 		<!-- hot sale product -->
 	    <div class="row text-center" id="hot_sale">
@@ -53,56 +68,10 @@
 				</div>
 			</div> 
 		</div>
-		<%= render partial: "thumbnail", locals: {objects: @hot_sale} %>
-      
-        <!-- tab top product -->
-	    <div class="row text-center">
-		    <div class="col-md-12">   
-			    <div class="site-heading ">
-					<h3>Popular Food In New Delhi</h3>
-					<p>The easiest way to your favourite food.</p>
-					<div class="border text-center "></div>
-				</div>
-			</div> 
-		</div>
-
-	    <div class="row ">
-	    	<!-- BEGIN PRODUCTS -->
-	    	<% @foods.each do |food| %>
-		  		<div class="col-md-3 col-sm-6">
-		    		<span class="thumbnail">
-		      			<%= link_to food do %>
-			               <%= image_tag food.img_url, alt: food.name, :class => "style_img_view"%>
-			              <% end %>
-		      			<h4><%= link_to food.name, food, class: "text-center" %></h4>
-		      			<i class="fa fa-eye" aria-hidden="true"> <%= count_view food%></i>
-		      			<div class="ratings">
-		                    <span class="glyphicon glyphicon-star"></span>
-		                    <span class="glyphicon glyphicon-star"></span>
-		                    <span class="glyphicon glyphicon-star"></span>
-		                    <span class="glyphicon glyphicon-star"></span>
-		                    <span class="glyphicon glyphicon-star-empty"></span>
-		                </div>
-		      			<p><%= raw(truncate food.description || t(".no_description"), length: Settings.sort_descriptions) %></p>
-		      			<hr class="line">
-		      			<div class="row">
-		      				<div class="col-md-8 col-sm-8">
-		      					<% if food.discount.present? %>
-						          <del class="small_price col-md-4"><%= format_price food.price %></del>
-						        <% end %>
-						        <h4 class="price col-md-8"><%= get_promotion_price food.price, food.discount %></h4>
-		      					<!-- <p class="price"><%= format_price food.price %></p> -->
-		      				</div>
-		      				<div class="col-md-4 col-sm-4">
-		      					<button value="<%= food.id %>" class="show-add btn btn-success pull-right" data-toggle="modal" data-target="#addFood"><i class="fa fa-cart-plus " aria-hidden="true"></i></button>
-		      				</div>
-		      			</div>
-		    		</span>
-		  		</div>
-	  		<% end %>
-	  		
-	  		<!-- END PRODUCTS -->
-        </div>
+    <div class="row col-md-12">
+		  <%= render partial: "thumbnail", locals: {objects: @hot_sale} %>
     </div>
+    
+  </div>
 </div>
 <%#= render partial: "modal_add_cart", locals: {objects: @foods } %>
