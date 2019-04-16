@@ -33,12 +33,13 @@ gem "sidekiq"
 gem "social-share-button", github: "huacnlee/social-share-button"
 gem "turbolinks", "5.0.1"
 gem "uglifier", "3.2.0"
-gem 'bootstrap-sass', '3.2.0.2'
+gem 'bootstrap-sass', '3.4.1'
 gem 'bootstrap-will_paginate', '1.0.0'
 gem 'ckeditor'
 gem 'mini_magick'
 gem 'will_paginate', '3.1.6'
 gem "rails-i18n"
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'pg', '~> 1.0.0'
