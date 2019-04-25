@@ -30,8 +30,22 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  post_comment: Gửi
+  leave_comments: Bình luận
+  edit_comment: Sửa bình luận
+  update: Gửi
+  close: Đóng
   date_format: "%d/%m/%Y, %H:%M:%S"
   hello: "Hello world"
+  users:
+    form:
+      name: Tên người dùng
+      email: Email
+      user_name: Tên đăng nhập
+      address: Địa chỉ
+      phone_number: Số điện thoại
+    show:
+      edit: Sửa
   header:
     menu : "Thực Đơn"
     categories: "Danh Mục Đồ Ăn"
@@ -40,6 +54,7 @@ en:
     contact_us: "Liên Hệ"
     all: "Tất Cả"
     search: Tìm Kiếm
+    order: Đơn hàng
   views:
     orders:
       order: "Order"

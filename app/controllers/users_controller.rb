@@ -32,7 +32,7 @@ class UsersController < ApplicationController
       flash[:info] = t "users.create.confirm_email"
       redirect_to @user
     else
-      render 'shared/_form_signup'
+      render "shared/_form_signup", layout: false
     end
   end
 

@@ -7,30 +7,30 @@ class SessionsController < ApplicationController
 
   def create
     @categories = FoodCategory.all
-    user = User.find_by email: params[:session][:email]
-    if user && user.authenticate(params[:session][:password])
-      if user.activated?
-        log_in user
-        params[:session][:remember_me] == "1" ? remember(user) : forget(user)
-        if user.Admin? 
+    @user = User.find_by email: params[:session][:email]
+    if @user && @user.authenticate(params[:session][:password])
+      if @user.activated?
+        log_in @user
+        params[:session][:remember_me] == "1" ? remember(@user) : forget(@user)
+        if @user.Admin? 
           flash[:success] = "Welcome admin"
           redirect_to admin_root_url
-        elsif user.Employee?
+        elsif @user.Employee?
           flash[:success] = "Welcome Employee"
           redirect_to employee_root_url
         else
           flash[:success] = "Welcome"
           # redirect_back_or root_url
-          redirect_to user
+          redirect_to @user
         end
       else
-        message  = t "sessions.create.account_not_activated"
-        message += t "sessions.create.check_email"
+        message  = "tài khoản của bạn chưa được kích hoạt "
+        message += "vui lòng kiểm tra email"
         flash[:warning] = message
         redirect_to root_url
-      end 
+      end
     else
-      flash[:danger] = "Invalid account"
+      flash[:danger] = "Kiểm tra lại thông tin đăng nhập"
       render 'shared/_form_login'
     end
   end
