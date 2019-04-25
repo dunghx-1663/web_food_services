@@ -45,26 +45,26 @@
 		            <li class="dropdown">
 			          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name %><b class="caret"></b></a>
 			          <ul class="dropdown-menu">
-			          	<li><%= link_to "Profile", user_path(current_user) %></li>
-			            <li><%= link_to "Edit Profile", edit_user_path(current_user) %></li>
+			          	<li><%= link_to "TT cá nhân", user_path(current_user) %></li>
+			            <li><%= link_to "Sửa TT cá nhân", edit_user_path(current_user) %></li>
 			            <% if current_user.Admin? %>
-			              <li><%= link_to "Visit Dashboard", admin_root_path(current_user) %></li>
+			              <li><%= link_to "Trang quản lý", admin_root_path(current_user) %></li>
 			            <% end %>
 			            <% if current_user.Employee? %>
-			              <li><%= link_to "Visit Dashboard", employee_root_path(current_user) %></li>
+			              <li><%= link_to "Trang quản lý", employee_root_path(current_user) %></li>
 			            <% end %>
 			          </ul>
 			        </li>
 
 		            <li>
 		              <%= link_to logout_path, method: :delete do %>
-		               <%= t "views.layouts.logout" %>
+		               Đăng xuất
 		              <% end %>
 		            </li>
 		        <% else %>
 		            <li>
 		              <%= link_to login_path do %>
-		               <%= t "views.layouts.login" %>
+		                Đăng nhập
 		              <% end %>
 		            </li>
 		         <% end %>
@@ -77,8 +77,8 @@
 			<div class="container text-center">
 				<div class="col-md-12">
 					<div class="banner-heading ">
-						<h2>Enjoy Food Order and dine-out </h2>
-						<P>Find restaurants, specials, and coupons for free</P>
+						<h2>Where the food’s as good as the root beer</h2>
+						<P>It’s better here</P>
 						<%= search_form_for @q do |f| %>
 							<div class="navbar-form" role="search">
 								<div class="input-group">
