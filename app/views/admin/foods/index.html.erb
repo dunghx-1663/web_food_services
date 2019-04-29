@@ -7,7 +7,7 @@
         <%= search_form_for [:admin,@search], html: {class: 'form-inline'} do |f| %>
           <%= f.label :name_or_price_cont, 'Từ khóa',  class: 'col-md-2 text-center' %>
           <%= f.search_field :name_or_price_cont, class: 'col-md-8 form-control', placeholder: 'name or price' %>
-          <%= f.submit 'Tìm kiếm', :class => 'u-mgl5 col-md-1 btn btn-primary' %>
+          <%= f.submit 'Tìm kiếm', :class => 'u-mgl5 col-md-2 btn btn-primary' %>
         <% end %>
     </div>
     <div class="col-md-3 text-right">

@@ -14,7 +14,7 @@
         <div id="order-address">
           <i class="fa fa-map-marker"></i> <span><b><%= t ".shipping_address" %></b></span>
           <%= form_for @order do |f| %>
-            <%= f.text_area :address, size: "70x4", id:"order-customer", placeholder: t(".example") %><br>
+            <%= f.text_area :address, size: "70x4", id:"order-customer", placeholder: t(".example"), required: true %><br>
             <%= f.submit t(".order"), class:"btn btn-success js-push-button" %>
           <% end %>
         </div>
@@ -39,12 +39,12 @@
            <tr>
             <td><%= o.food.name %></td>
             <td><%= o.quantity %></td>
-            <td><%= o.total_money %> $</td>
+            <td><%= o.total_money %> VNĐ</td>
            </tr>
           <% end %>
           <tr>
             <td><b><%= t ".total" %> :</b></td>
-            <td><%= Cart.total current_user.id %> $</td>
+            <td><%= Cart.total current_user.id %> VNĐ</td>
           </tr>
         </tbody>
       </table>

@@ -49,7 +49,8 @@
           <hr>
         </div>
         <div class="x-content">
-          <%= column_chart @orders.group(:status).count,xtitle: "số lượng", ytitle: "Trạng thái", colors: ["#337ab7"], messages: {empty: "No data"}  %>
+          <%= column_chart @orders.group(:status).count,xtitle: "Trạng thái", ytitle: "số lượng", colors: ["#337ab7"], messages: {empty: "No data"}  %>
+          <div><%= t ".order_status" %></div>
         </div>
       </div>
     </div>

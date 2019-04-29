@@ -23,6 +23,7 @@
         </div>
         <div class="x-content">
           <%= column_chart @orders.group(:status).count, id: "employee_chart", xtitle: "số lượng", ytitle: "Trạng thái", messages: {empty: "No data"}  %>
+          <div><%= t ".order_status" %></div>
         </div>
       </div>
     </div>
