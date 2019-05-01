@@ -30,6 +30,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  edit: Sửa
+  delete: Xóa
   post_comment: Gửi
   leave_comments: Bình luận
   edit_comment: Sửa bình luận
@@ -37,6 +39,27 @@ en:
   close: Đóng
   date_format: "%d/%m/%Y, %H:%M:%S"
   hello: "Hello world"
+  activations:
+    edit:
+      activated: Tài khoản của bạn đã kích hoạt thành công
+  dashboard:
+    customer: Khách hàng
+    shipper: Người giao hàng
+    address: Địa chỉ 
+    total_money: Tổng tiền 
+    status: Trạng thái
+    created_at: Ngày tạo
+    download: Xuất excel
+    updated_at: Ngày Sửa
+    name: Tên đồ ăn
+    price: Giá
+    rating_avg: Đánh giá sao
+    created_at: Ngày tạo
+    action: Hành động
+    description: Mô tả
+    category: Danh Mục
+    discount: Giam giá
+    view: Lượt xem
   users:
     form:
       name: Tên người dùng
@@ -59,7 +82,9 @@ en:
     orders:
       order: "Order"
       new:
-        example: "Tòa nhà keangnam, đường Phạm Hùng, Quận Nam Từ Liêm"
+        example: "Tòa nhà keangnam, đường Phạm Hùng, Quận Nam Từ Liêm (GHI CHÚ)"
+      checked:
+        confirm: Bạn chắc chắn xác nhận đơn hàng này?
     order_details:
       success: Xác nhận thành công
       errors: Không thành công
@@ -71,7 +96,7 @@ en:
       search: Tìm Kiếm
     admin_header:
       Administrator: Trang Chủ
-      visit_site: Website
+      visit_site: Trang bán hàng
       logout: Đăng Xuất
     admin:
       Administrator: Trang Chủ
@@ -97,7 +122,7 @@ en:
       address: Địa chỉ
       phone: Số điện thoại
       shipping_address: Địa chỉ giao hàng
-      example: "Tòa nhà keangnam, đường Phạm Hùng, Quận Nam Từ Liêm"
+      example: "Tòa nhà keangnam, đường Phạm Hùng, Quận Nam Từ Liêm (GHI CHÚ)"
       order: Xác Nhận
       info_order: Đơn hàng
       dish: Tên hàng
@@ -110,12 +135,14 @@ en:
       quantity: Số lượng
       total_money: Tổng tiền
       created_at: Ngày mua
+      confirm_delete: Bạn chắc chắn xóa đơn hàng này?
   controllers:
     orders:
       create:
         success: Tạo đơn hàng thành công
         lost_info: Kiểm tra lại thông tin đơn hàng
   admin:
+    danger: Thất bại, kiểm tra lại thông tin
     dashboard:
       index:
         user_over_view: Tổng Quan User
@@ -125,6 +152,7 @@ en:
         top_order: Đơn hàng mới
         top_product: Món ăn bán chạy
         go_to_manage_foods: Quản lý đồ ăn 
+        order_status: "1: ĐH Mới     2: ĐH Đang Giao     3: ĐH Đã Giao"
     food_categories:
       index:
         name: Tên danh mục
@@ -166,6 +194,7 @@ en:
         go_to_manage_orders: Quản lý user
         top_order: Đơn hàng mới
         go_to_manage_orders: Quản lý đơn hàng
+        order_status: "1: ĐH Mới     2: ĐH Đang Giao     3: ĐH Đã Giao"
     orders:
       index:
         customer: Khách hàng

@@ -38,8 +38,8 @@
               <h4 class="centered"><%= t ".detail" %></h4>
             </div>
             <div class="modal-body">
-              <ul style="list-style-type: none;">
-                <% order.order_details.each do |detail|%>
+              <% order.order_details.each do |detail|%>
+                <ul style="list-style-type: none;">
                   <li><label><%= t ".name" %></label>: <%= Food.find(detail.food_id).name %></li>
                   <li><label><%= t ".quantity" %></label>: <%= detail.quantity%></li>
                   <li><label><%= t ".price_each" %></label>: $<%= detail.total_money %></li>
@@ -48,13 +48,12 @@
                       <%= image_tag Food.find(detail.food_id).img_url, alt: detail.food.name %>
                     <% end %>
                   </li>
-                  <br>
-                <% end %>
-              </ul>
+                  <br><br><br>
+                </ul>
+              <% end %>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" style="float: right;" data-dismiss="modal"><%= t ".close" %></button>
-
               <% if order.new? %>
                 <button data-order-id="<%= order.id %>" type="button" class="u-mgr5 btn btn-primary pick_order" name="order_id">
                   <%= t ".delivery" %></button>
