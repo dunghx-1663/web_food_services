@@ -30,6 +30,12 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  mailer:
+    user_mailer:
+      hi: "You have created a FoodServices ID with the username: "
+      activate: Activate
+  are_you_sure: Bạn có chắc chắn muốn xóa
+  review: Lượt xem
   edit: Sửa
   delete: Xóa
   post_comment: Gửi
@@ -69,6 +75,8 @@ en:
       phone_number: Số điện thoại
     show:
       edit: Sửa
+    create:
+      confirm_email: Bạn hãy kiểm tra email để kích hoạt tài khoản
   header:
     menu : "Thực Đơn"
     categories: "Danh Mục Đồ Ăn"

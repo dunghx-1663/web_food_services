@@ -2,7 +2,6 @@
   <thead>
     <tr>
       <th class="col-md-1 "><%= t "dashboard.name" %></th>
-      <th class="col-md-3 "><%= t "dashboard.description" %></th>
       <th class="col-md-2 "><%= t "dashboard.price" %></th>
       
       <th class="col-md-1 "><%= t "dashboard.rating_avg" %></th>
@@ -23,9 +22,7 @@
           <td>
             <%= top_food.name if top_food.name.present? %>
           </td>
-          <td>
-            <%= raw(truncate top_food.description || t(".no_description"), length: Settings.sort_descriptions) if top_food.description.present? %>
-          </td>
+          
           <td>
             <%= top_food.price if top_food.price.present? %>
           </td>

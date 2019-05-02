@@ -16,19 +16,16 @@
                 <div class="rating row">
                   <span class="review-no col-md-6"><i class="fa fa-eye" aria-hidden="true"> <%= count_view obj%></i></span>
                   <div class="stars1 col-md-6">
-                      <span id="vote-avg"><%= "#{obj.rating_avg} / #{obj.votes.count} " %></span>
-                      <span> <%= t "views.foods.show.header.rate" %></span><br><br>
+                    <i id="vote-avg" class="fa fa-star" aria-hidden="true">&nbsp<%= "#{obj.rating_avg} / #{obj.votes.count} " %></i>
                   </div>
                 </div>
-                <p><%= raw(truncate obj.description || t(".no_description"), length: Settings.sort_descriptions) %></p>
                 <hr class="line">
                 <div class="row">
                   <div class="col-md-8 col-sm-8">
                     <% if obj.discount.present? %>
                       <del class="small_price col-md-4"><%= format_price obj.price %></del>
                     <% end %>
-                    <h4 class="price col-md-8"><%= get_promotion_price obj.price, obj.discount %></h4>
-                   
+                    <h4 class="price col-md-8" style="padding-left: 30px;"><%= get_promotion_price obj.price, obj.discount %></h4>
                   </div>
                   <div class="col-md-4 col-sm-4">
                     <button value="<%= obj.id %>" class="show-add btn btn-success pull-right" data-toggle="modal" data-target="#addFood-<%= obj.id %>"><i class="fa fa-cart-plus " aria-hidden="true"></i></button>

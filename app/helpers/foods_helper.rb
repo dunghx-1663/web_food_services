@@ -1,5 +1,4 @@
 module FoodsHelper
-
   def format_price price
     number_to_currency price, unit: Settings.unit_price, delimiter: ".",
       precision: Settings.foods.precision_min, format: "%n %u"
@@ -11,7 +10,7 @@ module FoodsHelper
   end
 
   def count_view food
-    view = food.view.present? ? food.view : 0
+    food.view.present? ? food.view : 0
   end
 
   def is_new_food? created_at

@@ -1,8 +1,9 @@
-<h1><%= t "mailer.user_mailer.same_app" %></h1>
+<h1>Web Food Services</h1>
+<h4>Please confirm your email address</h4>
 
- <p><%= t "mailer.user_mailer.hi" + @user.name %>,</p>
+ <p><%= t "mailer.user_mailer.hi"%><label><%= @user.name %></label></p>
 
- <p> <%= t "mailer.user_mailer.welcome" %> </p>
+ <p>As an extra security measure, please verify this is the correct email address linked to your Web Food Services ID by clicking the button below.</p>
 
  <%= link_to (t "mailer.user_mailer.activate"),
   edit_account_activation_url(@user.activation_token, email: @user.email) %>

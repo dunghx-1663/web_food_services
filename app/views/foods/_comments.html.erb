@@ -48,8 +48,7 @@
                           <%= f.hidden_field :food_id, value: comment.food_id %>
                           <%= f.hidden_field :user_id, value: comment.user_id %>
                           <%= f.text_area :content, value: comment.content,
-                            class: "form-control comment_field",
-                            rows: Settings.textarea.number_rows %>
+                            class: "form-control comment_field", rows: Settings.textarea.number_rows, required: true %>
                         </div>
                       </div>
                     </div>
@@ -73,7 +72,6 @@
           <% end %>
         <% end %>
       </div>
-
     </div>
   </div>
 
@@ -97,7 +95,7 @@
                       :value => current_user.id %>
                     <%= f.hidden_field :parent_id, value: comment.id %>
                     <%= f.text_area :content, class: "form-control",
-                      rows: Settings.textarea.number_rows %>
+                      rows: Settings.textarea.number_rows, required: true %>
                   </div>
                 </div>
               </div>
