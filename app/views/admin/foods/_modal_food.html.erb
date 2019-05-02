@@ -15,10 +15,10 @@
           <h3 class="product-title"><%= @food.name %></h3>
           
           <div class="row">
-            <p class="price col-md-2">Price</p>
+            <p class="price col-md-2">Giá</p>
             <div class="col-md-10">
               <% if @food.discount.present? %>
-                <label>discount: <%= @food.discount %> %</label>
+                <label>Khuyến mại: <%= @food.discount %> %</label>
                 <del class="small_price col-md-4"><%= format_price @food.price %></del>
               <% end %>
               <h4 class="price col-md-8"><%= get_promotion_price @food.price, @food.discount %></h4>
@@ -26,18 +26,17 @@
           </div>
           
           <%# <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p> %>
-          <p><b><%= t'created_at' %>:</b>
+          <p><b>Ngày tạo:</b>
             <span><%= @food.created_at.strftime Settings.format_time_with_hour %></span>
           </p>
-          <p><b><%= t'food_category' %>:</b>
+          <p><b>Danh mục đồ ăn:</b>
             <span><%= @food.food_category.name  %></span>
           </p>
           <div class="rating">
             <div class="stars">
-              <span id="vote-avg"><%= "#{@food.rating_avg} / #{@food.votes.count} " %></span>
-              <span> <%= t "views.foods.show.header.rate" %></span><br><br>
+              <i id="vote-avg" class="fa fa-star">&nbsp<%= "#{@food.rating_avg} / #{@food.votes.count} " %>Star</i>
             </div>
-            <span class="review-no fa fa-eye"> <%= @food.view %> Reviewer</span>
+            <span class="review-no fa fa-eye"> <%= @food.view %> Lượt xem</span>
           </div>
         </div>
       </div>

@@ -14,30 +14,29 @@
 					<h4 class="price"><%= @food.name %></h4>
 					<div class="rating">
 						<div class="stars1">
-							<%= render "star_rating" %>
+							<%= render "star_rating" %>&nbsp
 							<span id="vote-avg"><%= "#{@food.rating_avg} / #{@food.votes.count} " %></span>
-							<span> <%= t "views.foods.show.header.rate" %></span><br><br>
+							<span>Star</span><br><br>
 						</div>
 						<span class="review-no"><i class="fa fa-eye" aria-hidden="true"> <%= count_view @food%></i> <%= t 'review'%></span>
 					</div>
-					<p class="product-description"><%= raw(truncate @food.description || t(".no_description"), length: Settings.sort_descriptions) %></p>
-
+					<%# <span class="product-description text_extend"><%= (@food.description || t(".no_description")).html_safe %>
 					<div class="row">
-						<label class="col-md-2">Price</label>
+						<label class="col-md-2">Giá: </label>
 						<div class="col-md-10">
 							<% if @food.discount.present? %>
-								<label>Discount: <%= @food.discount %> %</label>
+								<label>Khuyến mại: <%= @food.discount %> %</label>
 								<del class="small_price col-md-4"><%= format_price @food.price %></del>
 							<% end %>
 							<h4 class="price col-md-8"><%= get_promotion_price @food.price, @food.discount %></h4>
 						</div>
 					</div>
 					
-					<h6><b>Food Category:</b> <span><%= @food.food_category.name %></span></h6>
+					<h6><b>Danh mục đồ ăn:</b> <span><%= @food.food_category.name %></span></h6>
 					<%# <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p> %>
 					<div class="row">
 						<div class="col-md-8 quantity">
-						   <%= label_tag 'quantity :', nil, class: 'pull-left' %>
+						   <%= label_tag 'Số lượng:', nil, class: 'pull-left' %>
 					       <input type="number" min="1" step="1" value="1" name="quantity" class="form-control input-number col-md-3">
 						</div>
 						<div class="col-md-4 action">
@@ -86,22 +85,23 @@
 												<%= image_tag food.img_url, alt: food.name, :class => "style_img_view"%>
 											<% end %>
 									<h4><%= link_to food.name, food, class: "text-center" %></h4>
-									<i class="fa fa-eye" aria-hidden="true"> <%= count_view food%></i>
-									<div class="ratings">
-													<span class="glyphicon glyphicon-star"></span>
-													<span class="glyphicon glyphicon-star"></span>
-													<span class="glyphicon glyphicon-star"></span>
-													<span class="glyphicon glyphicon-star"></span>
-													<span class="glyphicon glyphicon-star-empty"></span>
-											</div>
-									<p><%= raw(truncate food.description || t(".no_description"), length: Settings.sort_descriptions) %></p>
+									<div class="rating row">
+										<span class="review-no col-md-6"><i class="fa fa-eye" aria-hidden="true"> <%= count_view food%></i></span>
+										<% if food.discount.present? %>
+											<label>Discount: <%= @food.discount %> %</label>
+										<% end %>
+										<div class="stars1 col-md-8">
+											<i class="fa fa-star" aria-hidden="true" id="vote-avg">&nbsp<%= "#{food.rating_avg} / #{food.votes.count} " %></i>
+										</div>
+									</div>
+									<%# <span><%= raw(food.description || t(".no_description")) %>
 									<hr class="line">
 									<div class="row">
 										<div class="col-md-8 col-sm-8">
 											<% if food.discount.present? %>
 												<del class="small_price col-md-4"><%= format_price food.price %></del>
 											<% end %>
-											<h4 class="price col-md-8"><%= get_promotion_price food.price, food.discount %></h4>
+											<h4 class="price col-md-8" style="padding-left: 30px;"><%= get_promotion_price food.price, food.discount %></h4>
 											<!-- <p class="price"><%= format_price food.price %></p> -->
 										</div>
 										<div class="col-md-4 col-sm-4">
@@ -143,7 +143,7 @@
 			              <%= f.hidden_field :food_id, value: @food.id %>
 			              <%= f.hidden_field :user_id, value: current_user.id %>
 			              <%= f.text_area :content, class: "form-control comment_field",
-			                rows: Settings.textarea.number_rows %>
+			                rows: Settings.textarea.number_rows, required: true %>
 			            </div>
 			          </div>
 			        </div>
