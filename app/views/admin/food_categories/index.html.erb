@@ -5,8 +5,8 @@
 <div class="row">
     <div class="col-md-9">
         <%= search_form_for [:admin, @search], html: {class: 'form-inline'} do |f| %>
-          <%= f.label :name_cont, 'Từ khóa',  class: 'col-md-2 text-center' %>
-          <%= f.search_field :name_cont, class: 'col-md-8 form-control', placeholder: 'name' %>
+          <%= f.label :name_or_description_cont, 'Từ khóa',  class: 'col-md-2 text-center' %>
+          <%= f.search_field :name_or_description_cont, class: 'col-md-8 form-control', placeholder: 'Tên danh mục' %>
           <%= f.submit 'Tìm kiếm', :class => 'col-md-2 btn btn-primary u-mgl5' %>
         <% end %>
     </div>

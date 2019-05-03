@@ -16,13 +16,12 @@
     <hr>
     <div class="pull-right col-md-4">
       <h3><b><%= t ".total"  %> :</b>  </h3>
-      <h3 id="total"></h3>
-      <button type="button" class="btn btn-default">
-          <label><span class="glyphicon glyphicon-shopping-cart"><%= link_to t(".continue_shopping"), root_path %></span></label>
-      </button>
+      <h3 id="total" style="color: red;"></h3>
+      <br>
+      <%= link_to root_path, class: "btn btn-primary" do %><i class="glyphicon glyphicon-shopping-cart">&nbsp<%= t(".continue_shopping") %></i><% end %>
       <% if logged_in? %>
          <% if current_user.carts.any? %>
-          <button id="update-cart", class="btn btn-success pull-right"><i class="fa fa-credit-card" aria-hidden="true"><%= t(".pay") %></i></button>
+          <button id="update-cart", class="btn btn-success pull-right"><i class="fa fa-credit-card" aria-hidden="true">&nbsp&nbsp<%= t(".pay") %></i></button>
          <% else %>
          <% end %>
       <% end %>

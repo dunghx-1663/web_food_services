@@ -1,42 +1,42 @@
 <!-- BEGIN PRODUCTS -->
-<div class="col-md-3">
-  <span class="thumbnail">
-      <%= link_to food do %>
-           <%= image_tag food.img_url, alt: food.name, :class => "style_img_view"%>
-          <% end %>
-      <div class="row">
-        <h4 class="col-md-8"><%= link_to food.name, food, class: "text-center" %></h4>
-        <% if food.discount.present? %>
-          <h5 class="col-md-4 text-center">
-            <label>-<%= food.discount %>%</label>
-          </h5>
-        <% end %>
-      </div>
-      
-      <div class="row ratings">
-        <div class="col-md-6">
-          <i class="fa fa-eye" aria-hidden="true"> <%= count_view food%></i>
-        </div>
-        <div class="stars1 col-md-6">
-          <i id="vote-avg" class="fa fa-star" aria-hidden="true">&nbsp<%= "#{food.rating_avg} / #{food.votes.count} " %></i>
-        </div>
-      </div>
-      <%# <p><%= raw(truncate food.description || t(".no_description"), length: Settings.sort_descriptions) %>
-      <hr class="line">
-      <div class="row">
-        <div class="col-md-8 col-sm-8">
+<div class="col-item">
+  <div class="col-md-3">
+    <span class="thumbnail">
+        <%= link_to food do %>
+            <%= image_tag food.img_url, alt: food.name, :class => "style_img_view"%>
+            <% end %>
+        <div class="row">
+          <h4 class="col-md-8"><%= link_to food.name, food, class: "text-center" %></h4>
           <% if food.discount.present? %>
-            <del class="small_price col-md-4"><%= format_price food.price %></del>
+            <h5 class="col-md-4 text-center">
+              <label>-<%= food.discount %>%</label>
+            </h5>
           <% end %>
-          <h4 class="price col-md-8" style="padding-left: 30px;"><%= get_promotion_price food.price, food.discount %></h4>
-          <!-- <p class="price"><%= format_price food.price %></p> -->
         </div>
-        <div class="col-md-4 col-sm-4">
-          <button value="<%= food.id %>" class="show-add btn btn-success pull-right" data-toggle="modal" data-target="#addFood-<%= food.id %>"><i class="fa fa-cart-plus " aria-hidden="true"></i></button>
+        
+        <div class="row ratings">
+          <div class="col-md-6">
+            <i class="fa fa-eye" aria-hidden="true"> <%= count_view food%></i>
+          </div>
+          <div class="stars1 col-md-6">
+            <i id="vote-avg" class="fa fa-star" aria-hidden="true">&nbsp<%= "#{food.rating_avg} / #{food.votes.count} " %></i>
+          </div>
         </div>
-      </div>
-  </span>
+        <%# <p><%= raw(truncate food.description || t(".no_description"), length: Settings.sort_descriptions) %>
+        <hr class="line">
+        <div class="row">
+          <div class="col-md-8 col-sm-8">
+            <% if food.discount.present? %>
+              <del class="small_price col-md-4"><%= format_price food.price %></del>
+            <% end %>
+            <h4 class="price col-md-8" style="padding-left: 30px;"><%= get_promotion_price food.price, food.discount %></h4>
+            <!-- <p class="price"><%= format_price food.price %></p> -->
+          </div>
+          <div class="col-md-4 col-sm-4">
+            <button value="<%= food.id %>" class="show-add btn btn-success pull-right" data-toggle="modal" data-target="#addFood-<%= food.id %>"><i class="fa fa-cart-plus " aria-hidden="true"></i></button>
+          </div>
+        </div>
+    </span>
+  </div>
+  <%= render partial: "modal_add_cart", locals: {food: food} %>
 </div>
-
-<%= render partial: "modal_add_cart", locals: {food: food} %>
-    

@@ -20,12 +20,15 @@
                 <div class="col-md-12"><i class="fa fa-clock-o" aria-hidden="true"></i> <label><%= t(".created_at") %>: </label>
                   <span><%= order_detail.created_at.strftime(t("date_format")) %></span>
                 </div>
+                <div class="col-md-12"><i class="fa fa-shopping-bag" aria-hidden="true"></i> <label>Trạng thái</label>: <%= order.status == 1 ? 'Mới' : order.status == 2 ? 'Đang giao' : 'Đã nhận' %></div>
                 <div class="col-md-12">
-                  <span id="delete-order ">
-                    <%= link_to order, method: :delete, remote: true, class: "label label-danger", data: {confirm: t(".confirm_delete")} do %>
-                      <i class="fa fa-trash" aria-hidden="true"></i>
-                    <% end %>
-                  </span>
+                  <% if order.status == 1%>
+                    <span id="delete-order ">
+                      <%= link_to order, method: :delete, remote: true, class: "btn btn-danger btn-sm pull-right", data: {confirm: t(".confirm_delete")} do %>
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      <% end %>
+                    </span>
+                  <% end %>
                   <!-- <span id="update-order">
                     <button data-id="<%= order.id %>" type="button" class=" u-mgl5 btn btn-primary" name="order_id">
                       <i class="fa fa-check fa-7x" aria-hidden="true"></i>
@@ -37,7 +40,6 @@
           </div>
         </div>
       <% end %>
-      
     </div>
   </div>
 <% end %>
