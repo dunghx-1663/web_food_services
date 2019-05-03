@@ -21,10 +21,10 @@
   <%= f.file_field :avatar_url, accept: "image/jpeg,image/jpg,image/png" , class: 'form-control'%>
 
   <%= f.label :password %>
-  <%= f.password_field :password, class: 'form-control' %>
+  <%= f.password_field :password, class: 'form-control', required: true %>
 
   <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation, class: 'form-control' %>
+  <%= f.password_field :password_confirmation, class: 'form-control', required: true %>
   <br>
   <%= f.submit value: 'Save', class: "btn btn-primary" %>
 <% end %>

@@ -30,6 +30,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  Success: Thành công
+  sign_in_to_comment: Đăng nhập để có thể bình luận
   mailer:
     user_mailer:
       hi: "You have created a FoodServices ID with the username: "
@@ -48,6 +50,7 @@ en:
   activations:
     edit:
       activated: Tài khoản của bạn đã kích hoạt thành công
+      invalid_link: Link kích hoạt bị lỗi do bạn đã kích hoạt một lần rồi
   dashboard:
     customer: Khách hàng
     shipper: Người giao hàng
@@ -85,7 +88,7 @@ en:
     contact_us: "Liên Hệ"
     all: "Tất Cả"
     search: Tìm Kiếm
-    order: Đơn hàng
+    order: Đơn Hàng
   views:
     orders:
       order: "Order"
@@ -137,7 +140,7 @@ en:
       quantity: Số lượng
       price: Giá
       total: Tổng cộng
-      orders: đơn
+      orders: sản phẩm
     customer_index:
       destination: Địa điểm giao hàng
       quantity: Số lượng
@@ -150,6 +153,7 @@ en:
         success: Tạo đơn hàng thành công
         lost_info: Kiểm tra lại thông tin đơn hàng
   admin:
+    success: Thành công
     danger: Thất bại, kiểm tra lại thông tin
     dashboard:
       index:
@@ -184,6 +188,7 @@ en:
         created_at: Ngày tạo
         download: Xuất excel
     users:
+      danger: Thất bại, kiểm tra lại thông tin
       index:
         name: Tên đăng nhập
         emai: Email

@@ -10,7 +10,7 @@ function charged(){
     for (var i = 0; i < price.length; i++){
         totalPrice += parseFloat(getPrice.exec(price[i].textContent)[0]) * parseFloat(quantity[i].value)
     }
-    $("#total").html(totalPrice +".000" +" VND")
+    $("#total").html(totalPrice +".000" +" VNĐ")
 }
 function update_cart(){
     id = $(".cart-table ul li");
