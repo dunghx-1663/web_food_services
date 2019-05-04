@@ -43,4 +43,13 @@ class Order < ApplicationRecord
   scope :ordered_by, -> customer_id {
     where("customer_id = ? AND status != ?", customer_id, Settings.status.done).order("created_at DESC")
   }
+  
+  scope :inprogress_status_by_employee, -> employee_id {
+    where("employee_id = ? AND status = ?", employee_id, Settings.status.in_progress).order("created_at DESC")
+  }
+
+  scope :done_status_by_employee, -> employee_id {
+    where("employee_id = ? AND status = ?", employee_id, Settings.status.done).order("created_at DESC")
+  }
+
 end
