@@ -1,7 +1,9 @@
 class Employee::OrdersController < Employee::BaseController
   
   def index
-    @all_orders = Order.all.paginate page: params[:page]
+    @search = Order.search params[:q]
+    @all_orders = @search.result.paginate(:page => params[:page], :per_page => 15).order('created_at desc')
+    # @all_orders = Order.all.paginate page: params[:page]
   end
 
   def filter_order_status
@@ -10,11 +12,11 @@ class Employee::OrdersController < Employee::BaseController
       if current_user.Employee?
         if params[:orders].present?
           if params[:orders] == "inprogress"
-            @orders = Order.inprogress
+            @orders = Order.inprogress_status_by_employee(current_user.id).includes(:order_details)
           elsif params[:orders] == "new"
             @orders = Order.new_order
           elsif params[:orders] == "done"
-            @orders = Order.done
+            @orders = Order.done_status_by_employee(current_user.id).includes(:order_details)
           end
         else
           @orders = Order.all

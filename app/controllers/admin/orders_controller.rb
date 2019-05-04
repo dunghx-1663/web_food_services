@@ -15,7 +15,9 @@ class Admin::OrdersController < Admin::BaseController
           @orders = Order.all
         end
       elsif current_user.admin?
-        @orders = Order.all
+        @search = Order.search params[:q]
+        @orders = @search.result.paginate(:page => params[:page], :per_page => 15).order('created_at desc')
+        # @orders = Order.all
         respond_to do |format|
           format.html
           format.xls
