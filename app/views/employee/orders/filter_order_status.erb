@@ -12,7 +12,9 @@
           <br>
           <i class="fa fa-user" aria-hidden="true"></i> <span><%= t ".customer" %>: <%= link_to order.customer.name , @user, :class => "text-center"%></span>
           <br>
-          <i class="fa fa-money" aria-hidden="true"></i> <span><%= t ".total_money" %>: $<%= order.total_money %></span>
+          <i class="fa fa-phone-square" aria-hidden="true"></i> <span>Số Điện Thoại: <%=  order.customer.phone_number %></span>
+          <br>
+          <i class="fa fa-money" aria-hidden="true"></i> <span><%= t ".total_money" %>: <%= order.total_money %> VNĐ</span>
           <br>
           <% if !order.new? %>
           <i class="fa fa-truck" aria-hidden="true"></i> <span>Người giao hàng: <%= order.employee_name %></span>
@@ -29,9 +31,7 @@
             <span class="label label-success"><%= t ".done" %></span>
             <br>
           <% end %>
-          
-         <a href="#" data-toggle="modal" data-target="#modal-<%= order.id %>"> <%= t(".details") %></a>
-          
+          <a href="#" data-toggle="modal" data-target="#modal-<%= order.id %>"> <%= t(".details") %></a>
         </div>
       </div>
       <div id="modal-<%= order.id %>" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" >
@@ -46,7 +46,7 @@
                 <ul style="list-style-type: none;">
                   <li><label><%= t ".name" %></label>: <%= Food.find(detail.food_id).name %></li>
                   <li><label><%= t ".quantity" %></label>: <%= detail.quantity%></li>
-                  <li><label><%= t ".price_each" %></label>: $<%= detail.total_money %></li>
+                  <li><label><%= t ".price_each" %></label>: <%= detail.total_money %>VNĐ</li>
                   <li class="show_food">
                     <%= link_to detail.food do %>
                       <%= image_tag Food.find(detail.food_id).img_url, alt: detail.food.name %>

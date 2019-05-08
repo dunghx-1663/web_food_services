@@ -24,6 +24,7 @@
       <th><%=t ".customer" %></th>
       <th><%=t ".employee" %></th>
       <th><%=t ".address" %></th>
+      <th>Số ĐT</th>
       <th><%= sort_link @search, :total_money, t(".total_money") %></th>
       <th><%=t ".status" %></th>
       <th><%= sort_link @search, :created_at, t(".created_at") %></th>
@@ -36,6 +37,7 @@
         <td><%= item.customer.name %></td>
         <td><%= item.employee.name if item.employee %></td>
         <td><%= item.address %></td>
+        <td><%= item.customer.phone_number %></td>
         <td><%= item.total_money %></td>
         <td><%= item.status == 1 ? 'new' : item.status == 2 ? 'inprogress' : 'done' %></td>
         <td><%= item.created_at.strftime Settings.format_time_with_hour %></td>
