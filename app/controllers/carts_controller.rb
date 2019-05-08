@@ -8,6 +8,8 @@ class CartsController < ApplicationController
     if @cart.quantity
       quantity = @cart.quantity + params[:quantity].to_i
       @cart.update_attributes(quantity: quantity)
+      binding.pry
+
     else
       @cart.quantity = params[:quantity]
       @cart.save
@@ -30,7 +32,10 @@ class CartsController < ApplicationController
   def update
     params[:cart][:items].each do |index|
       cart = Cart.find(params[:cart][:items][index][:id])
-      cart.update_attributes(quantity: params[:cart][:items][index][:quantity],total_money: cart.food.price * params[:cart][:items][index][:quantity].to_f)
+      price_promote = cart.food.price - cart.food.discount.to_f/Settings.percentage * cart.food.price
+      cart.update_attributes(quantity: params[:cart][:items][index][:quantity],total_money: price_promote * params[:cart][:items][index][:quantity].to_f)
+      # price - discount.to_f/Settings.percentage * price
+      binding.pry
     end
     respond_to do |format|
       format.js
