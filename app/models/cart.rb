@@ -14,7 +14,7 @@ class Cart < ApplicationRecord
 
   def Cart.total id
     carts = Cart.where(user_id: id)
-    carts.map{|c| (c.food.price - c.food.discount.to_f/Settings.percentage * c.food.price) * c.quantity }.reduce(:+)
+    carts.map{|c| (c.food.price.round - c.food.discount.to_f/Settings.percentage * c.food.price.round).round * c.quantity }.reduce(:+)
   end
 end
 

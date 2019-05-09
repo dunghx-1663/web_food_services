@@ -11,7 +11,7 @@
           <br>
           <span><%= t "views.static_pages.show_orders.customer" %>: <%= link_to order.customer.name , @user, :class => "text-center"%></span>
           <br>
-          <span><%= t "views.static_pages.show_orders.total_money" %>: $<%= order.total_money %></span>
+          <span><%= t "views.static_pages.show_orders.total_money" %>: $<%= order.total_money.round %> VNĐ</span>
           <br>
           <% if order.new? %>
             <span><%= t "views.static_pages.show_orders.new" %></span>

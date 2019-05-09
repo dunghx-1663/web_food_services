@@ -38,12 +38,12 @@
            <tr>
             <td><%= o.food.name %></td>
             <td><%= o.quantity %></td>
-            <td><%= o.total_money %> VNĐ</td>
+            <td><%= format_price o.total_money.round %></td>
            </tr>
           <% end %>
           <tr>
             <td><b><%= t ".total" %></b></td>
-            <td style="color: red;"><%= Cart.total current_user.id %> VNĐ</td>
+            <td style="color: red;"><%= format_price(Cart.total current_user.id) %></td>
             <td></td>
           </tr>
         </tbody>

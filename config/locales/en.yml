@@ -171,6 +171,9 @@ en:
         created_at: Ngày Tạo
         action: Hành động
         description: Mô tả
+      destroy:
+        delete:
+          cannot_delete: Không thể xóa dữ liệu này!
     foods:
       index:
         name: Tên đồ ăn

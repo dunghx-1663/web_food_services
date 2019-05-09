@@ -23,7 +23,7 @@
             <%= top_order.address if top_order.address.present? %>
           </td>
           <td>
-            <%= top_order.total_money if top_order.total_money.present? %>
+            <%= format_price top_order.total_money.round if top_order.total_money.present? %>
           </td>
           <td>
             <%= top_order.status == 1 ? 'new' :top_order.status == 2 ? 'inprogress' : 'done' %>

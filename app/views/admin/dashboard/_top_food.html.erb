@@ -24,7 +24,7 @@
           </td>
           
           <td>
-            <%= top_food.price if top_food.price.present? %>
+            <%= format_price top_food.price.round if top_food.price.present? %>
           </td>
           <td>
             <%= top_food.rating_avg if top_food.rating_avg.present? %>

@@ -14,7 +14,7 @@
           <br>
           <i class="fa fa-phone-square" aria-hidden="true"></i> <span>Số Điện Thoại: <%=  order.customer.phone_number %></span>
           <br>
-          <i class="fa fa-money" aria-hidden="true"></i> <span><%= t ".total_money" %>: <%= order.total_money %> VNĐ</span>
+          <i class="fa fa-money" aria-hidden="true"></i> <span><%= t ".total_money" %>: <%= format_price order.total_money.round %></span>
           <br>
           <% if !order.new? %>
           <i class="fa fa-truck" aria-hidden="true"></i> <span>Người giao hàng: <%= order.employee_name %></span>
@@ -48,7 +48,7 @@
                 <ul style="list-style-type: none;">
                   <li><label><%= t ".name" %></label>: <%= Food.find(detail.food_id).name %></li>
                   <li><label><%= t ".quantity" %></label>: <%= detail.quantity%></li>
-                  <li><label><%= t ".price_each" %></label>: <%= detail.total_money %> VNĐ</li>
+                  <li><label><%= t ".price_each" %></label>: <%= format_price detail.total_money.round %></li>
                   <li class="show_food">
                     <%= link_to detail.food do %>
                       <%= image_tag Food.find(detail.food_id).img_url, alt: detail.food.name %>

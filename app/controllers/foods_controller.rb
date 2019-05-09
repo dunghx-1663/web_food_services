@@ -6,6 +6,7 @@ class FoodsController < ApplicationController
     @q = Food.ransack(params[:q])
     view = @food.view.nil? ? 0 : @food.view
     @food_relation = Food.filter_food_category(@food.food_category)
+    #tinhsoluotview
     @food.view = view + 1
     @food.save
   end

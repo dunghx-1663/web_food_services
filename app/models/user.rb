@@ -6,10 +6,10 @@ class User < ApplicationRecord
   before_create :create_activation_digest
 
   has_many :comments, dependent: :destroy
-  has_many :votes
-  has_many :carts
-  has_many :orders
-  has_many :foods
+  has_many :votes, dependent: :delete_all
+  has_many :carts, dependent: :delete_all
+  has_many :orders, dependent: :delete_all
+  has_many :foods, dependent: :delete_all
 
   has_many :customer, through: :active_relationships, source: :customer
   has_many :shippers, through: :active_relationships, source: :employee

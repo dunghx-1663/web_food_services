@@ -6,7 +6,7 @@ class Food < ApplicationRecord
 	# validates :rating_avg, presence: true
     belongs_to :food_category, optional: true
     has_many :comments, dependent: :destroy
-    has_many :votes
+    has_many :votes, dependent: :destroy
     has_many :order_details, dependent: :destroy
     has_many :carts, dependent: :destroy
     

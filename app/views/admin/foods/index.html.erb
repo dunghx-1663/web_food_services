@@ -41,7 +41,7 @@
               <%= link_to food.name, admin_food_path(food), remote: true,
                   title: food.name %>
             </td>
-            <td class="text-center"><%= food.price %></td>
+            <td class="text-center"><%= format_price food.price.round %></td>
             <td class="text-center"><%= food.rating_avg %></td>
             <td class="text-center"><%= food.created_at.strftime Settings.format_time_with_hour %></td>
             

@@ -1,6 +1,7 @@
 charged()
 getPrice = /\d+(.|,)\d/
 $("li input").on("change",function () {
+    // bat su kien on change de real time gia o cart
     charged()
 })
 function charged(){
