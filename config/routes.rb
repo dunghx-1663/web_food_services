@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     resources :food_categories
     resources :foods
     resources :orders
+    resources :notifications
+    mount ActionCable.server => '/cable'
   end
 
   namespace :employee do
@@ -35,6 +37,7 @@ Rails.application.routes.draw do
   resources :carts
   resources :comments
   resources :votes, only: [:create, :update]
+  
   # get "/static_pages/:page", to: "static_pages#show"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
