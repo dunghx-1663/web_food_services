@@ -1,7 +1,8 @@
 class UserMailer < ApplicationMailer
-  default from: 'notifications@example.com'
+  default from: 'dung.ha.xuan97.sun@gmail.com'
 
   def account_activation user
+    binding.pry
     @user = user
     mail(to: @user.email, subject: 'webcome to my website, account activation')
   end

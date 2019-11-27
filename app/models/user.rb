@@ -28,7 +28,7 @@ class User < ApplicationRecord
 
   # has_many :picture, dependent: :destroy, foreign_key: :user_id
   mount_uploader :avatar_url, AvatarUploader
-  
+
   scope :shipper, -> {
     where(user_type: Settings.user_type.shipper)
   }
@@ -39,20 +39,20 @@ class User < ApplicationRecord
   	  cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
   	                                                BCrypt::Engine.cost
   	  BCrypt::Password.create(string, cost: cost)
-  	end 
+  	end
 
   	  #return a ramdom token
   	def new_token
   	  SecureRandom.urlsafe_base64
   	end
   end
-  
+
   # remember a user in the database for user in persistent sessions
   def remember
   	self.remember_token = User.new_token
   	update_attribute(:remember_digest, User.digest(remember_token))
   end
-  
+
   def authenticated?(attribute, token)
     digest = self.send("#{attribute}_digest")
     return false if digest.nil?
@@ -60,6 +60,7 @@ class User < ApplicationRecord
   end
 
   def send_activation_email
+    binding.pry
     UserMailer.account_activation(self).deliver_now
   end
 
