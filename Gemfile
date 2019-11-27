@@ -21,7 +21,7 @@ gem "jbuilder", "2.7.0"
 gem "jquery-rails"
 gem "jquery-ui-rails"
 gem "kaminari"
-gem "mysql2", '~> 0.3.18'
+gem "mysql2", '~> 0.5.2'
 gem "omniauth"
 gem "omniauth-facebook", "4.0.0"
 gem "puma", "3.9.1"
