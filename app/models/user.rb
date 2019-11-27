@@ -60,8 +60,11 @@ class User < ApplicationRecord
   end
 
   def send_activation_email
-    binding.pry
     UserMailer.account_activation(self).deliver_now
+  end
+
+  def send_mail_delay_job
+    NotifyDelayJobEmail.set(wait: 2.minutes).perform_later(self)
   end
 
   def activate

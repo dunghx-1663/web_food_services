@@ -19,16 +19,17 @@ class UsersController < ApplicationController
   	@user = User.new
   	render "shared/_form_signup"
   end
-  
+
   def create
     @q = Food.ransack(params[:q])
     @categories = FoodCategory.all
     @user = User.new(user_params)
-    
+
     if @user.save
       @user.send_activation_email
       # log_in @user
       # flash[:success] = "Welcome to the my web!"
+      @user.send_mail_delay_job
       flash[:info] = t "users.create.confirm_email"
       redirect_to @user
     else
