@@ -25,7 +25,7 @@ gem "mysql2", '~> 0.3.18'
 gem "omniauth"
 gem "omniauth-facebook", "4.0.0"
 gem "puma", "3.9.1"
-gem "rails", "5.1.4"
+gem "rails", "5.1.6.2"
 gem "ransack"
 gem "ratyrate"
 gem "sass-rails", "5.0.6"
