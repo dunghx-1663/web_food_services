@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+ruby "2.6.5"
+
 gem 'rubyzip', '1.0.0'
 gem 'axlsx', '2.0.1'
 gem 'axlsx_rails'
@@ -19,6 +21,10 @@ gem "figaro"
 gem "delayed_job"
 gem "delayed_job_active_record"
 gem "daemons"
+gem "dotenv-rails"
+gem "google-cloud-datastore"
+gem "redis-namespace"
+gem "redis-rails"
 gem "font-awesome-rails"
 gem "jbuilder", "2.7.0"
 gem "jquery-rails"
@@ -30,9 +36,10 @@ gem "omniauth-facebook", "4.0.0"
 gem "puma", "3.9.1"
 gem "rails", "5.1.4"
 gem "ransack"
-gem "ratyrate"
+gem "ratyrate";
 gem "sass-rails", "5.0.6"
-gem "sidekiq"
+gem "sidekiq", "~> 5.2.7"
+gem "sidekiq-cron", "~> 1.1"
 gem "social-share-button", github: "huacnlee/social-share-button"
 gem "turbolinks", "5.0.1"
 gem "uglifier", "3.2.0"

@@ -1,0 +1,8 @@
+get_data_in_gcloud:
+  cron: "0 */6 * * *"
+  class: "GetDataGcloudWorker"
+  queue: default
+insert_data_in_gcloud:
+  cron: "0 */5 * * *"
+  class: "InsertDataEntityWorker"
+  queue: default

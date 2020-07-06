@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191127033049) do
+ActiveRecord::Schema.define(version: 20191129063129) do
 
   create_table "annoucements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
@@ -88,6 +88,15 @@ ActiveRecord::Schema.define(version: 20191127033049) do
     t.index ["food_category_id"], name: "index_foods_on_food_category_id"
   end
 
+  create_table "news", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "title"
+    t.text "body"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_news_on_user_id"
+  end
+
   create_table "notifications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "event"
     t.datetime "created_at", null: false
@@ -122,6 +131,15 @@ ActiveRecord::Schema.define(version: 20191127033049) do
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "title"
+    t.text "body"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "usage_histories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -163,8 +181,10 @@ ActiveRecord::Schema.define(version: 20191127033049) do
   end
 
   add_foreign_key "foods", "food_categories"
+  add_foreign_key "news", "users"
   add_foreign_key "order_details", "foods"
   add_foreign_key "order_details", "orders"
+  add_foreign_key "posts", "users"
   add_foreign_key "votes", "foods"
   add_foreign_key "votes", "users"
 end
