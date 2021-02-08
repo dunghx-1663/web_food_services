@@ -9,7 +9,7 @@ gem 'rubyzip', '1.0.0'
 gem 'axlsx', '2.0.1'
 gem 'axlsx_rails'
 gem "bcrypt"
-gem "carrierwave", "1.2.2"
+gem "carrierwave", "1.3.2"
 gem "coffee-rails", "4.2.2"
 gem "config"
 gem "chartkick"
