@@ -24,7 +24,7 @@ gem "kaminari"
 gem "mysql2", '~> 0.3.18'
 gem "omniauth"
 gem "omniauth-facebook", "4.0.0"
-gem "puma", "3.9.1"
+gem "puma", "4.3.8"
 gem "rails", "5.1.4"
 gem "ransack"
 gem "ratyrate"
